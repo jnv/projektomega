@@ -12,8 +12,6 @@ describe Character do
 
   describe "validations" do
 
-    let(:character) { Character.make }
-
     it { should validate_presence_of(:number)}
     it { should validate_presence_of(:name)}
 
