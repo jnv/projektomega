@@ -35,8 +35,9 @@ end
 
 group :test do
   gem "capybara", "~> 1.0"
-  gem "factory_girl_rails"
+  gem "factory_girl_rails", "~> 1.1"
   gem "forgery", "~>0.3.12"
+  gem "shoulda-matchers"
 end
 
 group :development do
