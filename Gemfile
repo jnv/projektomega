@@ -29,8 +29,8 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
-  gem "guard-spork"
-  gem "spork", "~> 0.9.0.rc"
+  #gem "guard-spork"
+  #gem "spork", "~> 0.9.0.rc"
 end
 
 group :test do
@@ -42,7 +42,7 @@ end
 group :development do
   gem "guard-livereload"
   gem "guard-rails"
-  #gem "guard-rspec"
+  gem "guard-rspec"
   gem "rb-inotify"
   gem "libnotify"
   gem "active_reload"
