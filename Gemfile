@@ -17,6 +17,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'haml'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -27,8 +28,12 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+gem "devise"
+gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
+
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
+  gem 'haml-rails', '>= 0.3.4'
   #gem "guard-spork"
   #gem "spork", "~> 0.9.0.rc"
 end
