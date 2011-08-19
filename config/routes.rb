@@ -1,4 +1,7 @@
 Omega::Application.routes.draw do
+
+  root to: 'home#index'
+
   resources :characters
 
   # The priority is based upon order of creation:
