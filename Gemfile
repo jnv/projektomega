@@ -31,6 +31,8 @@ gem 'haml'
 gem "devise"
 gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
 
+gem 'formtastic', '~>2.0.0.rc1'
+
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
   gem 'haml-rails', '>= 0.3.4'
