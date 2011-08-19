@@ -7,6 +7,8 @@ describe User do
     user.save!
   end
 
+  it { should have_one :character }
+
   describe "validations" do
     it { should validate_presence_of :name }
     it { should validate_presence_of :email }

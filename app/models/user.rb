@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_one :character
+
   #ROLES = %w[admin coordinator user banned]
   ROLES = [:admin, :coordinator, :user, :banned]
 

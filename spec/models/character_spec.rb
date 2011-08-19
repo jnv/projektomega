@@ -6,6 +6,8 @@ describe Character do
     {number: '1', name: 'Mata Hari'}
   end
 
+  it { should belong_to :user }
+
   it "should create a new instance with valid attributes" do
     Character.create!(valid_attributes)
   end
@@ -31,6 +33,17 @@ describe Character do
       Factory.create(:character)
       should validate_uniqueness_of(:number)
     end
+
+  end
+
+  describe "methods" do
+    subject { Character.new({name: "James Bond", number: 7}) }
+
+    its(:code) { should == "A7" }
+    its(:abbr) { should == subject.code }
+    its(:full_name) { should == "A7 James Bond"}
+    specify {subject.to_s.should == "James Bond"}
+    
 
   end
 
