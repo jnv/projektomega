@@ -20,5 +20,33 @@ class Ability
     # these will grant permission on each item in the array.
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+
+    user ||= User.new # guest user (not logged in)
+
+    can :read, :all
+
+    case user.role
+      when :admin
+        can :access, :all
+      when :coordinator
+
+      when :user
+        character_id = user.character.try(:id)
+        can :update, :characters, :user_id => user.id
+
+      when :banned
+
+      else
+        #TODO: Report exception
+    end
+
+    if user.role == :admin
+
+    elsif user.role == :coordinator
+
+
+
+    end
+    
   end
 end

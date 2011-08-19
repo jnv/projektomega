@@ -1,5 +1,16 @@
 class User < ActiveRecord::Base
 
+  class Symbol
+    def load(text)
+      return unless text
+      text.to_sym
+    end
+
+    def dump(text)
+      text.to_s
+    end
+  end
+
   has_one :character
 
   #ROLES = %w[admin coordinator user banned]
@@ -16,6 +27,8 @@ class User < ActiveRecord::Base
   validates :name, presence: true, uniqueness: {case_sensitive: false}
   validates :role, presence: true, inclusion: {in: ROLES}
 
+  serialize :role, Symbol.new
+
   def role
     read_attribute(:role).to_sym
   end
@@ -23,5 +36,6 @@ class User < ActiveRecord::Base
   def role=(new_role)
     write_attribute :role, new_role.to_s
   end
+
 
 end

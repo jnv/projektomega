@@ -10,6 +10,11 @@ FactoryGirl.define do
     country Forgery(:address).country
     assignment Forgery(:name).company_name
     specialisation  Forgery(:name).job_title
+    user
+
+    factory :orphaned_character do
+      user nil
+    end
 
   end
 
@@ -18,6 +23,7 @@ FactoryGirl.define do
     email { Forgery(:internet).email_address }
     role :user
     password 'please'
+    character
 
     factory :admin do
       role :admin
