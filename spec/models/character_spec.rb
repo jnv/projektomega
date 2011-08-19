@@ -6,10 +6,12 @@ describe Character do
     {number: '1', name: 'Mata Hari'}
   end
 
-  it { should belong_to :user }
-
   it "should create a new instance with valid attributes" do
     Character.create!(valid_attributes)
+  end
+
+  describe "associations" do
+    it { should belong_to :user }
   end
 
   describe "validations" do
@@ -36,7 +38,7 @@ describe Character do
 
   end
 
-  describe "methods" do
+  describe "string representations" do
     let(:character) { Character.new({name: "James Bond", number: 7}) }
 
     subject { character }
