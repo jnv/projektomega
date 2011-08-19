@@ -37,10 +37,12 @@ describe Character do
   end
 
   describe "methods" do
-    subject { Character.new({name: "James Bond", number: 7}) }
+    let(:character) { Character.new({name: "James Bond", number: 7}) }
+
+    subject { character }
 
     its(:code) { should == "A7" }
-    its(:abbr) { should == subject.code }
+    its(:abbr) { should == "A7" }
     its(:full_name) { should == "A7 James Bond"}
     specify {subject.to_s.should == "James Bond"}
     
