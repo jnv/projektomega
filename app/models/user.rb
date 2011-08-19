@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
 
   has_one :character
 
-  #ROLES = %w[admin coordinator user banned]
-  ROLES = [:admin, :coordinator, :user, :banned]
+  #ROLES = %w[admin coordinator user banned guest]
+  ROLES = [:admin, :coordinator, :user, :banned] #, :guest]
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
