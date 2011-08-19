@@ -36,18 +36,39 @@ describe User do
   describe "roles" do
 
     it { should_not allow_value("asdasd").for(:role) }
-    it "should accept only defined roles" do
+    it { should_not allow_value(:my_fictional_role).for(:role) }
+    it "should accept all defined roles" do
       User::ROLES.each do |role|
         should allow_value(role).for(:role)
       end
     end
-    it { should allow_value("admin").for(:role) }
-    it { should allow_value("user").for(:role) }
-    it { should allow_value("coordinator").for(:role) }
+    it { should allow_value(:admin).for(:role) }
+    it { should allow_value(:user).for(:role) }
+    it { should allow_value(:coordinator).for(:role) }
 
-    it "should set user as a default role" do
-      user = User.new
-      user.role.should == 'user'
+    it "should provide role as symbol" do
+      user = Factory.create(:user)
+      user.reload
+      user.role.should == :user
+    end
+
+    it "should allow role to be set as string" do
+
+      user = Factory.build(:user, {role: 'admin'})
+      user.save!
+      user.role.should == :admin
+
+    end
+
+    it "should allow role to be (mass assigned) as string" do
+      atts = Factory.attributes_for(:user)
+      puts atts.inspect
+      atts[:role] = 'admin'
+      user = User.new(atts)
+      user.role.should == :admin
+      user.save!
+      user.reload
+      user.role.should == :admin
     end
 
   end

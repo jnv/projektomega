@@ -16,8 +16,16 @@ FactoryGirl.define do
   factory :user do
     name { Forgery(:name).first_name }
     email { Forgery(:internet).email_address }
-    role 'user'
+    role :user
     password 'please'
+
+    factory :admin do
+      role :admin
+    end
+
+    factory :coordinator do
+      role :coordinator
+    end
   end
 
 
