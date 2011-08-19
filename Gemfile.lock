@@ -87,6 +87,9 @@ GEM
       guard (>= 0.2.2)
     guard-rspec (0.4.2)
       guard (>= 0.4.0)
+    guard-spork (0.2.1)
+      guard (>= 0.2.2)
+      spork (>= 0.8.4)
     haml (3.1.2)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -162,6 +165,7 @@ GEM
       json_pure
       rubyzip
     shoulda-matchers (1.0.0.beta3)
+    spork (0.9.0.rc9)
     sprockets (2.0.0.beta.13)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -195,6 +199,7 @@ DEPENDENCIES
   guard-livereload
   guard-rails
   guard-rspec
+  guard-spork
   haml
   haml-rails (>= 0.3.4)
   jquery-rails
@@ -204,5 +209,6 @@ DEPENDENCIES
   rspec-rails (~> 2.6)
   sass-rails (~> 3.1.0.rc)
   shoulda-matchers
+  spork (>= 0.9.0.rc)
   sqlite3
   uglifier

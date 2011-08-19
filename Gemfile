@@ -34,8 +34,13 @@ gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
   gem 'haml-rails', '>= 0.3.4'
-  #gem "guard-spork"
-  #gem "spork", "~> 0.9.0.rc"
+  gem "guard-spork"
+  gem "spork", ">= 0.9.0.rc"
+  gem "guard-livereload"
+  gem "guard-rails"
+  gem "guard-rspec"
+  gem "rb-inotify"
+  gem "libnotify"
 end
 
 group :test do
@@ -47,10 +52,5 @@ group :test do
 end
 
 group :development do
-  gem "guard-livereload"
-  gem "guard-rails"
-  gem "guard-rspec"
-  gem "rb-inotify"
-  gem "libnotify"
   gem "active_reload"
 end
