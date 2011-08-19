@@ -28,7 +28,7 @@ gem 'haml'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem "devise"
+#gem "devise"
 gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
 
 group :test, :development do
