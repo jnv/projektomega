@@ -13,5 +13,12 @@ FactoryGirl.define do
 
   end
 
+  factory :user do
+    name { Forgery(:name).first_name }
+    email { Forgery(:internet).email_address }
+    role 'user'
+    password 'please'
+  end
+
 
 end
