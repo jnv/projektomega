@@ -38,10 +38,53 @@ describe CharactersController do
   end
 
   describe "GET edit" do
-    it "assigns the requested character as @character" do
-      Character.stub(:find).with("42") { mock_character }
-      get :edit, id: "42"
-      assigns(:character).should be(mock_character)
+
+    describe "for authorized user" do
+      before do
+        @character = Factory.create(:character)
+        @user = login_user
+
+        @character.user = @user
+      end
+
+      it "allows edit only Character owned by user" do
+        get :edit, id: @character.id
+
+        @user.should be_able_to :edit, @character
+        response.should render_template(:edit)
+      end
+
+      it "disallows edit for Character not owned by user" do
+        newchar = Factory.create(:character)
+        get :edit, id: newchar.id
+
+        @user.should_not be_able_to :edit, @character
+        response.should respond_with(:success)
+        response.should_not render_template(:edit)
+
+      end
+
+      it "assigns the requested character as @character" do
+        get :edit, id: @character.id
+        assigns(:character).should eq(@character)
+      end
+    end
+
+    describe "for guest unauthorized user" do
+      before do
+        @character = Factory.create(:character)
+        @user = Factory.create(:user)
+        @character.user = @user
+      end
+
+      it "disallows edit for any character" do
+        get :edit, id: @character.id
+
+        response.should respond_with(:success)
+        response.should_not render_template(:edit)
+      end
+
+
     end
   end
 
