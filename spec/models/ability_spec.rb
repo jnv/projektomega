@@ -8,6 +8,18 @@ describe Ability do
 
   subject { ability }
 
+  describe "for guest" do
+    let(:user) { nil }
+    let(:character) do
+      Factory.build(:character)
+    end
+
+    it { should be_able_to(:read, character) }
+    it { should_not be_able_to(:update, character) }
+
+  end
+
+
   describe "for role :user" do
 
     let(:user) do
@@ -50,8 +62,8 @@ describe Ability do
 
     it { should be_able_to(:read, character) }
     it { should be_able_to(:update, character) }
-    it { should be_able_to(:create, Character)}
-    it { should be_able_to(:destroy, character)}
+    it { should be_able_to(:create, Character) }
+    it { should be_able_to(:destroy, character) }
 
 
   end
