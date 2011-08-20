@@ -23,7 +23,6 @@ FactoryGirl.define do
     email { Forgery(:internet).email_address }
     role :user
     password 'please'
-    character
 
     factory :admin do
       role :admin
