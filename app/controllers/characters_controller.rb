@@ -1,9 +1,7 @@
-class CharactersController < ApplicationController
+class CharactersController < AuthorizedController
   # GET /characters
   # GET /characters.json
   def index
-    @characters = Character.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @characters }
@@ -13,8 +11,6 @@ class CharactersController < ApplicationController
   # GET /characters/1
   # GET /characters/1.json
   def show
-    @character = Character.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @character }
@@ -24,8 +20,6 @@ class CharactersController < ApplicationController
   # GET /characters/new
   # GET /characters/new.json
   def new
-    @character = Character.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @character }
@@ -34,14 +28,11 @@ class CharactersController < ApplicationController
 
   # GET /characters/1/edit
   def edit
-    @character = Character.find(params[:id])
   end
 
   # POST /characters
   # POST /characters.json
   def create
-    @character = Character.new(params[:character])
-
     respond_to do |format|
       if @character.save
         format.html { redirect_to @character, notice: 'Character was successfully created.' }
@@ -56,8 +47,6 @@ class CharactersController < ApplicationController
   # PUT /characters/1
   # PUT /characters/1.json
   def update
-    @character = Character.find(params[:id])
-
     respond_to do |format|
       if @character.update_attributes(params[:character])
         format.html { redirect_to @character, notice: 'Character was successfully updated.' }
