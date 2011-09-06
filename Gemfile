@@ -37,7 +37,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.6"
+  gem 'steak'
+  #gem "rspec-rails", "~> 2.6"
   gem 'haml-rails', '>= 0.3.4'
   gem "guard-spork"
   gem "spork", ">= 0.9.0.rc"
