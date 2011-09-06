@@ -46,6 +46,8 @@ module Omega
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    config.assets.digest=true
+
     config.sass.preferred_syntax = :sass
   end
 end
