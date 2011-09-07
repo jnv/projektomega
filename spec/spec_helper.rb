@@ -34,8 +34,10 @@ Spork.prefork do
     config.use_transactional_fixtures = true
   end
 
+  #ActiveSupport::Dependencies.clear
 end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
+  #DatabaseCleaner.clean_with :truncation
 end

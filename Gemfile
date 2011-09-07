@@ -51,6 +51,7 @@ group :test, :development do
   gem "guard-rspec"
   gem "rb-inotify"
   gem "libnotify"
+  gem "database_cleaner"
 end
 
 group :test do
@@ -62,6 +63,6 @@ group :test do
 end
 
 group :development do
-  gem "active_reload"
+  #gem "active_reload"
   gem "livereload"
 end
