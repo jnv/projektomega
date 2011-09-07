@@ -1,12 +1,16 @@
 # Lines starting with pound sign (#) are ignored.
 
 # additional extensions to monitor
-#config.exts << 'haml'
+config.exts << 'haml'
+config.exts << 'sass'
+config.exts << 'coffee'
 
 # exclude files with NAMES matching this mask
 #config.exclusions << '~*'
 # exclude files with PATHS matching this mask (if the mask contains a slash)
-#config.exclusions << '/excluded_dir/*'
+config.exclusions << '/tmp/*'
+config.exclusions << '/log/*'
+config.exclusions << '/db/*'
 # exclude files with PATHS matching this REGEXP
 #config.exclusions << /somedir.*(ab){2,4}.(css|js)$/
 
