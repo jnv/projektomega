@@ -36,6 +36,10 @@ gem 'formtastic', '~>2.0.0.rc'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem "compass", "~>0.12.alpha"
+gem "html5-rails", :git => "git://github.com/sporkd/html5-rails.git"
+gem "compass-html5", :git => "git://github.com/sporkd/compass-html5.git"
+
 group :test, :development do
   gem 'steak'
   #gem "rspec-rails", "~> 2.6"
@@ -50,7 +54,7 @@ group :test, :development do
 end
 
 group :test do
-  gem "capybara", "~> 1.1"
+  gem "launchy"
   gem "factory_girl_rails", "~> 1.2"
   gem "forgery", "~>0.3.12"
   gem "shoulda-matchers"
