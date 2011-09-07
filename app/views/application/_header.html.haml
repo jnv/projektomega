@@ -1,0 +1,13 @@
+%header#header
+  %h1
+    %span Projekt Omega
+  %p
+    %small pre-alpha
+
+%nav.main
+  %ul
+    %li= link_to "Úvod", '/'
+    %li= link_to "Agenti", characters_path
+    %li.divider
+    = render 'devise/menu/registration_items'
+    = render 'devise/menu/login_items'
