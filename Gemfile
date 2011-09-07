@@ -63,4 +63,5 @@ end
 
 group :development do
   gem "active_reload"
+  gem "livereload"
 end
