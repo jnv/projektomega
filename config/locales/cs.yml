@@ -1,0 +1,59 @@
+cs:
+  activerecord:
+    models:
+      user: Uživatel
+      character: Postava
+      mission: Mise
+      mission_attendance: Hlášení z mise
+    attributes:
+      user:
+        name: Jméno
+        email: E-mail
+        password: Heslo
+        password_confirmation: Heslo znovu (pro kontrolu)
+      mission:
+        number: Číslo mise
+        name: Název
+        description: Popis
+        date: Datum
+        location: lokace
+        characters: Zúčastnění agenti
+      character:
+        number: Číslo agenta
+        name: Jméno
+        born: Datum narození
+        country: Stát
+        assignment: Pověření
+        specialisation: Specializace
+        portrait: Podobizna
+      mission_attendance:
+        character: Autor
+        report: Obsah hlášení
+      evaluation:
+        mission: Mise
+        character: Agent
+        author: Autor posudku
+        content: Obsah posudku
+    errors:
+      messages:
+        attendance_exists: "Agent se dané mise nazúčastnil"
+        character_is_not_author: "Agent nemůže psát posudky sám na sebe"
+      models:
+        evaluation:
+          attributes:
+            author:
+              attendance_exists: "Autor se dané mise nezúčastnil"
+
+      
+  formtastic:
+    actions:
+      user:
+        create: Zaregistrovat se
+
+    create: Vytvořit
+    update: Uložit změny
+
+  report_updated: Hlášení bylo upraveno
+  mission_created: Mise byla vytvořena
+  mission_updated: Mise byla upravena
+
