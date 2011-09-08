@@ -11,6 +11,7 @@ cs:
         email: E-mail
         password: Heslo
         password_confirmation: Heslo znovu (pro kontrolu)
+        remember_me: Trvalé přihlášení
       mission:
         number: Číslo mise
         name: Název
@@ -47,8 +48,8 @@ cs:
       
   formtastic:
     actions:
-      user:
-        create: Zaregistrovat se
+      sign_up: Zaregistrovat se
+      sign_in: Přihlásit se
 
     create: Vytvořit
     update: Uložit změny

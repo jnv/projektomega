@@ -6,5 +6,7 @@
     = f.input :email
     = f.input :password
     = f.input :password_confirmation, required: true
-  = f.buttons
+  = f.buttons do
+    = f.commit_button :sign_up
+
 = render :partial => "devise/shared/links"
