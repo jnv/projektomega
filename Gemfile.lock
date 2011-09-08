@@ -37,6 +37,7 @@ GEM
       rack-mount (~> 0.8.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.0.0)
+    active_reload (0.6.0)
     activemodel (3.1.0)
       activesupport (= 3.1.0)
       bcrypt-ruby (~> 3.0.0)
@@ -230,6 +231,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_reload
   cancan!
   carrierwave
   coffee-rails (~> 3.1.0)
@@ -237,6 +239,7 @@ DEPENDENCIES
   compass-html5!
   database_cleaner
   devise
+  factory_girl (~> 2.1)
   factory_girl_rails (~> 1.2)
   forgery (~> 0.3.12)
   formtastic (~> 2.0.0.rc)

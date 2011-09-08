@@ -54,7 +54,7 @@ describe CharactersController do
     end
 
     describe "for role :user" do
-      before do
+      before :each do
         login_user
         get :new
       end

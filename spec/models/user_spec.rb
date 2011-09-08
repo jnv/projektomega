@@ -64,7 +64,6 @@ describe User do
 
     it "should allow role to be (mass assigned) as string" do
       atts = Factory.attributes_for(:user)
-      puts atts.inspect
       atts[:role] = 'admin'
       user = User.new(atts)
       user.role.should == :admin

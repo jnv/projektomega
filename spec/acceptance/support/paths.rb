@@ -5,8 +5,12 @@ module NavigationHelpers
     "/"
   end
 
-  def registration
+  def sign_up_path
     new_user_registration_path
+  end
+
+  def sign_in_path
+    new_user_session_path
   end
 end
 

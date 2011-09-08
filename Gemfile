@@ -56,13 +56,14 @@ end
 
 group :test do
   gem "launchy"
-  gem "factory_girl_rails", "~> 1.2"
+  gem 'factory_girl_rails', '~> 1.2', :require => false
+  gem 'factory_girl', '~> 2.1', :require => false
   gem "forgery", "~>0.3.12"
   gem "shoulda-matchers"
   #gem 'simplecov', '>= 0.4.0', :require => false
 end
 
 group :development do
-  #gem "active_reload"
+  gem "active_reload"
   gem "livereload"
 end
