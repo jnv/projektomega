@@ -3,10 +3,14 @@ require 'acceptance/acceptance_helper'
 
 feature 'Authentication' do
 
+  let :user do
+    Factory :user
+  end
+
   before :each do
     @transactions_state = self.use_transactional_fixtures
     #self.use_transactional_fixtures = false
-    @user = FactoryGirl.create(:user)
+    #@user = FactoryGirl.create(:user)
   end
   
   after :each do
@@ -25,22 +29,15 @@ feature 'Authentication' do
     end
 
     page.should have_content 'Registrace byla úspěšná.'
-    click_link 'Odhlášení'
-    page.should have_content 'Odhlášení úspěšné.'
 
   end
 
-  scenario 'Login' do
-    visit sign_in_path
-    within "#user_new" do
-      fill_in 'E-mail', with: @user.email
-      fill_in 'Heslo', with: @user.password
-      click_button 'Přihlásit se'
-    end
-
+  scenario 'Login and logout' do
+    sign_in_with user
+    should_be_on homepage
     page.should have_content 'Přihlášení úspěšné.'
-    page.should have_link 'Odhlášení'
-
+    click_link 'Odhlášení'
+    page.should have_content 'Odhlášení úspěšné.'
   end
 
 end
