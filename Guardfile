@@ -37,8 +37,9 @@ guard 'rspec', :version => 2, :cli => "--color --format nested --fail-fast" do
   #watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
   # Steak acceptance specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$}) do |m|
-    if m[1]
-      "spec/acceptance/#{m[1]}_spec.rb"
+    fname = "spec/acceptance/#{m[1]}_spec.rb"
+    if File.exists(fname)
+      fname
     else
       "spec/acceptance/"
     end
