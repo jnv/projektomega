@@ -1,0 +1,45 @@
+%h2= @character
+
+= image_tag @character.portrait.to_s if @character.portrait?
+
+%dl
+  %dt Číslo
+  %dd= @character.number
+  %dt Jméno
+  %dd= @character.name
+  %dt Rok narození
+  %dd= @character.born
+  %dt Země
+  %dd= @character.country
+  %dt Zařazení
+  %dd= @character.assignment
+  %dt Specializace
+  %dd= @character.specialisation
+  %dt Hráč
+  %dd= @character.user
+
+%h3 Účast v misích
+
+%table
+  %tr
+    %th Mise
+    %th Zúčastnění agenti
+
+  - @character.missions.each do |mission|
+    %tr
+      %td= link_to(mission, mission)
+      %td= linked_codes(mission.characters, @character)
+
+
+%h3 Posudky
+- @character.evaluations.each do |evaluation|
+  %h4 Posudek od #{evaluation.author}
+  %h5= evaluation.mission
+  = evaluation.content
+
+%p= link_to "Přidat posudek", new_evaluation_path(character: @character)
+
+.meta_links
+  = link_to 'Upravit agenta', edit_character_path(@character)
+  \|
+  = link_to 'Přehled agentů', characters_path

@@ -1,0 +1,11 @@
+= semantic_form_for @character do |f|
+  = f.inputs do
+    = f.input :number
+    = f.input :name
+    = f.input :born #TODO change to number
+    = f.input :country, :as => :string
+    = f.input :assignment
+    = f.input :specialisation
+    = f.input :portrait, :as => :file
+    =# f.input :user if can? :update, @character, :user
+  = f.buttons

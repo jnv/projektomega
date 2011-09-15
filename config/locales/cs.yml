@@ -22,7 +22,7 @@ cs:
       character:
         number: Číslo agenta
         name: Jméno
-        born: Datum narození
+        born: Rok narození
         country: Stát
         assignment: Pověření
         specialisation: Specializace

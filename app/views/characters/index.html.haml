@@ -1,0 +1,24 @@
+%h1 Agenti
+
+%table
+  %tr
+    %th
+    %th Agent
+    %th Hráč
+    %th
+
+  - @characters.each do |character|
+    %tr
+      %td= link_to image_tag(character.portrait.thumb.url), character
+      %td= link_to character, character
+      %td= character.user
+      %td
+        -if can? :update, character
+          =link_to 'Upravit', edit_character_path(character)
+
+
+%br
+
+.meta_links
+  -if can? :create, :characters
+    = link_to 'Vytvořit agenta', new_character_path

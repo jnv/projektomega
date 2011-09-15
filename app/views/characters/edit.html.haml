@@ -1,0 +1,8 @@
+%h1 Editing character
+
+= render 'form', disableFlag: true
+
+.meta_links
+  = link_to 'Zobrazit agenta', @character
+  \|
+  = link_to 'Přehled agentů', characters_path
