@@ -1,9 +1,11 @@
 module Capybara
   module RSpecMatchers
 
-    class HaveRequiredField
-      def initialize(name)
+    class HaveFieldWithAttribute
+      def initialize(name, attribute=nil, should = true)
         @name = name
+        @attribute = attribute
+        @should_have_attribute = should
       end
 
       def attribute_exists?(field, attribute)
@@ -19,53 +21,44 @@ module Capybara
         rescue Capybara::ElementNotFound
           return false
         end
+        return false if field.nil?
 
+        @found = true
+        has_attribute = attribute_exists?(field, @attribute)
 
-        if field.nil?
-          false
-        else
-          @found = true
-          attribute_exists?(field, 'required')
-        end
+        has_attribute == @should_have_attribute
 
       end
 
       def failure_message_for_should
         if @found
-          "field '#{@name}' found, but doesn't have an attribute 'required'"
+          if @should_have_attribute
+            "field '#{@name}' doesn't have an attribute '#{@attribute}'"
+          else
+            "field '#{@name}' has an attribute '#{@attribute}'"
+          end
         else
           "field '#{@name}' not found"
         end
       end
     end
 
-    class HaveNotRequiredField < HaveRequiredField
-
-      def matches?(node)
-        ret = super(node)
-        if @found
-          !ret
-        else
-          false
-        end
-      end
-
-      def failure_message_for_should
-        if @found
-          "field '#{@name}' found, but has an attribute 'required'"
-        else
-          super
-        end
-      end
-
-    end
+    #TODO: Make some neat metaprogramming stuff to automatically match attributes from method name
 
     def have_required_field(name)
-      HaveRequiredField.new(name)
+      HaveFieldWithAttribute.new(name, 'required', true)
     end
 
     def have_not_required_field(name)
-      HaveNotRequiredField.new(name)
+      HaveFieldWithAttribute.new(name, 'required', false)
+    end
+
+    def have_readonly_field(name)
+      HaveFieldWithAttribute.new(name, 'readonly', true)
+    end
+
+    def have_not_readonly_field(name)
+      HaveFieldWithAttribute.new(name, 'readonly', false)
     end
 
   end
