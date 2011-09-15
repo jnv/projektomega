@@ -1,26 +1,30 @@
+# encoding: utf-8
 require 'spec_helper'
 
-describe "characters/edit.html.erb" do
+describe "characters/edit.html.haml" do
   before(:each) do
     @character = assign(:character, stub_model(Character,
-      :name => "MyString",
-      :born => "MyString",
-      :country => "MyString",
-      :assignment => "MyString",
-      :specialisation => "MyString"
+                                  :number => "5",
+                                  :name => "MyString",
+                                  :born => "MyString",
+                                  :country => "MyString",
+                                  :assignment => "MyString",
+                                  :specialisation => "MyString"
     ))
   end
 
-  #it "renders the edit character form" do
-  #  render
-  #
-  #  # Run the generator again with the --webrat flag if you want to use webrat matchers
-  #  assert_select "form", :action => characters_path(@character), :method => "post" do
-  #    assert_select "input#character_name", :name => "character[name]"
-  #    assert_select "input#character_born", :name => "character[born]"
-  #    assert_select "input#character_country", :name => "character[country]"
-  #    assert_select "input#character_assignment", :name => "character[assignment]"
-  #    assert_select "input#character_specialisation", :name => "character[specialisation]"
-  #  end
-  #end
+  before :each do
+    stub_ability
+  end
+
+  it "renders the edit character form" do
+    #@ability.can :update, Character, :user
+    render
+
+    rendered.find("form[method='post'][action='#{character_path(@character)}']").tap do |form|
+      form.should have_readonly_field("Číslo agenta")
+      form.should have_no_field("character[user]")
+    end
+
+  end
 end

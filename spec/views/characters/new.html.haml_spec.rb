@@ -13,8 +13,6 @@ describe "characters/new.html.haml" do
     ).as_new_record)
   end
 
-  let(:rendered) { Capybara::Node::Simple.new(@rendered) }
-
   before :each do
     stub_ability
   end
@@ -25,12 +23,13 @@ describe "characters/new.html.haml" do
 
     rendered.find("form[method='post'][action='#{characters_path}']").tap do |form|
       form.should have_required_field("Číslo agenta")
+      form.should have_not_readonly_field("Číslo agenta")
       form.should have_required_field("Jméno")
       form.should have_not_required_field("Rok narození")
       form.should have_not_required_field("Specializace")
       form.should have_not_required_field("Stát")
       form.should have_not_required_field("Pověření")
-      form.should_not have_field("character[user]")
+      form.should have_no_field("character[user]")
     end
 
   end
