@@ -55,7 +55,12 @@ cs:
     create: Vytvořit
     update: Uložit změny
 
-  report_updated: Hlášení bylo upraveno
-  mission_created: Mise byla vytvořena
-  mission_updated: Mise byla upravena
+  character:
+    created: Agent byl vytvořen.
+    updated: Agent byl upraven.
+  report:
+    updated: Hlášení bylo upraveno.
+  mission:
+    created: Mise byla vytvořena.
+    updated: Mise byla upravena.
 

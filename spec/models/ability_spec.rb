@@ -35,7 +35,7 @@ describe Ability do
       it { should be_able_to(:update, character) }
       it { should_not be_able_to(:update, character, :user)}
       it { should_not be_able_to(:update, character, :user_id)}
-      it { should_not be_able_to(:update, character, :number)}
+      #it { should_not be_able_to(:update, character, :number)}
     end
 
     describe "and any other character" do

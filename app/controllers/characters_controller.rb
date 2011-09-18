@@ -35,7 +35,7 @@ class CharactersController < AuthorizedController
   def create
     respond_to do |format|
       if @character.save
-        format.html { redirect_to @character, notice: 'Character was successfully created.' }
+        format.html { redirect_to @character, notice: t('character.created') }
         format.json { render json: @character, status: :created, location: @character }
       else
         format.html { render action: "new" }
@@ -49,7 +49,7 @@ class CharactersController < AuthorizedController
   def update
     respond_to do |format|
       if @character.update_attributes(params[:character])
-        format.html { redirect_to @character, notice: 'Character was successfully updated.' }
+        format.html { redirect_to @character, notice: t('character.updated') }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

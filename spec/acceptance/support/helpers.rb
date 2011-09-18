@@ -18,16 +18,20 @@ module HelperMethods
   end
 
   def should_be_on(path)
-    page.current_url.should match(Regexp.new(path))
+    page.current_url.should match(/#{Regexp.escape(path)}$/)
   end
 
   def should_not_be_on(path)
-    page.current_url.should_not match(Regexp.new(path))
+    page.current_url.should_not match(/#{Regexp.escape(path)}$/)
   end
 
   include ActionController::RecordIdentifier
   def css_dom_id(record)
     "##{dom_id(record)}"
+  end
+
+  def access_should_be_denied
+    raise StandardError, "Implement me!"
   end
 
 end

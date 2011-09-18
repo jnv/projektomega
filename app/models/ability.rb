@@ -32,7 +32,7 @@ class Ability
 
       when :user
         character_id = user.character.try(:id)
-        can :update, :characters, [:name, :born, :country, :assignment, :specialisation, :portrait], :user_id => user.id
+        can :update, :characters, [:number, :name, :born, :country, :assignment, :specialisation, :portrait], :user_id => user.id
         #can :update, :characters, [:name]
       when :banned
 
