@@ -3,10 +3,7 @@ require 'acceptance/acceptance_helper'
 
 feature 'Characters' do
 
-  let :character do
-    @character ||= Factory :character
-    @character
-  end
+  let(:character) { Factory :character }
 
   scenario 'show agents for unregistered user' do
     char = character
