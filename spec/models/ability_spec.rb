@@ -23,7 +23,7 @@ describe Ability do
   describe "for role :user" do
 
     let(:user) do
-      Factory.build(:user)
+      Factory(:user)
     end
 
     describe "and its own character" do
@@ -33,6 +33,9 @@ describe Ability do
 
       it { should be_able_to(:read, character) }
       it { should be_able_to(:update, character) }
+      it { should_not be_able_to(:update, character, :user)}
+      it { should_not be_able_to(:update, character, :user_id)}
+      it { should_not be_able_to(:update, character, :number)}
     end
 
     describe "and any other character" do
