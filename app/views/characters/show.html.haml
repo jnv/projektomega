@@ -40,6 +40,7 @@
 -#%p= link_to "Přidat posudek", new_evaluation_path(character: @character)
 
 .meta_links
-  = link_to 'Upravit agenta', edit_character_path(@character)
-  \|
+  -if can? :update, @character
+    = link_to 'Upravit agenta', edit_character_path(@character)
+    \|
   = link_to 'Přehled agentů', characters_path
