@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe "missions/new.html.haml" do
@@ -9,18 +10,22 @@ describe "missions/new.html.haml" do
       :location => "MyString",
       :description => "MyText"
     ).as_new_record)
+
+    stub_ability
   end
 
   it "renders new mission form" do
     render
 
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "form", :action => missions_path, :method => "post" do
-      assert_select "input#mission_number", :name => "mission[number]"
-      assert_select "input#mission_name", :name => "mission[name]"
-      assert_select "input#mission_date", :name => "mission[date]"
-      assert_select "input#mission_location", :name => "mission[location]"
-      assert_select "textarea#mission_description", :name => "mission[description]"
+    rendered.find("form[method='post'][action='#{missions_path}']").tap do |form|
+      form.should have_required_field("Číslo mise")
+      form.should have_not_readonly_field("Číslo mise")
+      form.should have_required_field("Název")
+      form.should have_not_required_field("Lokace")
+      form.should have_not_required_field("Datum")
+      form.should have_not_required_field("Popis")
     end
+
   end
+
 end

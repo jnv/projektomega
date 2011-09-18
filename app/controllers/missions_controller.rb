@@ -1,4 +1,4 @@
-class MissionsController < ApplicationController
+class MissionsController < AuthorizedController
   # GET /missions
   # GET /missions.json
   def index
@@ -44,7 +44,7 @@ class MissionsController < ApplicationController
 
     respond_to do |format|
       if @mission.save
-        format.html { redirect_to @mission, notice: 'Mission was successfully created.' }
+        format.html { redirect_to @mission, notice: t('mission.created') }
         format.json { render json: @mission, status: :created, location: @mission }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class MissionsController < ApplicationController
 
     respond_to do |format|
       if @mission.update_attributes(params[:mission])
-        format.html { redirect_to @mission, notice: 'Mission was successfully updated.' }
+        format.html { redirect_to @mission, notice: t('mission.updated') }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

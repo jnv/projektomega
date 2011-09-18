@@ -1,21 +1,11 @@
-%p#notice= notice
+%h2= @mission
 
-%p
-  %b Number:
-  = @mission.number
-%p
-  %b Name:
-  = @mission.name
-%p
-  %b Date:
-  = @mission.date
-%p
-  %b Location:
-  = @mission.location
-%p
-  %b Description:
-  = @mission.description
+%p #{@mission.date}, #{@mission.location}
 
-= link_to 'Edit', edit_mission_path(@mission)
-\|
-= link_to 'Back', missions_path
+%p= @mission.description
+
+.meta_links
+  -if can? :update, @mission
+    = link_to 'Upravit misi', edit_mission_path(@mission)
+    \|
+  = link_to 'Přehled misí', missions_path

@@ -1,7 +1,8 @@
-%h1 Editing mission
+%h2 Úpravy mise: #{@mission}
 
-= render 'form'
+= render 'form', disable_flag: true
 
-= link_to 'Show', @mission
-\|
-= link_to 'Back', missions_path
+.meta_links
+  = link_to 'Zobrazit', @mission
+  \|
+  = link_to 'Přehled misí', missions_path

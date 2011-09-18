@@ -1,27 +1,23 @@
-%h1 Listing missions
+%h1 Mise
 
-%table
+%table#missions
   %tr
-    %th Number
-    %th Name
-    %th Date
-    %th Location
-    %th Description
-    %th
-    %th
+    %th Mise
+    %th Datum
+    %th Lokace
+    %th Zúčastnění agenti
     %th
 
   - @missions.each do |mission|
-    %tr
-      %td= mission.number
-      %td= mission.name
+    %tr[mission]
+      %td= link_to mission, mission
       %td= mission.date
       %td= mission.location
-      %td= mission.description
-      %td= link_to 'Show', mission
-      %td= link_to 'Edit', edit_mission_path(mission)
-      %td= link_to 'Destroy', mission, :confirm => 'Are you sure?', :method => :delete
+      %td=# linked_codes(mission.characters)
+      %td
+        -if can? :update, mission
+          =link_to 'Upravit', edit_mission_path(mission)
 
-%br
-
-= link_to 'New Mission', new_mission_path
+.meta_links
+  -if can? :create, :missions
+    = link_to 'Nová mise', new_mission_path

@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe "missions/edit.html.haml" do
@@ -14,13 +15,9 @@ describe "missions/edit.html.haml" do
   it "renders the edit mission form" do
     render
 
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "form", :action => missions_path(@mission), :method => "post" do
-      assert_select "input#mission_number", :name => "mission[number]"
-      assert_select "input#mission_name", :name => "mission[name]"
-      assert_select "input#mission_date", :name => "mission[date]"
-      assert_select "input#mission_location", :name => "mission[location]"
-      assert_select "textarea#mission_description", :name => "mission[description]"
+    rendered.find("form[method='post'][action='#{mission_path(@mission)}']").tap do |form|
+      form.should have_readonly_field("Číslo mise")
     end
+
   end
 end
