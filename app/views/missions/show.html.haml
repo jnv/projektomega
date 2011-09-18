@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Number:
+  = @mission.number
+%p
+  %b Name:
+  = @mission.name
+%p
+  %b Date:
+  = @mission.date
+%p
+  %b Location:
+  = @mission.location
+%p
+  %b Description:
+  = @mission.description
+
+= link_to 'Edit', edit_mission_path(@mission)
+\|
+= link_to 'Back', missions_path
