@@ -56,9 +56,8 @@ feature 'Characters' do
     end
 
     scenario "shouldn't be able to create new character" do
-      pending "Finalize 'access denied' message" do
-        access_should_be_denied
-      end
+      visit new_character_path
+      access_should_be_denied
     end
 
     scenario "shouldn't be able to edit someone else's character" do
@@ -69,10 +68,9 @@ feature 'Characters' do
       end
       visit character_path(char2)
       page.should_not have_content("Upravit agenta")
-      edit_character_path(char2)
-      pending "Finalize 'access denied' message" do
-        access_should_be_denied
-      end
+
+      visit edit_character_path(char2)
+      access_should_be_denied
     end
 
     scenario "should be able to upload agent's portrait" do

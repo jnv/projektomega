@@ -31,7 +31,7 @@ module HelperMethods
   end
 
   def access_should_be_denied
-    raise StandardError, "Implement me!"
+    page.should have_content "Nejste oprávněni přistupovat k této stránce"
   end
 
 end

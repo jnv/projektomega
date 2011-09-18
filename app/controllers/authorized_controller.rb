@@ -6,11 +6,12 @@ class AuthorizedController < ApplicationController
   #enable_authorization
   enable_authorization do |exception|
     redirect_url = new_session_path(:user)
-
     if user_signed_in?
       redirect_url = root_url
     end
-    ###XXX report to hoptoad
+    
+    ###TODO report to hoptoad
+    exception.default_message = t('unauthorized.default_message')
     redirect_to redirect_url, :alert => exception.message
   end
 

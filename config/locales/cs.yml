@@ -64,3 +64,10 @@ cs:
     created: Mise byla vytvořena.
     updated: Mise byla upravena.
 
+  unauthorized:
+    manage:
+      all: "Nejste oprávněni spravovat '%{subject}'."
+      #user: "Not allowed to manage other user accounts."
+    update:
+      project: "Not allowed to update this project."
+    default_message: Nejste oprávněni přistupovat k této stránce.
