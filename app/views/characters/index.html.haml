@@ -1,6 +1,6 @@
 %h1 Agenti
 
-%table
+%table#characters
   %tr
     %th
     %th Agent
@@ -8,9 +8,9 @@
     %th
 
   - @characters.each do |character|
-    %tr
-      %td= link_to image_tag(character.portrait.thumb.url), character
-      %td= link_to character, character
+    %tr[character]
+      %td=# link_to image_tag(character.portrait.thumb.url), character
+      %td= link_to character.full_name, character
       %td= character.user
       %td
         -if can? :update, character

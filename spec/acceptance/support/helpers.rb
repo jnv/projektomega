@@ -25,6 +25,11 @@ module HelperMethods
     page.current_url.should_not match(Regexp.new(path))
   end
 
+  include ActionController::RecordIdentifier
+  def css_dom_id(record)
+    "##{dom_id(record)}"
+  end
+
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance

@@ -23,7 +23,7 @@ describe "characters/edit.html.haml" do
 
     rendered.find("form[method='post'][action='#{character_path(@character)}']").tap do |form|
       form.should have_readonly_field("Číslo agenta")
-      form.should have_no_field("character[user]")
+      form.should have_no_field("Hráč")
     end
 
   end

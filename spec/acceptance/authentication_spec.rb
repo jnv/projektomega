@@ -8,7 +8,7 @@ feature 'Authentication' do
   end
 
   before :each do
-    @transactions_state = self.use_transactional_fixtures
+    #@transactions_state = self.use_transactional_fixtures
     #self.use_transactional_fixtures = false
     #@user = FactoryGirl.create(:user)
   end

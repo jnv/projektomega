@@ -37,5 +37,9 @@ class User < ActiveRecord::Base
     write_attribute :role, new_role.to_s
   end
 
+  def to_s
+    name
+  end
+
 
 end
