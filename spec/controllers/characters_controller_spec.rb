@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe CharactersController do
-  # This should return the minimal set of attributes required to create a valid
-  # Character. As you add validations to Character, be sure to
-  # update the return value of this method accordingly.
+  
   def valid_attributes
     {number: '1', name: 'Mata Hari'}
   end

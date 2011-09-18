@@ -2,6 +2,7 @@ class Character < ActiveRecord::Base
 
   belongs_to :user
 
+  attr_readonly :number
   validates_presence_of :number, :name
   validates :number, uniqueness: true, numericality: {only_integer: true, greater_than: 0}
 

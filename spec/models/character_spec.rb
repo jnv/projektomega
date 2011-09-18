@@ -10,6 +10,14 @@ describe Character do
     Character.create!(valid_attributes)
   end
 
+  it "shouldn't allow number to be changed" do
+    char = Factory(:character, number: 20)
+    char.number = 30
+    char.save!
+    char.reload
+    char.number.should == 20
+  end
+
   describe "associations" do
     it { should belong_to :user }
   end
@@ -32,8 +40,8 @@ describe Character do
     end
 
     it "should require unique number" do
-      Factory.create(:character)
-      #should validate_uniqueness_of(:number)
+      Factory(:character)
+      should validate_uniqueness_of(:number)
     end
 
   end
