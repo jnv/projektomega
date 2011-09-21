@@ -40,6 +40,8 @@ gem "compass", "~>0.12.alpha"
 gem "html5-rails", :git => "git://github.com/sporkd/html5-rails.git"
 gem "compass-html5", :git => "git://github.com/sporkd/compass-html5.git"
 
+gem "composite_primary_keys", "~>4.0.0"
+
 group :test, :development do
   gem 'steak'
   #gem "rspec-rails", "~> 2.6"
