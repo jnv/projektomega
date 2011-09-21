@@ -42,6 +42,8 @@ gem "compass-html5", :git => "git://github.com/sporkd/compass-html5.git"
 
 gem "composite_primary_keys", "~>4.0.0"
 
+gem "airbrake"
+
 group :test, :development do
   gem 'steak'
   #gem "rspec-rails", "~> 2.6"
