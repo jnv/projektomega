@@ -17,7 +17,7 @@ cs:
         name: Název
         description: Popis
         date: Datum
-        location: lokace
+        location: Lokace
         characters: Zúčastnění agenti
       character:
         number: Číslo agenta

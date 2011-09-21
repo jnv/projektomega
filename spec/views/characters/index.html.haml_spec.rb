@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "characters/index.html.erb" do
+describe "characters/index.html.haml" do
   before(:each) do
     assign(:characters, [
       stub_model(Character,

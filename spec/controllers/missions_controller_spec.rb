@@ -1,43 +1,36 @@
 require 'spec_helper'
 
 describe MissionsController do
+  let(:valid_attributes) {  Factory.attributes_for(:mission) }
 
-  def valid_attributes
-    {number: '76', name: 'Overlord'}
-  end
-
-  describe "GET index" do
-    it "assigns all missions as @missions" do
-      mission = Mission.create! valid_attributes
+  shared_examples "CRUD GET index" do
+    it "should render index" do
       get :index
-      assigns(:missions).should eq([mission])
+      response.should render_template(:index)
+    end
+
+    it "assigns all missions as @missions" do
+      record = Factory :mission
+      get :index
+      assigns(:missions).should eq([record])
     end
   end
 
-  describe "GET show" do
+  shared_examples "CRUD GET show" do
     it "assigns the requested mission as @mission" do
-      mission = Mission.create! valid_attributes
-      get :show, :id => mission.id.to_s
-      assigns(:mission).should eq(mission)
+      record = Factory :mission
+      get :show, :id => record.id.to_s
+      assigns(:mission).should eq(record)
     end
   end
 
-  describe "GET new" do
+  shared_examples "CRUD GET new" do
     it "assigns a new mission as @mission" do
       get :new
       assigns(:mission).should be_a_new(Mission)
     end
   end
-
-  describe "GET edit" do
-    it "assigns the requested mission as @mission" do
-      mission = Mission.create! valid_attributes
-      get :edit, :id => mission.id.to_s
-      assigns(:mission).should eq(mission)
-    end
-  end
-
-  describe "POST create" do
+  shared_examples "CRUD POST create" do
     describe "with valid params" do
       it "creates a new Mission" do
         expect {
@@ -56,34 +49,25 @@ describe MissionsController do
         response.should redirect_to(Mission.last)
       end
     end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved mission as @mission" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Mission.any_instance.stub(:save).and_return(false)
-        post :create, :mission => {}
-        assigns(:mission).should be_a_new(Mission)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Mission.any_instance.stub(:save).and_return(false)
-        post :create, :mission => {}
-        response.should render_template("new")
-      end
+  end
+  shared_examples "CRUD GET edit" do
+    it "assigns the requested mission as @mission" do
+      mission = Factory :mission
+      get :edit, :id => mission.id.to_s
+      assigns(:mission).should eq(mission)
     end
   end
 
-  describe "PUT update" do
+  shared_examples "CRUD PUT update" do
     describe "with valid params" do
       it "updates the requested mission" do
-        mission = Mission.create! valid_attributes
+        mission = Factory :mission
         # Assuming there are no other missions in the database, this
         # specifies that the Mission created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Mission.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => mission.id, :mission => {'these' => 'params'}
+        Mission.any_instance.should_receive(:update_attributes).with({'name' => 'params'})
+        put :update, :id => mission.id, :mission => {'name' => 'params'}
       end
 
       it "assigns the requested mission as @mission" do
@@ -118,7 +102,8 @@ describe MissionsController do
     end
   end
 
-  describe "DELETE destroy" do
+
+  shared_examples "CRUD DELETE destroy" do
     it "destroys the requested mission" do
       mission = Mission.create! valid_attributes
       expect {
@@ -133,4 +118,24 @@ describe MissionsController do
     end
   end
 
+  context "guest user" do
+    it_should_behave_like "CRUD GET index"
+    it_should_behave_like "CRUD GET show"
+  end
+
+  context "administrator" do
+    before :each do
+      login_admin
+    end
+
+    it_should_behave_like "CRUD GET index"
+    it_should_behave_like "CRUD GET show"
+    it_should_behave_like "CRUD GET new"
+    it_should_behave_like "CRUD GET edit"
+    it_should_behave_like "CRUD POST create"
+    it_should_behave_like "CRUD PUT update"
+  end
+
 end
+
+
