@@ -11,6 +11,8 @@ feature 'Home page', %q{
     page.should have_content('Úvod')
     page.should have_link('Přihlášení')
     page.should have_link('Registrace')
+    page.should have_link('Agenti')
+    page.should have_link('Mise')
   end
   
 end
