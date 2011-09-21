@@ -40,4 +40,10 @@ feature 'Authentication' do
     page.should have_content 'Odhlášení úspěšné.'
   end
 
+  scenario 'Invalid login' do
+    sign_in_with Factory.build(:user)
+    should_be_on sign_in_path
+    page.should have_content 'Neplatný e-mail nebo heslo'
+  end
+
 end
