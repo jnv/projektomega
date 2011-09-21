@@ -2,49 +2,47 @@ require 'spec_helper'
 
 describe Ability do
 
-  let(:ability) do
-    Ability.new(user)
-  end
+  let(:ability) { Ability.new(user) }
 
   subject { ability }
 
-  describe "for guest" do
+  let(:user) { Factory(:user) }
+  let(:character) { Factory.build(:character) }
+  let(:mission) { Factory.build(:mission) }
+  context "guest" do
     let(:user) { nil }
-    let(:character) do
-      Factory.build(:character)
-    end
 
     it { should be_able_to(:read, character) }
     it { should_not be_able_to(:update, character) }
+    it { should_not be_able_to(:create, character) }
+    it { should be_able_to :read, mission }
+    it { should_not be_able_to :update, mission }
+    it { should_not be_able_to :create, Mission }
 
   end
 
 
-  describe "for role :user" do
+  context "user" do
 
-    let(:user) do
-      Factory(:user)
-    end
-
-    describe "and its own character" do
-      let(:character) do
-        Factory.build(:character, {user: user})
-      end
+    context "his own character" do
+      let(:character) { Factory.build(:character, {user: user}) }
 
       it { should be_able_to(:read, character) }
       it { should be_able_to(:update, character) }
-      it { should_not be_able_to(:update, character, :user)}
-      it { should_not be_able_to(:update, character, :user_id)}
+      it { should_not be_able_to(:update, character, :user) }
+      it { should_not be_able_to(:update, character, :user_id) }
       #it { should_not be_able_to(:update, character, :number)}
     end
 
-    describe "and any other character" do
-      let(:character) do
-        Factory.build(:character)
-      end
-
+    context "any other character" do
       it { should be_able_to(:read, character) }
       it { should_not be_able_to(:update, character) }
+    end
+
+    describe "mission" do
+      it { should be_able_to(:read, mission) }
+      it { should_not be_able_to :update, mission }
+      it { should_not be_able_to :create, Mission }
     end
 
     #specify { should be_able_to :update, Factory.create(:character, {user: user}), "User #{user.id} cant update character owned by user #{character.user_id}" }
@@ -55,18 +53,16 @@ describe Ability do
 
   describe "for role :admin" do
 
-    let(:user) do
-      Factory.build(:admin)
-    end
-
-    let(:character) do
-      Factory.build(:character)
-    end
+    let(:user) { Factory.build(:admin) }
 
     it { should be_able_to(:read, character) }
     it { should be_able_to(:update, character) }
     it { should be_able_to(:create, Character) }
     it { should be_able_to(:destroy, character) }
+    it { should be_able_to(:read, mission) }
+    it { should be_able_to(:update, mission) }
+    it { should be_able_to(:create, Mission) }
+    it { should be_able_to(:destroy, mission) }
 
 
   end
