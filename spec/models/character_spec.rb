@@ -20,6 +20,8 @@ describe Character do
 
   describe "associations" do
     it { should belong_to :user }
+    it { should have_many(:attendances) }
+    it { should have_many(:missions).through(:attendances)  }
   end
 
   describe "validations" do

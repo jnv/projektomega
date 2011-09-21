@@ -10,7 +10,8 @@ describe Mission do
   end
 
   describe "associations" do
-    #it { should belong_to :user }
+    it { should have_many(:attendances) }
+    it { should have_many(:characters).through(:attendances)  }
   end
 
   describe "validations" do

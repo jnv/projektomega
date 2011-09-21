@@ -1,6 +1,8 @@
 class Character < ActiveRecord::Base
 
   belongs_to :user
+  has_many :attendances, class_name: 'MissionAttendance'
+  has_many :missions, through: :attendances
 
   attr_readonly :number
   validates_presence_of :number, :name
