@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110921145123) do
+ActiveRecord::Schema.define(:version => 20110921201526) do
 
   create_table "characters", :force => true do |t|
     t.integer  "number",         :null => false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20110921145123) do
   create_table "mission_attendances", :id => false, :force => true do |t|
     t.integer "mission_id"
     t.integer "character_id"
+    t.text    "report"
   end
 
   add_index "mission_attendances", ["mission_id", "character_id"], :name => "index_mission_attendances_on_mission_id_and_character_id", :unique => true
