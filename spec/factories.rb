@@ -38,13 +38,17 @@ FactoryGirl.define do
     date { "#{Forgery(:date).day}. #{Forgery(:date).month(numerical: true)}. 1939" }
 
     factory :attended_mission do
-      attendances { FactoryGirl.build_list(:mission_attendance, 3) }
+      attendances { FactoryGirl.build_list(:attendance, 3) }
     end
   end
 
-  factory :mission_attendance do
+  factory :mission_attendance, aliases: [:attendance] do
     mission
     character
+    
+    factory :report do
+      report { Forgery(:lorem_ipsum).paragraph }
+    end
   end
 
 

@@ -16,6 +16,20 @@ feature 'Missions' do
 
   end
 
+  scenario 'show available reports' do
+    reports = FactoryGirl.create_list(:report, 2, { mission: mission })
+    visit mission_path(mission)
+
+    page.should have_selector("h3", content: "Hlášení")
+
+    find("#reports") do |reports_block|
+      reports.each do |report|
+        reports_block.should have_selector(css_dom_id(report))
+      end
+    end
+    save_and_open_page
+  end
+
   context 'administrator' do
 
     before :each do

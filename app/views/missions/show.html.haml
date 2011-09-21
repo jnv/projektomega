@@ -4,14 +4,27 @@
 
 %p= @mission.description
 
-%h3 Zúčastnění agenti
+#characters
+  %h3 Zúčastnění agenti
+  -if @mission.characters
+    %ul#characters
+      -@mission.characters.each do |character|
+        %li= link_to character.full_name, character
+  -else
+    %p Mise se nezúčastnili žádní agenti
 
--if @mission.characters
-  %ul#characters
-    -@mission.characters.each do |character|
-      %li= link_to character.full_name, character
--else
-  %p Mise se nezúčastnili žádní agenti
+#reports
+  %h3 Hlášení
+  -@mission.attendances.each do |attendance|
+    %div[attendance]
+      %h4= attendance.character.full_name
+      -if attendance.report
+        %p= truncate(attendance.report)
+        -# TODO Link to report
+      -else
+        %p Hlášení nedodáno.
+        -# TODO Link to new report
+
 
 .meta_links
   -if can? :update, @mission
