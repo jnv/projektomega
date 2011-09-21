@@ -36,6 +36,15 @@ FactoryGirl.define do
     description { Forgery(:lorem_ipsum).sentence }
     location { "#{Forgery(:address).city}, #{Forgery(:address).country}" }
     date { "#{Forgery(:date).day}. #{Forgery(:date).month(numerical: true)}. 1939" }
+
+    factory :attended_mission do
+      attendances { FactoryGirl.build_list(:mission_attendance, 3) }
+    end
+  end
+
+  factory :mission_attendance do
+    mission
+    character
   end
 
 

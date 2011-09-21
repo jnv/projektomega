@@ -76,13 +76,9 @@ feature 'Missions' do
       end
 
       scenario "with agents" do
-        characters = []
-        2.times do
-          characters << Factory(:character)
-        end
+        characters = FactoryGirl.create_list(:character, 3)
         reload
 
-        save_and_open_page
         characters.each do |ch|
           select ch.full_name, from: "Zúčastnění agenti"
         end
