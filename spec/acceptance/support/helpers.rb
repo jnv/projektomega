@@ -26,12 +26,27 @@ module HelperMethods
   end
 
   include ActionController::RecordIdentifier
+
   def css_dom_id(record)
     "##{dom_id(record)}"
   end
 
   def access_should_be_denied
     page.should have_content "Nejste oprávněni přistupovat k této stránce"
+  end
+
+  def reload
+    visit current_path
+    #case Capybara::current_driver
+    #  when :selenium
+    #    visit page.driver.browser.current_url
+    #  when :racktest
+    #    visit [current_path, page.driver.last_request.env['QUERY_STRING']].reject(&:blank?).join('?')
+    #  when :culerity
+    #    page.driver.browser.refresh
+    #  else
+    #    raise "unsupported driver, use rack::test or selenium/webdriver"
+    #end
   end
 
 end

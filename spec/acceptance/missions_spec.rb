@@ -75,6 +75,30 @@ feature 'Missions' do
         page.should have_content("Mise byla vytvořena")
       end
 
+      scenario "with agents" do
+        characters = []
+        2.times do
+          characters << Factory(:character)
+        end
+        reload
+
+        save_and_open_page
+        characters.each do |ch|
+          select ch.full_name, from: "Zúčastnění agenti"
+        end
+
+        fill_in 'Číslo mise', with: '958'
+        fill_in 'Název', with: 'Omaha Beach'
+
+        click_button "Vytvořit"
+
+        page.should have_content("Mise byla vytvořena")
+        page.should have_content("Zúčastnění agenti")
+        characters.each do |ch|
+          page.should have_content(ch.full_name)
+        end
+      end
+
     end
   end
 end

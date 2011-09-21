@@ -23,6 +23,7 @@ describe "missions/new.html.haml" do
       form.should have_required_field("Název")
       form.should have_not_required_field("Lokace")
       form.should have_not_required_field("Datum")
+      form.should have_select("Zúčastnění agenti")
       form.should have_not_required_field("Popis")
     end
 
