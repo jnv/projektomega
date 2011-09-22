@@ -1,0 +1,17 @@
+%h1 Listing mission_attendances
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @mission_attendances.each do |mission_attendance|
+    %tr
+      %td= link_to 'Show', mission_attendance
+      %td= link_to 'Edit', edit_mission_attendance_path(mission_attendance)
+      %td= link_to 'Destroy', mission_attendance, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Mission attendance', new_mission_attendance_path

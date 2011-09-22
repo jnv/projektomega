@@ -1,0 +1,2 @@
+module MissionAttendancesHelper
+end
