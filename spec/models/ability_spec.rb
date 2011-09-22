@@ -9,6 +9,8 @@ describe Ability do
   let(:user) { Factory(:user) }
   let(:character) { Factory.build(:character) }
   let(:mission) { Factory.build(:mission) }
+  let(:report) { Factory.build(:report) }
+
   context "guest" do
     let(:user) { nil }
 
@@ -16,8 +18,9 @@ describe Ability do
     it { should_not be_able_to(:update, character) }
     it { should_not be_able_to(:create, character) }
     it { should be_able_to :read, mission }
-    it { should_not be_able_to :update, mission }
-    it { should_not be_able_to :create, Mission }
+    it { should_not be_able_to(:update, mission) }
+    it { should_not be_able_to(:create, Mission) }
+    it { should_not be_able_to(:update, report) }
 
   end
 
@@ -26,17 +29,24 @@ describe Ability do
 
     context "his own character" do
       let(:character) { Factory.build(:character, {user: user}) }
+      let(:report) { Factory.build(:report, {character: character}) }
 
       it { should be_able_to(:read, character) }
       it { should be_able_to(:update, character) }
       it { should_not be_able_to(:update, character, :user) }
       it { should_not be_able_to(:update, character, :user_id) }
+      context "character's report" do
+        it { should be_able_to(:update, report) }
+      end
       #it { should_not be_able_to(:update, character, :number)}
     end
 
     context "any other character" do
       it { should be_able_to(:read, character) }
       it { should_not be_able_to(:update, character) }
+      context "report" do
+        it { should_not be_able_to(:update, report) }
+      end
     end
 
     describe "mission" do
@@ -44,6 +54,7 @@ describe Ability do
       it { should_not be_able_to :update, mission }
       it { should_not be_able_to :create, Mission }
     end
+
 
     #specify { should be_able_to :update, Factory.create(:character, {user: user}), "User #{user.id} cant update character owned by user #{character.user_id}" }
 
@@ -63,7 +74,7 @@ describe Ability do
     it { should be_able_to(:update, mission) }
     it { should be_able_to(:create, Mission) }
     it { should be_able_to(:destroy, mission) }
-
+    it { should be_able_to(:update, report) }
 
   end
 

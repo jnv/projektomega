@@ -3,9 +3,10 @@ Omega::Application.routes.draw do
 
   root to: 'home#index'
   devise_for :users
-  resources :users, :only => [:show, :index]
+  resources :users, only: [:show, :index]
   resources :characters
   resources :missions
+  resources :reports, controller: "mission_attendances", as: "mission_attendances", only: [:index, :show, :edit, :update]
 
 
 

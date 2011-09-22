@@ -27,7 +27,6 @@ feature 'Missions' do
         reports_block.should have_selector(css_dom_id(report))
       end
     end
-    save_and_open_page
   end
 
   context 'administrator' do

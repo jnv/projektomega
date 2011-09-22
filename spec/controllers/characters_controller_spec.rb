@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CharactersController do
-  
+
   def valid_attributes
     {number: '1', name: 'Mata Hari'}
   end
@@ -82,6 +82,19 @@ describe CharactersController do
   end
 
   describe "GET edit" do
+    describe "for unauthorized guest" do
+      before do
+        @character = Factory.create(:character)
+        @user = Factory.create(:user)
+        @character.user = @user
+      end
+
+      it "disallows edit for any character" do
+        get :edit, id: @character.id
+
+        response.should_not render_template(:edit)
+      end
+    end
 
     describe "for authorized user" do
       before do
@@ -110,21 +123,7 @@ describe CharactersController do
       end
     end
 
-    describe "for unauthorized guest" do
-      before do
-        @character = Factory.create(:character)
-        @user = Factory.create(:user)
-        @character.user = @user
-      end
 
-      it "disallows edit for any character" do
-        get :edit, id: @character.id
-
-        response.should_not render_template(:edit)
-      end
-
-
-    end
   end
 
   describe "POST create" do

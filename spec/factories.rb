@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :user do
-    name { Forgery(:name).first_name }
+    name { Forgery(:name).full_name }
     email { Forgery(:internet).email_address }
     role :user
     password 'please'
@@ -48,6 +48,10 @@ FactoryGirl.define do
     
     factory :report do
       report { Forgery(:lorem_ipsum).paragraph }
+    end
+
+    factory :attendance_with_user do
+      character_user
     end
   end
 
