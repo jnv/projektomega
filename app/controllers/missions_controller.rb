@@ -2,8 +2,6 @@ class MissionsController < AuthorizedController
   # GET /missions
   # GET /missions.json
   def index
-    @missions = Mission.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @missions }
@@ -13,8 +11,6 @@ class MissionsController < AuthorizedController
   # GET /missions/1
   # GET /missions/1.json
   def show
-    @mission = Mission.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @mission }
@@ -24,8 +20,6 @@ class MissionsController < AuthorizedController
   # GET /missions/new
   # GET /missions/new.json
   def new
-    @mission = Mission.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @mission }
@@ -34,14 +28,11 @@ class MissionsController < AuthorizedController
 
   # GET /missions/1/edit
   def edit
-    @mission = Mission.find(params[:id])
   end
 
   # POST /missions
   # POST /missions.json
   def create
-    @mission = Mission.new(params[:mission])
-
     respond_to do |format|
       if @mission.save
         format.html { redirect_to @mission, notice: t('mission.created') }
@@ -56,8 +47,6 @@ class MissionsController < AuthorizedController
   # PUT /missions/1
   # PUT /missions/1.json
   def update
-    @mission = Mission.find(params[:id])
-
     respond_to do |format|
       if @mission.update_attributes(params[:mission])
         format.html { redirect_to @mission, notice: t('mission.updated') }
@@ -72,7 +61,6 @@ class MissionsController < AuthorizedController
   # DELETE /missions/1
   # DELETE /missions/1.json
   def destroy
-    @mission = Mission.find(params[:id])
     @mission.destroy
 
     respond_to do |format|
