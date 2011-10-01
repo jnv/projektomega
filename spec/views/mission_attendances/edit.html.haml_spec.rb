@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "mission_attendances/edit.html.haml" do
   before(:each) do
-    @mission_attendance = assign(:mission_attendance, stub_model(MissionAttendance))
+    @mission_attendance = assign(:mission_attendance, Factory(:report))
   end
 
   it "renders the edit mission_attendance form" do
