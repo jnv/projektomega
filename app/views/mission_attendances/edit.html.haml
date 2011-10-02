@@ -8,6 +8,7 @@
 
 = render 'form'
 
-= link_to 'Show', @mission_attendance
-\|
-= link_to 'Back', mission_attendances_path
+.meta_links
+  = link_to 'Zobrazit hlášení', @mission_attendance
+  \|
+  = link_to 'Přehled hlášení', mission_attendances_path

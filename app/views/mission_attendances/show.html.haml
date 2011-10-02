@@ -1,6 +1,16 @@
-%p#notice= notice
+%h2 Hlášení z mise
 
+%dl
+  %dt Autor
+  %dd= link_to(@mission_attendance.character.full_name, @mission_attendance.character)
+  %dt Mise
+  %dd= link_to(@mission_attendance.mission.full_name, @mission_attendance.mission)
 
-= link_to 'Edit', edit_mission_attendance_path(@mission_attendance)
-\|
-= link_to 'Back', mission_attendances_path
+%div[@mission_attendance]
+  =@mission_attendance.report
+
+.meta_links
+  -if can? :update, @mission_attendance
+    = link_to 'Upravit hlášení', edit_mission_attendance_path(@mission_attendance)
+    \|
+  = link_to 'Přehled hlášení', mission_attendances_path
