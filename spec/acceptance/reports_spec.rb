@@ -12,13 +12,13 @@ feature 'Reports' do
 
     visit mission_attendances_path
     #page.should have_selector('#mission_attendances')
-    #find(css_dom_id(@report)) do |reports|
-    find('#mission_attendances') do |reports|
-      reports.should have_link(@report.mission.full_name)
-      reports.should have_link(@report.character.full_name)
-      reports.should_not have_link("Upravit")
+    #within(css_dom_id(@report)) do
+    within('#mission_attendances') do
+      page.should have_link(@report.mission.full_name)
+      page.should have_link(@report.character.full_name)
+      page.should_not have_link("Upravit")
+      click_link("Zobrazit")
     end
-    click_link("Zobrazit")
 
     #visit mission_attendance_path(@report)
     page.should have_content @report.report
