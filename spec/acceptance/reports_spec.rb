@@ -13,7 +13,6 @@ feature 'Reports' do
     visit mission_attendances_path
     #page.should have_selector('#mission_attendances')
     #find(css_dom_id(@report)) do |reports|
-    save_and_open_page
     find('#mission_attendances') do |reports|
       reports.should have_link(@report.mission.full_name)
       reports.should have_link(@report.character.full_name)
