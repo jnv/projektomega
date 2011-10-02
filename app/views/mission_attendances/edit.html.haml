@@ -1,4 +1,10 @@
-%h1 Editing mission_attendance
+%h1 Úprava hlášení
+
+%dl
+  %dt Autor
+  %dd= link_to(@mission_attendance.character.full_name, @mission_attendance.character)
+  %dt Mise
+  %dd= link_to(@mission_attendance.mission.full_name, @mission_attendance.mission)
 
 = render 'form'
 

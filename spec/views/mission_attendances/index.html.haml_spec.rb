@@ -10,5 +10,6 @@ describe "mission_attendances/index.html.haml" do
 
   it "renders a list of mission_attendances" do
     render
+    pending "Decide how to show list of resports"
   end
 end
