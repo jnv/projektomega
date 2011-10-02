@@ -8,6 +8,10 @@ describe "mission_attendances/index.html.haml" do
     ])
   end
 
+  before do
+    stub_ability
+  end
+
   it "renders a list of mission_attendances" do
     render
     pending "Decide how to show list of resports"
