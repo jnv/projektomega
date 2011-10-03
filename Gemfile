@@ -17,7 +17,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'haml'
+gem 'haml', :git => "git://github.com/jnv/haml.git", :branch => "issue_438"
 
 # Use unicorn as the web server
 # gem 'unicorn'

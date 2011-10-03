@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/jnv/haml.git
+  revision: 4cc76a1b1fbea1f1a6b761ebaca53ee4ddf892e0
+  branch: issue_438
+  specs:
+    haml (3.2.0.alpha.0)
+
+GIT
   remote: git://github.com/ryanb/cancan.git
   revision: c94de4ab1805d2e080ebd658051c59d0ec5147ce
   branch: 2.0
@@ -123,7 +130,6 @@ GEM
     guard-spork (0.3.0)
       guard (>= 0.8.2)
       spork (>= 0.8.4)
-    haml (3.1.3)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
@@ -255,7 +261,7 @@ DEPENDENCIES
   guard-rails
   guard-rspec
   guard-spork
-  haml
+  haml!
   haml-rails (>= 0.3.4)
   html5-rails!
   jquery-rails

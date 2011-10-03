@@ -9,11 +9,9 @@ feature 'Reports' do
   end
 
   scenario 'show reports' do
-
     visit mission_attendances_path
-    #page.should have_selector('#mission_attendances')
-    #within(css_dom_id(@report)) do
-    within('#mission_attendances') do
+
+    within(css_dom_id(@report)) do
       page.should have_link(@report.mission.full_name)
       page.should have_link(@report.character.full_name)
       page.should_not have_link("Upravit")

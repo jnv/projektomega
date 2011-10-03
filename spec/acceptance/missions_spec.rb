@@ -22,11 +22,9 @@ feature 'Missions' do
 
     page.should have_selector("h3", content: "Hlášení")
 
-    pending("Fix HAML dom_id") do
-      reports.each do |report|
-        within(css_dom_id(report)) do
-          #report_block.should have_link("Celé hlášení")
-        end
+    reports.each do |report|
+      within(css_dom_id(report)) do
+        page.should have_link("Celé hlášení")
       end
     end
   end
