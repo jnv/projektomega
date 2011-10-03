@@ -12,5 +12,4 @@ end
 
 RSpec.configure do |config|
   config.include(ViewMacros, :type => :view)
-
 end

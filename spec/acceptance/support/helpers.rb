@@ -25,12 +25,6 @@ module HelperMethods
     page.current_url.should_not match(/#{Regexp.escape(path)}$/)
   end
 
-  include ActionController::RecordIdentifier
-
-  def css_dom_id(record)
-    "##{dom_id(record)}"
-  end
-
   def access_should_be_denied
     page.should have_content "Nejste oprávněni přistupovat k této stránce"
   end

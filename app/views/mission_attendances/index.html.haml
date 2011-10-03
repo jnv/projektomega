@@ -11,6 +11,10 @@
     %tr[mission_attendance]
       %td= link_to mission_attendance.mission.full_name, mission_attendance.mission
       %td= link_to mission_attendance.character.full_name, mission_attendance.character
-      %td= link_to 'Zobrazit', mission_attendance
+      %td
+        -if mission_attendance.report.blank?
+          Nedodáno
+        -else
+          = link_to 'Zobrazit', mission_attendance
       -if can? :update, mission_attendance
         %td= link_to 'Upravit', edit_mission_attendance_path(mission_attendance)
