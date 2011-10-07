@@ -5,15 +5,17 @@ feature 'Missions' do
 
   let(:mission) { Factory :mission }
 
-  scenario 'show missions for unregistered user' do
-    m = mission
+  scenario 'show all missions with agents' do
+    mission
     visit missions_path
 
-    within("#missions") do
-      page.should have_link(m.name)
-    end
-    page.should have_no_link("Vytvořit misi", href: new_mission_path)
+    within(css_dom_id(mission)) do
+      page.should have_link(mission.name)
 
+      mission.characters.each do |ch|
+        page.should have_link(ch.code, href: character_path(ch))
+      end
+    end
   end
 
   scenario 'show available reports' do
@@ -26,6 +28,18 @@ feature 'Missions' do
       within(css_dom_id(report)) do
         page.should have_link("Celé hlášení")
       end
+    end
+  end
+
+  context 'unauthorized user' do
+    scenario 'no new mission link on index' do
+      visit missions_path
+      page.should have_no_link("Vytvořit misi")
+    end
+
+    scenario 'no edit mission link on show' do
+      visit mission_path(mission)
+      page.should have_no_link("Upravit misi")
     end
   end
 

@@ -13,7 +13,7 @@
       %td= link_to mission, mission
       %td= mission.date
       %td= mission.location
-      %td=# linked_codes(mission.characters)
+      %td= linked_codes(mission.characters)
       %td
         -if can? :update, mission
           =link_to 'Upravit', edit_mission_path(mission)
