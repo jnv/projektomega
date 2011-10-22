@@ -1,4 +1,4 @@
-class Evaluations < ActiveRecord::Base
+class Evaluation < ActiveRecord::Base
   set_primary_keys :mission_id, :character_id, :author_id
 
   belongs_to :mission

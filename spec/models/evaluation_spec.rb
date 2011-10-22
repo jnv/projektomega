@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Evaluations do
+describe Evaluation do
 
   it "should create a new instance with valid attributes" do
   end
@@ -24,7 +24,7 @@ describe Evaluations do
       character = attendance.character
 
       lambda do
-        Evaluations.create!({author: character, character: character, mission: mission, content: 'blah'})
+        Evaluation.create!({author: character, character: character, mission: mission, content: 'blah'})
       end.should raise_error
     end
 
@@ -34,7 +34,7 @@ describe Evaluations do
       author = Factory(:character)
 
       lambda do
-        Evaluations.create!({author: character, character: author, mission: mission, content: 'blah'})
+        Evaluation.create!({author: character, character: author, mission: mission, content: 'blah'})
       end.should raise_error
     end
 
