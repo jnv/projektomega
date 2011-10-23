@@ -7,6 +7,7 @@ Omega::Application.routes.draw do
   resources :characters
   resources :missions
   resources :reports, controller: "mission_attendances", as: "mission_attendances", only: [:index, :show, :edit, :update]
+  resources :evaluations, only: [:index, :show, :new, :create, :edit, :update]
 
 
 

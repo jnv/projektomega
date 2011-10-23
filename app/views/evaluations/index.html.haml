@@ -1,0 +1,17 @@
+%h1 Listing evaluations
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @evaluations.each do |evaluation|
+    %tr
+      %td= link_to 'Show', evaluation
+      %td= link_to 'Edit', edit_evaluation_path(evaluation)
+      %td= link_to 'Destroy', evaluation, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Evaluation', new_evaluation_path
