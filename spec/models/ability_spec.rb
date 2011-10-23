@@ -10,17 +10,22 @@ describe Ability do
   let(:character) { Factory.build(:character) }
   let(:mission) { Factory.build(:mission) }
   let(:report) { Factory.build(:report) }
+  let(:evaluation) { Factory.build(:evaluation) }
 
   context "guest" do
     let(:user) { nil }
 
     it { should be_able_to(:read, character) }
     it { should_not be_able_to(:update, character) }
-    it { should_not be_able_to(:create, character) }
+    it { should_not be_able_to(:create, Character) }
     it { should be_able_to :read, mission }
     it { should_not be_able_to(:update, mission) }
     it { should_not be_able_to(:create, Mission) }
     it { should_not be_able_to(:update, report) }
+
+    it { should be_able_to(:read, evaluation) }
+    it { should_not be_able_to(:create, Evaluation) }
+    it { should_not be_able_to(:update, evaluation) }
 
   end
 
@@ -75,6 +80,11 @@ describe Ability do
     it { should be_able_to(:create, Mission) }
     it { should be_able_to(:destroy, mission) }
     it { should be_able_to(:update, report) }
+
+    it { should be_able_to(:read, evaluation) }
+    it { should be_able_to(:create, Evaluation) }
+    it { should be_able_to(:update, evaluation) }
+
 
   end
 
