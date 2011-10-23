@@ -2,12 +2,17 @@ require 'spec_helper'
 
 describe EvaluationsController do
 
+  before do
+    @mission = Factory(:attended_mission_w_users, attendees: 2)
+    @author = @mission.characters[1]
+    @character = @mission.characters[0]
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Evaluation. As you add validations to Evaluation, be sure to
   # update the return value of this method accordingly.
   let(:valid_attributes) do
-    mission = Factory(:attended_mission, attendees: 2)
-    {mission_id: mission.id, character_id: mission.characters[0].id, author_id: mission.characters[1].id, content: 'blah' }
+    {mission_id: @mission.id, character_id: @character.id, author_id: @author.id, content: 'blah'}
   end
 
   describe "#index" do
@@ -15,7 +20,7 @@ describe EvaluationsController do
     before do
       @evaluation = Evaluation.create! valid_attributes
     end
-    context "for anonymous user" do
+    context "for guest" do
       before { get :index }
 
       it { should render_template(:index) }
@@ -29,7 +34,7 @@ describe EvaluationsController do
       @evaluation = Evaluation.create! valid_attributes
     end
 
-    context "for anonymous user" do
+    context "for guest" do
       before { get :show, id: @evaluation.id.to_s }
 
       it { should render_template(:show) }
@@ -37,22 +42,86 @@ describe EvaluationsController do
     end
   end
 
-  #
-  #describe "GET new" do
-  #  it "assigns a new evaluation as @evaluation" do
-  #    get :new
-  #    assigns(:evaluation).should be_a_new(Evaluation)
-  #  end
-  #end
-  #
-  #describe "GET edit" do
-  #  it "assigns the requested evaluation as @evaluation" do
-  #    evaluation = Evaluation.create! valid_attributes
-  #    get :edit, :id => evaluation.id
-  #    assigns(:evaluation).should eq(evaluation)
-  #  end
-  #end
-  #
+  describe "#new" do
+
+    before do
+      @evaluation = Evaluation.create! valid_attributes
+    end
+
+    context "for guest" do
+      before { get :new, {evaluation: valid_attributes.except(:content)} }
+      it { should_not render_template(:new) }
+      it { should_not assign_to(:evaluation) }
+    end
+
+    context "for user (as author)" do
+      before do
+        login_user @author.user
+        get :new, {evaluation: valid_attributes.except(:content)}
+      end
+
+      it { should render_template(:new) }
+      it { assigns(:evaluation).should be_a_new(Evaluation) }
+    end
+
+    context "for user (other)" do
+      before do
+        login_user
+        get :new, {evaluation: valid_attributes.except(:content)}
+      end
+
+      pending do
+        it { should_not render_template(:new) }
+        it { should_not assign_to(:evaluation) }
+      end
+    end
+
+    context "for admin" do
+      before do
+        login_admin
+        get :new
+      end
+
+      it { should render_template(:new) }
+      it { assigns(:evaluation).should be_a_new(Evaluation) }
+    end
+
+  end
+
+  describe "#edit" do
+    before do
+      @evaluation = Evaluation.create! valid_attributes
+    end
+
+    context "for guest" do
+      before { get :edit, id: @evaluation.id.to_s }
+      it { should_not render_template(:edit) }
+      it { should_not assign_to(:evaluation) }
+    end
+
+    context "for user (as author)" do
+      before do
+        login_user @author.user
+        get :edit, id: @evaluation.id.to_s
+      end
+
+      it { should render_template(:edit) }
+      it { should assign_to(:evaluation).with(@evaluation) }
+    end
+
+    context "for user (other)" do
+      before do
+        login_user
+        get :edit, id: @evaluation.id.to_s
+      end
+
+      pending do
+        it { should_not render_template(:edit) }
+        it { should_not assign_to(:evaluation) }
+      end
+    end
+  end
+
   #describe "POST create" do
   #  describe "with valid params" do
   #    it "creates a new Evaluation" do

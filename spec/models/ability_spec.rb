@@ -60,6 +60,7 @@ describe Ability do
 
       describe "evaluation" do
         let(:evaluation) { Factory.build(:evaluation)}
+        it { should_not be_able_to(:create, evaluation) }
         it { should_not be_able_to(:update, evaluation) }
       end
 

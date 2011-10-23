@@ -1,9 +1,7 @@
-class EvaluationsController < ApplicationController
+class EvaluationsController < AuthorizedController
   # GET /evaluations
   # GET /evaluations.json
   def index
-    @evaluations = Evaluation.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @evaluations }
@@ -13,8 +11,6 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/1
   # GET /evaluations/1.json
   def show
-    @evaluation = Evaluation.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @evaluation }
@@ -24,8 +20,6 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/new
   # GET /evaluations/new.json
   def new
-    @evaluation = Evaluation.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @evaluation }
@@ -34,7 +28,6 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations/1/edit
   def edit
-    @evaluation = Evaluation.find(params[:id])
   end
 
   # POST /evaluations
