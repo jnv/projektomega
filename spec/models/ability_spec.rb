@@ -35,13 +35,18 @@ describe Ability do
     context "his own character" do
       let(:character) { Factory.build(:character, {user: user}) }
       let(:report) { Factory.build(:report, {character: character}) }
+      let(:evaluation) { Factory.build(:evaluation, {author: character})}
 
       it { should be_able_to(:read, character) }
       it { should be_able_to(:update, character) }
       it { should_not be_able_to(:update, character, :user) }
       it { should_not be_able_to(:update, character, :user_id) }
-      context "character's report" do
+      describe "character's report" do
         it { should be_able_to(:update, report) }
+      end
+      describe "authored evaluation" do
+        it { should be_able_to(:create, evaluation) }
+        it { should be_able_to(:update, evaluation) }
       end
       #it { should_not be_able_to(:update, character, :number)}
     end
@@ -49,9 +54,15 @@ describe Ability do
     context "any other character" do
       it { should be_able_to(:read, character) }
       it { should_not be_able_to(:update, character) }
-      context "report" do
+      describe "report" do
         it { should_not be_able_to(:update, report) }
       end
+
+      describe "evaluation" do
+        let(:evaluation) { Factory.build(:evaluation)}
+        it { should_not be_able_to(:update, evaluation) }
+      end
+
     end
 
     describe "mission" do
