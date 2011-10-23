@@ -2,9 +2,6 @@ require 'spec_helper'
 
 describe Evaluation do
 
-  it "should create a new instance with valid attributes" do
-  end
-
   describe "associations" do
     it { should belong_to :character }
     it { should belong_to :mission }

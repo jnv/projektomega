@@ -38,7 +38,14 @@ FactoryGirl.define do
     date { "#{Forgery(:date).day}. #{Forgery(:date).month(numerical: true)}. 1939" }
 
     factory :attended_mission do
-      attendances { FactoryGirl.build_list(:attendance, 3) }
+      ignore do
+        attendees 3
+      end
+      characters { FactoryGirl.build_list(:orphaned_character, attendees) }
+
+      factory :attended_mission_w_users do
+        characters { FactoryGirl.build_list(:character, attendees) }
+      end
     end
   end
 
@@ -55,11 +62,16 @@ FactoryGirl.define do
     end
   end
 
-  #factory :evaluation do
-  #
-  #  content { Forgery(:lorem_ipsum).sentence }
-  #
-  #end
+  factory :evaluation do
+    ignore do
+      attended_mission { Factory.create(:attended_mission, attendees: 2) }
+    end
+    mission { attended_mission }
+    character { attended_mission.attendances[0].character }
+    author { attended_mission.attendances[1].character }
+    content { Forgery(:lorem_ipsum).sentence }
+
+  end
 
 
 end
