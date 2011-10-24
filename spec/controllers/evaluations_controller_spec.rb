@@ -122,42 +122,61 @@ describe EvaluationsController do
     end
   end
 
-  #describe "POST create" do
-  #  describe "with valid params" do
-  #    it "creates a new Evaluation" do
-  #      expect {
-  #        post :create, :evaluation => valid_attributes
-  #      }.to change(Evaluation, :count).by(1)
-  #    end
-  #
-  #    it "assigns a newly created evaluation as @evaluation" do
-  #      post :create, :evaluation => valid_attributes
-  #      assigns(:evaluation).should be_a(Evaluation)
-  #      assigns(:evaluation).should be_persisted
-  #    end
-  #
-  #    it "redirects to the created evaluation" do
-  #      post :create, :evaluation => valid_attributes
-  #      response.should redirect_to(Evaluation.last)
-  #    end
-  #  end
-  #
-  #  describe "with invalid params" do
-  #    it "assigns a newly created but unsaved evaluation as @evaluation" do
-  #      # Trigger the behavior that occurs when invalid params are submitted
-  #      Evaluation.any_instance.stub(:save).and_return(false)
-  #      post :create, :evaluation => {}
-  #      assigns(:evaluation).should be_a_new(Evaluation)
-  #    end
-  #
-  #    it "re-renders the 'new' template" do
-  #      # Trigger the behavior that occurs when invalid params are submitted
-  #      Evaluation.any_instance.stub(:save).and_return(false)
-  #      post :create, :evaluation => {}
-  #      response.should render_template("new")
-  #    end
-  #  end
-  #end
+  describe "#create" do
+    context "for guest" do
+      it "fails" do
+        expect {
+          post :create, evaluation: valid_attributes
+        }.to_not change(Evaluation, :count)
+      end
+    end
+
+    context "for user (as author)" do
+      before do
+        login_user @author.user
+      end
+
+      describe "with valid params" do
+        it "creates a new Evaluation" do
+          expect {
+            post :create, evaluation: valid_attributes
+          }.to change(Evaluation, :count).by(1)
+        end
+
+        describe "after creating evaluation" do
+          before { post :create, evaluation: valid_attributes }
+
+          it { should assign_to(:evaluation).with_kind_of(Evaluation) }
+          specify { assigns(:evaluation).should be_persisted }
+          it { should redirect_to(Evaluation.last) }
+        end
+      end
+
+      pending do
+        describe "with invalid params" do
+          before do
+            Evaluation.any_instance.stub(:save).and_return(false)
+            post :create, :evaluation => {}
+          end
+
+          specify { assigns(:evaluation).should be_a_new(Evaluation) }
+          it { should render_template("new") }
+        end
+      end
+
+    end
+
+    context "for user (other)" do
+      before do
+        login_user
+      end
+      it "fails" do
+        expect {
+          post :create, evaluation: valid_attributes
+        }.to_not change(Evaluation, :count)
+      end
+    end
+  end
   #
   #describe "PUT update" do
   #  describe "with valid params" do
