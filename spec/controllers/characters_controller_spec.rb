@@ -190,7 +190,6 @@ describe CharactersController do
         Character.should_receive(:find).with("42") { mock_character }
         mock_character.should_not_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => "42", :character => {'these' => 'params'}
-
       end
 
       it "should be successful if does own this character" do

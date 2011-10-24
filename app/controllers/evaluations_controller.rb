@@ -1,4 +1,5 @@
 class EvaluationsController < AuthorizedController
+
   # GET /evaluations
   # GET /evaluations.json
   def index
@@ -33,8 +34,7 @@ class EvaluationsController < AuthorizedController
   # POST /evaluations
   # POST /evaluations.json
   def create
-    @evaluation = Evaluation.new(params[:evaluation])
-
+    authorize! :create, @evaluation
     respond_to do |format|
       if @evaluation.save
         format.html { redirect_to @evaluation, notice: 'Evaluation was successfully created.' }
@@ -49,8 +49,6 @@ class EvaluationsController < AuthorizedController
   # PUT /evaluations/1
   # PUT /evaluations/1.json
   def update
-    @evaluation = Evaluation.find(params[:id])
-
     respond_to do |format|
       if @evaluation.update_attributes(params[:evaluation])
         format.html { redirect_to @evaluation, notice: 'Evaluation was successfully updated.' }

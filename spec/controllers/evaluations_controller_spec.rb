@@ -26,7 +26,6 @@ describe EvaluationsController do
       it { should render_template(:index) }
       it { should assign_to(:evaluations).with([@evaluation]) }
     end
-
   end
 
   describe "#show" do
@@ -152,16 +151,14 @@ describe EvaluationsController do
         end
       end
 
-      pending do
-        describe "with invalid params" do
-          before do
-            Evaluation.any_instance.stub(:save).and_return(false)
-            post :create, :evaluation => {}
-          end
-
-          specify { assigns(:evaluation).should be_a_new(Evaluation) }
-          it { should render_template("new") }
+      describe "with invalid params" do
+        before do
+          Evaluation.any_instance.stub(:save).and_return(false)
+          post :create, :evaluation => {}
         end
+
+        specify { assigns(:evaluation).should be_a_new(Evaluation) }
+        it { should render_template("new") }
       end
 
     end
@@ -170,71 +167,54 @@ describe EvaluationsController do
       before do
         login_user
       end
-      it "fails" do
+      it "fails for injected author_id" do
         expect {
           post :create, evaluation: valid_attributes
         }.to_not change(Evaluation, :count)
       end
     end
   end
-  #
-  #describe "PUT update" do
-  #  describe "with valid params" do
-  #    it "updates the requested evaluation" do
-  #      evaluation = Evaluation.create! valid_attributes
-  #      # Assuming there are no other evaluations in the database, this
-  #      # specifies that the Evaluation created on the previous line
-  #      # receives the :update_attributes message with whatever params are
-  #      # submitted in the request.
-  #      Evaluation.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-  #      put :update, :id => evaluation.id, :evaluation => {'these' => 'params'}
-  #    end
-  #
-  #    it "assigns the requested evaluation as @evaluation" do
-  #      evaluation = Evaluation.create! valid_attributes
-  #      put :update, :id => evaluation.id, :evaluation => valid_attributes
-  #      assigns(:evaluation).should eq(evaluation)
-  #    end
-  #
-  #    it "redirects to the evaluation" do
-  #      evaluation = Evaluation.create! valid_attributes
-  #      put :update, :id => evaluation.id, :evaluation => valid_attributes
-  #      response.should redirect_to(evaluation)
-  #    end
-  #  end
-  #
-  #  describe "with invalid params" do
-  #    it "assigns the evaluation as @evaluation" do
-  #      evaluation = Evaluation.create! valid_attributes
-  #      # Trigger the behavior that occurs when invalid params are submitted
-  #      Evaluation.any_instance.stub(:save).and_return(false)
-  #      put :update, :id => evaluation.id, :evaluation => {}
-  #      assigns(:evaluation).should eq(evaluation)
-  #    end
-  #
-  #    it "re-renders the 'edit' template" do
-  #      evaluation = Evaluation.create! valid_attributes
-  #      # Trigger the behavior that occurs when invalid params are submitted
-  #      Evaluation.any_instance.stub(:save).and_return(false)
-  #      put :update, :id => evaluation.id, :evaluation => {}
-  #      response.should render_template("edit")
-  #    end
-  #  end
-  #end
-  #
-  #describe "DELETE destroy" do
-  #  it "destroys the requested evaluation" do
-  #    evaluation = Evaluation.create! valid_attributes
-  #    expect {
-  #      delete :destroy, :id => evaluation.id
-  #    }.to change(Evaluation, :count).by(-1)
-  #  end
-  #
-  #  it "redirects to the evaluations list" do
-  #    evaluation = Evaluation.create! valid_attributes
-  #    delete :destroy, :id => evaluation.id
-  #    response.should redirect_to(evaluations_url)
-  #  end
-  #end
 
+  describe "update" do
+    before do
+      @evaluation = Evaluation.create! valid_attributes
+    end
+
+    context "for guest" do
+      it "doesn't do an update" do
+        Evaluation.any_instance.should_not_receive(:update_attributes).with({'content' => 'params'})
+        put :update, :id => @evaluation.id.to_s, :evaluation => {'content' => 'params'}
+      end
+    end
+
+    context "for user (as author)" do
+      before do
+        login_user @author.user
+      end
+
+      it "updates the evaluation" do
+        Evaluation.any_instance.should_receive(:update_attributes).with({'content' => 'new'})
+        put :update, :id => @evaluation.id.to_s, :evaluation => {'content' => 'new'}
+      end
+
+      describe "after update" do
+        before do
+          put :update, id: @evaluation.id.to_s, evaluation: valid_attributes
+        end
+
+        it { should assign_to(:evaluation).with(@evaluation) }
+        it { should redirect_to(@evaluation) }
+      end
+
+      describe "with invalid params" do
+        before do
+          Evaluation.any_instance.stub(:save).and_return(false)
+          put :update, id: @evaluation.id.to_s, evaluation: {}
+        end
+
+        it { should assign_to(:evaluation).with(@evaluation) }
+        it { should render_template("edit") }
+      end
+    end
+  end
 end
