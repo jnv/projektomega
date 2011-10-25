@@ -4,6 +4,7 @@ class Evaluation < ActiveRecord::Base
   belongs_to :mission
   belongs_to :character
   belongs_to :author, class_name: 'Character', foreign_key: 'author_id'
+  belongs_to :attendance, class_name: 'MissionAttendance', foreign_key: [:mission_id, :character_id]
 
   attr_readonly :mission, :character, :author
 
