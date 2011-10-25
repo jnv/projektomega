@@ -12,6 +12,7 @@ describe Mission do
   describe "associations" do
     it { should have_many(:attendances) }
     it { should have_many(:characters).through(:attendances)  }
+    it { should have_many(:evaluations) }
   end
 
   describe "validations" do

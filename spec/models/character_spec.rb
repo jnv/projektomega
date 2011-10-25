@@ -22,6 +22,8 @@ describe Character do
     it { should belong_to :user }
     it { should have_many(:attendances) }
     it { should have_many(:missions).through(:attendances)  }
+    it { should have_many(:evaluations) }
+    it { should have_many(:authored_evaluations) }
   end
 
   describe "validations" do
