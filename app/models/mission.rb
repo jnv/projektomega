@@ -7,6 +7,10 @@ class Mission < ActiveRecord::Base
   validates_presence_of :number, :name
   validates :number, uniqueness: true, numericality: {only_integer: true, greater_than: 0}
 
+  default_scope order: 'number ASC'
+
+  delegate :with_evaluations, to: :attendances, prefix: true, allow_nil: true
+
   def code
     "M#{number}"
   end
