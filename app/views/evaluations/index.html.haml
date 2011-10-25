@@ -12,9 +12,9 @@
 
   - @evaluations.each do |evaluation|
     %tr[evaluation]
-      %td= link_to evaluation.mission.full_name, evaluation.mission
-      %td= link_to evaluation.author.full_name, evaluation.author
-      %td= link_to evaluation.character.full_name, evaluation.character
+      %td= linked_name evaluation.mission
+      %td= linked_name evaluation.author
+      %td= linked_name evaluation.character
       %td= link_to 'Zobrazit', evaluation
       -if can? :edit, evaluation
         %td= link_to 'Upravit', edit_evaluation_path(evaluation)

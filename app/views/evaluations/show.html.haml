@@ -2,11 +2,11 @@
 
 %dl
   %dt Mise
-  %dd= link_to @evaluation.mission.full_name, @evaluation.mission
+  %dd= linked_name @evaluation.mission
   %dt Autor hodnocení
-  %dd= link_to @evaluation.author.full_name, @evaluation.author
+  %dd= linked_name @evaluation.author
   %dt Hodnocený agent
-  %dd= link_to @evaluation.character.full_name, @evaluation.character
+  %dd= linked_name @evaluation.character
 
 %div[@evaluation]
   =@evaluation.content
