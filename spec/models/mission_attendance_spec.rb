@@ -2,8 +2,13 @@ require 'spec_helper'
 
 describe MissionAttendance do
 
-  it { should belong_to :mission }
-  it { should belong_to :character }
+  describe "associations" do
+    it { should belong_to :mission }
+    it { should belong_to :character }
+    it "has many evaluations" do
+      MissionAttendance.reflect_on_association(:evaluations).macro.should == :has_many #XXX Shoulda doesn't like CPK
+    end
+  end
 
   it "should have multiple primary ids" do
     MissionAttendance.primary_key.should eq([:mission_id, :character_id])
