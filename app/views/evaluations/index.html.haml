@@ -1,17 +1,24 @@
-%h1 Listing evaluations
+%h2 Přehled hodnocení
 
-%table
+%table#evaluations
   %tr
+    %th Mise
+    %th Autor hodnocení
+    %th Hodnocený agent
+    %th Hodnocení
     %th
     %th
     %th
 
   - @evaluations.each do |evaluation|
-    %tr
-      %td= link_to 'Show', evaluation
-      %td= link_to 'Edit', edit_evaluation_path(evaluation)
-      %td= link_to 'Destroy', evaluation, :confirm => 'Are you sure?', :method => :delete
+    %tr[evaluation]
+      %td= link_to evaluation.mission.full_name, evaluation.mission
+      %td= link_to evaluation.author.full_name, evaluation.author
+      %td= link_to evaluation.character.full_name, evaluation.character
+      %td= link_to 'Zobrazit', evaluation
+      -if can? :edit, evaluation
+        %td= link_to 'Upravit', edit_evaluation_path(evaluation)
 
-%br
-
-= link_to 'New Evaluation', new_evaluation_path
+.meta_links
+  -if can? :create, :evaluations
+    = link_to 'Nové hodnocení', new_evaluation_path

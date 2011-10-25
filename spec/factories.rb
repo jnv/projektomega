@@ -64,7 +64,7 @@ FactoryGirl.define do
 
   factory :evaluation do
     ignore do
-      attended_mission { Factory.create(:attended_mission, attendees: 2) }
+      attended_mission { Factory.create(:attended_mission_w_users, attendees: 2) }
     end
     mission { attended_mission }
     character { attended_mission.attendances[0].character }

@@ -1,6 +1,19 @@
-%p#notice= notice
+%h2 Hodnocení agenta
+
+%dl
+  %dt Mise
+  %dd= link_to @evaluation.mission.full_name, @evaluation.mission
+  %dt Autor hodnocení
+  %dd= link_to @evaluation.author.full_name, @evaluation.author
+  %dt Hodnocený agent
+  %dd= link_to @evaluation.character.full_name, @evaluation.character
+
+%div[@evaluation]
+  =@evaluation.content
 
 
-= link_to 'Edit', edit_evaluation_path(@evaluation)
-\|
-= link_to 'Back', evaluations_path
+.meta_links
+  -if can? :update, @evaluation
+    = link_to 'Upravit hodnocení', edit_evaluation_path(@evaluation)
+    \|
+  = link_to 'Přehled hodnocení', evaluations_path
