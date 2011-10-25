@@ -5,6 +5,8 @@ class Evaluation < ActiveRecord::Base
   belongs_to :character
   belongs_to :author, class_name: 'Character', foreign_key: 'author_id'
 
+  attr_readonly :mission, :character, :author
+
   validates_presence_of :mission, :character, :author, :content
 
   validate :character_is_not_author, :mission_attendance_exists

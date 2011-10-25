@@ -34,6 +34,7 @@ class EvaluationsController < AuthorizedController
   # POST /evaluations
   # POST /evaluations.json
   def create
+    #TODO assign author_id
     authorize! :create, @evaluation
     respond_to do |format|
       if @evaluation.save
@@ -60,15 +61,4 @@ class EvaluationsController < AuthorizedController
     end
   end
 
-  # DELETE /evaluations/1
-  # DELETE /evaluations/1.json
-  def destroy
-    @evaluation = Evaluation.find(params[:id])
-    @evaluation.destroy
-
-    respond_to do |format|
-      format.html { redirect_to evaluations_url }
-      format.json { head :ok }
-    end
-  end
 end

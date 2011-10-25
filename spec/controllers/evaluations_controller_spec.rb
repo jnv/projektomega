@@ -110,14 +110,11 @@ describe EvaluationsController do
 
     context "for user (other)" do
       before do
-        login_user
+        login_user @character.user
         get :edit, id: @evaluation.id.to_s
       end
 
-      pending do
-        it { should_not render_template(:edit) }
-        it { should_not assign_to(:evaluation) }
-      end
+      it { should_not render_template(:edit) }
     end
   end
 
@@ -138,12 +135,12 @@ describe EvaluationsController do
       describe "with valid params" do
         it "creates a new Evaluation" do
           expect {
-            post :create, evaluation: valid_attributes
+            post :create, evaluation: valid_attributes.except(:author_id)
           }.to change(Evaluation, :count).by(1)
         end
 
         describe "after creating evaluation" do
-          before { post :create, evaluation: valid_attributes }
+          before { post :create, evaluation: valid_attributes.except(:author_id) }
 
           it { should assign_to(:evaluation).with_kind_of(Evaluation) }
           specify { assigns(:evaluation).should be_persisted }
