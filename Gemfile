@@ -70,5 +70,5 @@ end
 group :development do
   gem "active_reload"
   gem "livereload"
-  gem 'pry-rails'
+  #gem 'pry-rails'
 end
