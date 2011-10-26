@@ -28,7 +28,24 @@
           -if can? :update, attendance
             = link_to("Přidat hlášení", edit_mission_attendance_path(attendance))
 
+#evaluations
+  %h3 Hodnocení agentů
+  -@mission.attendances_with_evaluations.each do |attendance|
+    - evaluations = attendance.evaluations
+    - has_added = false #XXX Logic in template!
+    %div[attendance, :evaluations]
+      %h4= "Hodnocení agenta: #{attendance.character.full_name}"
+      -evaluations.each do |evaluation|
+        %p[evaluation]
+          %strong= evaluation.author.full_name
+          = evaluation.content
+          -if can? :update, evaluation
+            = link_to('Upravit', edit_evaluation_path(evaluation))
+            - has_added = true
+      -if !has_added && can?(:create, :evaluations)
+        %p= link_to('Přidat hodnocení', new_evaluation_path({evaluation: {mission_id: attendance.mission_id, character_id: attendance.character_id}}))
 
+    
 .meta_links
   -if can? :update, @mission
     = link_to 'Upravit misi', edit_mission_path(@mission)

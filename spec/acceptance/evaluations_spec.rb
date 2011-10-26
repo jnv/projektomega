@@ -4,10 +4,14 @@ require 'acceptance/acceptance_helper'
 feature 'Evaluations' do
 
   before do
-    @evaluation = Factory(:evaluation)
-    @mission = @evaluation.mission
+    @mission = Factory(:attended_mission_w_users, attendees: 3) #@evaluation.mission
+    @evaluation = Factory(:evaluation, {attended_mission: @mission})
     @author = @evaluation.author
     @character = @evaluation.character
+    @character2 = @mission.characters[2]
+    #Factory(:evaluation, {attended_mission: @mission, character: @character2})
+    @evaluation2 = Factory(:evaluation, {attended_mission: @mission, author: @character2, character: @character})
+
   end
 
   scenario 'show evaluations' do
@@ -31,26 +35,24 @@ feature 'Evaluations' do
 
   end
 
-  context 'authorized user' do
+  context 'user (as author)' do
+    before do
+      sign_in_with @author.user
+    end
 
-    pending do
-      scenario 'edit own report' do
-        sign_in_with @user
-        visit mission_attendances_path
+    scenario 'create a report' do
+      visit mission_path(@mission)
 
-        within('#mission_attendances') do
-          click_link("Upravit")
-        end
-
-        p page.current_url
-
-        #save_and_open_page
-        fill_in "Obsah hlášení", with: "It all started one rainy night."
-
-        click_button "Uložit změny"
-
-        page.should have_content "It all started one rainy night."
+      within("#evaluations_#{dom_id(MissionAttendance.last)}") do
+        click_link("Přidat hodnocení")
       end
+
+      within('form.evaluation') do
+        fill_in "Obsah hodnocení", with: "Bad guy"
+        click_button "Vytvořit"
+      end
+
+       page.should have_content "Bad guy"
     end
   end
 end

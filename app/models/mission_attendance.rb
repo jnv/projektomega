@@ -4,9 +4,9 @@ class MissionAttendance < ActiveRecord::Base
   
   belongs_to :mission
   belongs_to :character
-  has_one :evaluation, foreign_key: [:mission_id, :character_id]
+  has_many :evaluations, foreign_key: [:mission_id, :character_id]
 
-  scope :with_evaluations, includes(:evaluation)
+  scope :with_evaluations, includes(:evaluations)
   #scope :evaluations_nil, evaluations_all.where(evaluations: {content: nil})
 
   delegate :user, :to => :character, :prefix => true, :allow_nil => true

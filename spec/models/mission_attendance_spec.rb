@@ -8,8 +8,8 @@ describe MissionAttendance do
   describe "associations" do
     it { should belong_to :mission }
     it { should belong_to :character }
-    it "has one evaluation" do
-      MissionAttendance.reflect_on_association(:evaluation).macro.should == :has_one #XXX Shoulda doesn't like CPK
+    it "has many evaluations" do
+      MissionAttendance.reflect_on_association(:evaluations).macro.should == :has_many #XXX Shoulda doesn't like CPK
     end
   end
 
@@ -18,9 +18,10 @@ describe MissionAttendance do
     before do
       @mission = Factory(:attended_mission, attendees: 4)
       @evaluation = Factory(:evaluation, attended_mission: @mission)
+      @evaluation2 = Factory(:evaluation, {attended_mission: @mission, author: @mission.characters[3]})
     end
 
-    specify { MissionAttendance.joins(:evaluation).count.should == 1 }
+    specify { MissionAttendance.joins(:evaluations).count.should == 2 }
 
     describe "#evaluations_all" do
       subject { MissionAttendance.with_evaluations }

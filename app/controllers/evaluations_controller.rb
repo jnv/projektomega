@@ -21,6 +21,8 @@ class EvaluationsController < AuthorizedController
   # GET /evaluations/new
   # GET /evaluations/new.json
   def new
+    @evaluation.author = current_user.character
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @evaluation }
@@ -38,7 +40,7 @@ class EvaluationsController < AuthorizedController
     authorize! :create, @evaluation
     respond_to do |format|
       if @evaluation.save
-        format.html { redirect_to @evaluation, notice: 'Evaluation was successfully created.' }
+        format.html { redirect_to @evaluation, notice: t('evaluation.created') }
         format.json { render json: @evaluation, status: :created, location: @evaluation }
       else
         format.html { render action: "new" }
@@ -52,7 +54,7 @@ class EvaluationsController < AuthorizedController
   def update
     respond_to do |format|
       if @evaluation.update_attributes(params[:evaluation])
-        format.html { redirect_to @evaluation, notice: 'Evaluation was successfully updated.' }
+        format.html { redirect_to @evaluation, notice: t('evaluation.updated') }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

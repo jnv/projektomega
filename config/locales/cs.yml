@@ -33,9 +33,9 @@ cs:
         report: Obsah hlášení
       evaluation:
         mission: Mise
-        character: Agent
-        author: Autor posudku
-        content: Obsah posudku
+        character: Hodnocený agent
+        author: Autor hodnocení
+        content: Obsah hodnocení
     errors:
       messages:
         attendance_exists: "Agent se dané mise nazúčastnil"
@@ -63,6 +63,9 @@ cs:
   mission:
     created: Mise byla vytvořena.
     updated: Mise byla upravena.
+  mission:
+    created: Hodnocení bylo vytvořeno.
+    updated: Hodnocení bylo upraveno.
 
   unauthorized:
     manage:

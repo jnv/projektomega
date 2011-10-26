@@ -3,7 +3,7 @@ require 'acceptance/acceptance_helper'
 
 feature 'Missions' do
 
-  let(:mission) { Factory :mission }
+  let(:mission) { Factory :attended_mission }
 
   scenario 'show all missions with agents' do
     mission
@@ -28,6 +28,17 @@ feature 'Missions' do
       within(css_dom_id(report)) do
         page.should have_link("Celé hlášení")
       end
+    end
+  end
+
+  scenario 'show available evaluations' do
+    evaluation = Factory(:evaluation, {attended_mission: mission})
+    visit mission_path(mission)
+
+    page.should have_selector("h3", content: "Hodnocení agentů")
+    within("#evaluations") do
+      page.should have_content(evaluation.character.full_name)
+      page.should have_content(evaluation.author.full_name)
     end
   end
 

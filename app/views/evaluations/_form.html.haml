@@ -1,5 +1,12 @@
+%p
+  Hodnocení agenta
+  %strong= @evaluation.character
+  v misi
+  %strong= @evaluation.mission
 = semantic_form_for @evaluation do |f|
   = f.inputs do
-  
+    = f.input :mission_id, as: :hidden
+    = f.input :character_id, as: :hidden
+    = f.input :content
   = f.buttons do
     = f.commit_button
