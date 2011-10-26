@@ -55,4 +55,14 @@ feature 'Evaluations' do
        page.should have_content "Bad guy"
     end
   end
+
+  context 'admin' do
+    before do
+      sign_in_with Factory(:admin)
+    end
+
+    scenario 'create a report' do
+
+    end
+  end
 end

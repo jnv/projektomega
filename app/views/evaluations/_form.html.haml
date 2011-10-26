@@ -5,6 +5,7 @@
   %strong= @evaluation.mission
 = semantic_form_for @evaluation do |f|
   = f.inputs do
+    = f.input :author,  input_html: { disabled: disable_flag } if can? :create, @evaluation, :author
     = f.input :mission_id, as: :hidden
     = f.input :character_id, as: :hidden
     = f.input :content

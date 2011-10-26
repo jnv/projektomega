@@ -63,7 +63,7 @@ cs:
   mission:
     created: Mise byla vytvořena.
     updated: Mise byla upravena.
-  mission:
+  evaluation:
     created: Hodnocení bylo vytvořeno.
     updated: Hodnocení bylo upraveno.
 

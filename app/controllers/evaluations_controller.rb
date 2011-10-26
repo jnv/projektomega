@@ -21,8 +21,6 @@ class EvaluationsController < AuthorizedController
   # GET /evaluations/new
   # GET /evaluations/new.json
   def new
-    @evaluation.author = current_user.character
-    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @evaluation }
@@ -36,7 +34,7 @@ class EvaluationsController < AuthorizedController
   # POST /evaluations
   # POST /evaluations.json
   def create
-    #TODO assign author_id
+    @evaluation.author ||= current_user.character
     authorize! :create, @evaluation
     respond_to do |format|
       if @evaluation.save
