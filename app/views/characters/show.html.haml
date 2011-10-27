@@ -39,6 +39,14 @@
 
 -#%p= link_to "Přidat posudek", new_evaluation_path(character: @character)
 
+-##reports
+-#  %h3 Hlášení
+-#  = render partial: "mission_attendances/report", collection: @character.attendances, as: :attendance
+
+-##evaluations
+-#  %h3 Hodnocení agentů
+-#  = render partial: "mission_attendances/evaluations", collection: @character.attendances_with_evaluations, as: :attendance
+
 .meta_links
   -if can? :update, @character
     = link_to 'Upravit agenta', edit_character_path(@character)

@@ -18,28 +18,15 @@ feature 'Missions' do
     end
   end
 
-  scenario 'show available reports' do
-    reports = FactoryGirl.create_list(:report, 2, {mission: mission})
-    visit mission_path(mission)
-
-    page.should have_selector("h3", content: "Hlášení")
-
-    reports.each do |report|
-      within(css_dom_id(report)) do
-        page.should have_link("Celé hlášení")
-      end
-    end
+  it_should_behave_like "reports list" do
+    let(:model) { mission }
+    let(:model_name) { :mission }
   end
 
-  scenario 'show available evaluations' do
-    evaluation = Factory(:evaluation, {attended_mission: mission})
-    visit mission_path(mission)
-
-    page.should have_selector("h3", content: "Hodnocení agentů")
-    within("#evaluations") do
-      page.should have_content(evaluation.character.full_name)
-      page.should have_content(evaluation.author.full_name)
-    end
+  it_should_behave_like "evaluations list" do
+    let(:model) { mission }
+    let(:model_name) { :mission }
+    let(:evaluation) { Factory(:evaluation, {attended_mission: mission}) }
   end
 
   context 'unauthorized user' do
