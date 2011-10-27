@@ -31,21 +31,15 @@
 -#      %td= linked_codes(mission.characters, @character)
 
 
--#%h3 Posudky
--#- @character.evaluations.each do |evaluation|
--#  %h4 Posudek od #{evaluation.author}
--#  %h5= evaluation.mission
--#  = evaluation.content
-
 -#%p= link_to "Přidat posudek", new_evaluation_path(character: @character)
 
--##reports
--#  %h3 Hlášení
--#  = render partial: "mission_attendances/report", collection: @character.attendances, as: :attendance
+#reports
+  %h3 Hlášení
+  = render partial: "mission_attendances/report", collection: @character.attendances, as: :attendance
 
--##evaluations
--#  %h3 Hodnocení agentů
--#  = render partial: "mission_attendances/evaluations", collection: @character.attendances_with_evaluations, as: :attendance
+#evaluations
+  %h3 Hodnocení agentů
+  = render partial: "mission_attendances/evaluations", collection: @character.attendances_with_evaluations, as: :attendance
 
 .meta_links
   -if can? :update, @character

@@ -12,6 +12,8 @@ class Character < ActiveRecord::Base
 
   default_scope :order => 'number ASC'
 
+  delegate :with_evaluations, to: :attendances, prefix: true, allow_nil: true
+
   def code
     "A#{number}"
   end

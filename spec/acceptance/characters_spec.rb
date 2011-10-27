@@ -17,6 +17,21 @@ feature 'Characters' do
 
   end
 
+  it_should_behave_like "reports list" do
+    let(:model) { character }
+    let(:model_name) { :character }
+  end
+
+  it_should_behave_like "evaluations list" do
+    let(:model) { character }
+    let(:model_name) { :character }
+    let(:evaluation) do
+      extra_character = Factory(:orphaned_character)
+      mission = Factory(:mission, characters: [character, extra_character])
+      Factory(:evaluation, {mission: mission, character: character, author: extra_character})
+    end
+  end
+
 
   describe 'authorized user' do
 
