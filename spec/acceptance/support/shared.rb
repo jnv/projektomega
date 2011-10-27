@@ -22,7 +22,7 @@ module SharedExamples
 
       page.should have_selector("h3", content: "Hodnocení agentů")
       within("#evaluations") do
-        page.should have_content(evaluation.character.full_name)
+        page.should have_selector(css_dom_id(evaluation))
         page.should have_content(evaluation.author.full_name)
       end
     end

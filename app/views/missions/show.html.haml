@@ -15,11 +15,11 @@
 
 #reports
   %h3 Hlášení
-  = render partial: "mission_attendances/report", collection: @mission.attendances, as: :attendance
+  = render partial: "report", collection: @mission.attendances, as: :attendance
 
 #evaluations
   %h3 Hodnocení agentů
-  = render partial: "mission_attendances/evaluations", collection: @mission.attendances_with_evaluations, as: :attendance
+  = render partial: "evaluations", collection: @mission.attendances_with_evaluations, as: :attendance
 
 .meta_links
   -if can? :update, @mission
