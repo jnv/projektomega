@@ -44,7 +44,7 @@ gem "composite_primary_keys", "~>4.0.0"
 
 gem "airbrake"
 
-gem "redcarpet"
+gem "redcarpet", "~>2.0.0b5"
 
 group :test, :development do
   gem 'steak'

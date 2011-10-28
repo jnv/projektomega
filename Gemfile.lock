@@ -188,7 +188,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.11)
       json (~> 1.4)
-    redcarpet (1.17.2)
+    redcarpet (2.0.0b5)
     rspec (2.7.0)
       rspec-core (~> 2.7.0)
       rspec-expectations (~> 2.7.0)
@@ -273,7 +273,7 @@ DEPENDENCIES
   mini_magick
   rails (~> 3.1.0)
   rb-inotify
-  redcarpet
+  redcarpet (~> 2.0.0b5)
   sass-rails (~> 3.1.0)
   shoulda-matchers
   spork (>= 0.9.0.rc)
