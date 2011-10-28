@@ -44,6 +44,8 @@ gem "composite_primary_keys", "~>4.0.0"
 
 gem "airbrake"
 
+gem "redcarpet"
+
 group :test, :development do
   gem 'steak'
   #gem "rspec-rails", "~> 2.6"
