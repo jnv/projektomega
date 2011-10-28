@@ -1,15 +1,5 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the CodesHelper. For example:
-#
-# describe CodesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe CodesHelper do
   describe "linked_codes" do
     let(:model) do
