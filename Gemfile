@@ -14,10 +14,10 @@ group :assets do
   gem 'sass-rails', "~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
+  gem 'compass', '~> 0.12.alpha'
+  gem 'compass-h5bp'
+  gem "compass-html5", :git => "git://github.com/sporkd/compass-html5.git"
 end
-
-gem 'jquery-rails'
-gem 'haml', :git => "git://github.com/jnv/haml.git", :branch => "issue_438"
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -28,7 +28,7 @@ gem 'haml', :git => "git://github.com/jnv/haml.git", :branch => "issue_438"
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem "devise"
+gem "devise", '~> 1'
 gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
 
 gem 'formtastic', '~>2.0.0.rc'
@@ -36,9 +36,12 @@ gem 'formtastic', '~>2.0.0.rc'
 gem 'carrierwave'
 gem 'mini_magick'
 
-gem "compass", "~>0.12.alpha"
-gem "html5-rails", :git => "git://github.com/sporkd/html5-rails.git"
-gem "compass-html5", :git => "git://github.com/sporkd/compass-html5.git"
+gem 'jquery-rails'
+
+#gem 'haml', :git => "git://github.com/jnv/haml.git", :branch => "issue_438"
+gem 'haml', '~> 3.2.0.alpha'
+gem 'haml-rails', '>= 0.3.4'
+gem "html5-rails"
 
 gem "composite_primary_keys", "~>4.0.0"
 
@@ -46,10 +49,13 @@ gem "airbrake"
 
 gem "redcarpet", "~>2.0.0b5"
 
+group :assets do
+
+end
+
 group :test, :development do
   gem 'steak'
   #gem "rspec-rails", "~> 2.6"
-  gem 'haml-rails', '>= 0.3.4'
   gem "guard-spork"
   gem "spork", ">= 0.9.0.rc"
   gem "guard-livereload"

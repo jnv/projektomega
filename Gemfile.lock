@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/jnv/haml.git
-  revision: 4cc76a1b1fbea1f1a6b761ebaca53ee4ddf892e0
-  branch: issue_438
-  specs:
-    haml (3.2.0.alpha.0)
-
-GIT
   remote: git://github.com/ryanb/cancan.git
   revision: c94de4ab1805d2e080ebd658051c59d0ec5147ce
   branch: 2.0
@@ -17,15 +10,6 @@ GIT
   revision: 73c5dcc7c6e6080ae752d08c845b27b1c998b271
   specs:
     compass-html5 (0.0.2)
-
-GIT
-  remote: git://github.com/sporkd/html5-rails.git
-  revision: 286c8a56a585546c058d92568b7964b40e2d5b8c
-  specs:
-    html5-rails (0.0.2)
-      compass-h5bp (~> 0.0.1)
-      railties (~> 3.1.0)
-      thor (~> 0.14)
 
 GEM
   remote: http://rubygems.org/
@@ -60,7 +44,7 @@ GEM
     activesupport (3.1.3)
       multi_json (~> 1.0)
     addressable (2.2.6)
-    airbrake (3.0.5)
+    airbrake (3.0.9)
       activesupport
       builder
     arel (2.2.1)
@@ -75,7 +59,7 @@ GEM
       xpath (~> 0.1.4)
     carrierwave (0.5.8)
       activesupport (~> 3.0)
-    childprocess (0.2.2)
+    childprocess (0.3.0)
       ffi (~> 1.0.6)
     chunky_png (1.2.5)
     coffee-rails (3.1.1)
@@ -84,68 +68,73 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.1.3)
-    compass (0.12.alpha.1)
+    coffee-script-source (1.2.0)
+    compass (0.12.alpha.4)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    compass-h5bp (0.0.1)
+    compass-h5bp (0.0.2)
       compass
     composite_primary_keys (4.0.0)
       activerecord (~> 3.1.0)
-    database_cleaner (0.7.0)
-    devise (1.5.1)
+    database_cleaner (0.7.1)
+    devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
       warden (~> 1.1)
     diff-lcs (1.1.3)
     em-dir-watcher (0.9.4)
-    em-websocket (0.3.5)
+    em-websocket (0.3.6)
       addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
     erubis (2.7.0)
     eventmachine (0.12.10)
-    execjs (1.2.9)
+    execjs (1.3.0)
       multi_json (~> 1.0)
-    factory_girl (2.3.2)
+    factory_girl (2.5.0)
       activesupport
-    factory_girl_rails (1.4.0)
-      factory_girl (~> 2.3.0)
+    factory_girl_rails (1.6.0)
+      factory_girl (~> 2.5.0)
       railties (>= 3.0.0)
     ffi (1.0.11)
     forgery (0.3.12)
       nokogiri (~> 1.4)
     formtastic (2.0.2)
       rails (~> 3.0)
-    fssm (0.2.7)
-    guard (0.8.8)
+    fssm (0.2.8.1)
+    guard (1.0.0)
+      ffi (>= 0.5.0)
       thor (~> 0.14.6)
-    guard-livereload (0.3.1)
+    guard-livereload (0.4.0)
       em-websocket (>= 0.2.0)
-      guard (>= 0.4.0)
+      guard (>= 0.10.0)
       multi_json (~> 1.0.3)
-    guard-rails (0.0.3)
+    guard-rails (0.1.0)
       guard (>= 0.2.2)
-    guard-rspec (0.5.7)
-      guard (>= 0.8.4)
-    guard-spork (0.3.2)
-      guard (>= 0.8.4)
+    guard-rspec (0.6.0)
+      guard (>= 0.10.0)
+    guard-spork (0.5.1)
+      guard (>= 0.10.0)
       spork (>= 0.8.4)
+    haml (3.2.0.alpha.10)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
     hike (1.2.1)
+    html5-rails (0.0.3)
+      jquery-rails (~> 1.0.19)
+      railties (~> 3.1.0)
+      thor (~> 0.14)
     i18n (0.6.0)
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
-    json (1.6.1)
-    json_pure (1.6.1)
+    json (1.6.5)
     launchy (2.0.5)
       addressable (~> 2.2.6)
-    libnotify (0.5.9)
+    libnotify (0.7.2)
     livereload (1.6.1)
       em-dir-watcher (>= 0.1)
       em-websocket (>= 0.3.5)
@@ -155,13 +144,13 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
-    mini_magick (3.3)
-      subexec (~> 0.1.0)
-    multi_json (1.0.3)
+    mini_magick (3.4)
+      subexec (~> 0.2.1)
+    multi_json (1.0.4)
     nokogiri (1.5.0)
-    orm_adapter (0.0.5)
+    orm_adapter (0.0.6)
     polyglot (0.3.3)
-    rack (1.3.5)
+    rack (1.3.6)
     rack-cache (1.1)
       rack (>= 0.4)
     rack-mount (0.8.3)
@@ -188,52 +177,52 @@ GEM
     rake (0.9.2.2)
     rb-inotify (0.8.8)
       ffi (>= 0.5.0)
-    rdoc (3.11)
+    rdoc (3.12)
       json (~> 1.4)
-    redcarpet (2.0.0b5)
-    rspec (2.7.0)
-      rspec-core (~> 2.7.0)
-      rspec-expectations (~> 2.7.0)
-      rspec-mocks (~> 2.7.0)
-    rspec-core (2.7.1)
-    rspec-expectations (2.7.0)
+    redcarpet (2.0.1)
+    rspec (2.8.0)
+      rspec-core (~> 2.8.0)
+      rspec-expectations (~> 2.8.0)
+      rspec-mocks (~> 2.8.0)
+    rspec-core (2.8.0)
+    rspec-expectations (2.8.0)
       diff-lcs (~> 1.1.2)
-    rspec-mocks (2.7.0)
-    rspec-rails (2.7.0)
-      actionpack (~> 3.0)
-      activesupport (~> 3.0)
-      railties (~> 3.0)
-      rspec (~> 2.7.0)
+    rspec-mocks (2.8.0)
+    rspec-rails (2.8.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec (~> 2.8.0)
     rubyzip (0.9.5)
-    sass (3.1.10)
+    sass (3.1.12)
     sass-rails (3.1.5)
       actionpack (~> 3.1.0)
       railties (~> 3.1.0)
       sass (~> 3.1.10)
       tilt (~> 1.3.2)
-    selenium-webdriver (2.13.0)
-      childprocess (>= 0.2.1)
+    selenium-webdriver (2.17.0)
+      childprocess (>= 0.2.5)
       ffi (~> 1.0.9)
-      json_pure
+      multi_json (~> 1.0.4)
       rubyzip
     shoulda-matchers (1.0.0)
-    spork (0.9.0.rc9)
+    spork (1.0.0rc0)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.4)
+    sqlite3 (1.3.5)
     steak (2.0.0)
       capybara (>= 1.0.0)
       rspec-rails (>= 2.5.0)
-    subexec (0.1.0)
+    subexec (0.2.1)
     thor (0.14.6)
     tilt (1.3.3)
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.31)
-    uglifier (1.1.0)
+    uglifier (1.2.2)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
     warden (1.1.0)
@@ -251,10 +240,11 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.1.0)
   compass (~> 0.12.alpha)
+  compass-h5bp
   compass-html5!
   composite_primary_keys (~> 4.0.0)
   database_cleaner
-  devise
+  devise (~> 1)
   factory_girl (~> 2.1)
   factory_girl_rails (~> 1.2)
   forgery (~> 0.3.12)
@@ -263,9 +253,9 @@ DEPENDENCIES
   guard-rails
   guard-rspec
   guard-spork
-  haml!
+  haml (~> 3.2.0.alpha)
   haml-rails (>= 0.3.4)
-  html5-rails!
+  html5-rails
   jquery-rails
   launchy
   libnotify
