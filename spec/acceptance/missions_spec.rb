@@ -104,7 +104,7 @@ feature 'Missions' do
         click_button "Vytvořit"
 
         page.should have_selector('p.inline-errors')
-        fill_in "Číslo mise", with: "13"
+        fill_in "Číslo mise", with: "42"
         click_button "Vytvořit"
 
         page.should have_selector('p.inline-errors')
