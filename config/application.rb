@@ -48,6 +48,7 @@ module Omega
 
     config.assets.digest=true
 
-    config.sass.preferred_syntax = :sass
+    # Formtastic stylesheet path
+    #config.sass.load_paths << (Gem.loaded_specs['formtastic'].full_gem_path + "/app/assets/stylesheets")
   end
 end
