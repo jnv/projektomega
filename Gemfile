@@ -16,7 +16,7 @@ group :assets do
   gem 'uglifier'
   gem 'compass', '~> 0.12.alpha'
   gem 'compass-h5bp'
-  gem "compass-html5", :git => "git://github.com/sporkd/compass-html5.git"
+  #gem "compass-html5", :git => "git://github.com/sporkd/compass-html5.git"
 end
 
 # Use unicorn as the web server
