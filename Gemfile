@@ -79,4 +79,5 @@ group :development do
   #gem "active_reload"
   gem "livereload"
   #gem 'pry-rails'
+  gem "vendorer"
 end
