@@ -11,16 +11,22 @@ describe Mission do
 
   describe "associations" do
     it { should have_many(:attendances) }
-    it { should have_many(:characters).through(:attendances)  }
+    it { should have_many(:characters).through(:attendances) }
     it { should have_many(:evaluations) }
+  end
+
+  describe "default scope" do
+    it_should_behave_like "number sorted model" do
+      let(:factory) { :mission }
+    end
   end
 
   describe "validations" do
 
-    it { should validate_presence_of(:number)}
-    it { should validate_presence_of(:name)}
+    it { should validate_presence_of(:number) }
+    it { should validate_presence_of(:name) }
 
-    it { should validate_numericality_of(:number)}
+    it { should validate_numericality_of(:number) }
 
     it "should require positive number" do
       Mission.new(name: "Name", number: '-5').should_not be_valid
@@ -42,8 +48,8 @@ describe Mission do
 
     its(:code) { should == "M7" }
     its(:abbr) { should == "M7" }
-    its(:full_name) { should == "M7 Overlord"}
-    specify {subject.to_s.should == "Overlord"}
+    its(:full_name) { should == "M7 Overlord" }
+    specify { subject.to_s.should == "Overlord" }
   end
 
 end
