@@ -21,17 +21,23 @@ describe Character do
   describe "associations" do
     it { should belong_to :user }
     it { should have_many(:attendances) }
-    it { should have_many(:missions).through(:attendances)  }
+    it { should have_many(:missions).through(:attendances) }
     it { should have_many(:evaluations) }
     it { should have_many(:authored_evaluations) }
   end
 
+  describe "default scope" do
+    it_should_behave_like "number sorted model" do
+      let(:factory) { :character }
+    end
+  end
+
   describe "validations" do
 
-    it { should validate_presence_of(:number)}
-    it { should validate_presence_of(:name)}
+    it { should validate_presence_of(:number) }
+    it { should validate_presence_of(:name) }
 
-    it { should validate_numericality_of(:number)}
+    it { should validate_numericality_of(:number) }
 
     it "should require nonblank name" do
       Character.new(name: "  \t  ", number: '5').should_not be_valid
@@ -57,8 +63,8 @@ describe Character do
 
     its(:code) { should == "A7" }
     its(:abbr) { should == "A7" }
-    its(:full_name) { should == "A7 James Bond"}
-    specify {subject.to_s.should == "James Bond"}
+    its(:full_name) { should == "A7 James Bond" }
+    specify { subject.to_s.should == "James Bond" }
   end
 
 end
