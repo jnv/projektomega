@@ -8,6 +8,9 @@ Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
+  require 'capybara/rspec'
+  require 'factory_girl'
+  require 'factory_girl_rails'
 
   RSpec.configure do |config|
     # == Mock Framework
@@ -34,8 +37,7 @@ end
 Spork.each_run do
   # This code will be run each time you run your specs.
   #DatabaseCleaner.clean_with :truncation
-  require 'factory_girl'
-  require 'factory_girl_rails'
+  FactoryGirl.reload
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
