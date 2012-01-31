@@ -13,6 +13,7 @@ class Evaluation < ActiveRecord::Base
   validate :character_is_not_author, :mission_attendance_exists
 
   default_scope :order => 'author_id ASC, mission_id ASC, character_id ASC'
+  scope :with_names, joins(:mission).order('missions.number').joins(:character).joins(:author)
 
   #TODO: generalize and move to standalone class as ValidateEach
   def mission_attendance_exists
