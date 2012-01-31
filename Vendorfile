@@ -11,5 +11,14 @@
 # folder 'vendor/plugins/parallel_tests', 'https://github.com/grosser/parallel_tests.git', :tag => 'v0.6.10'
 
 folder 'vendor/assets/javascripts' do
-  file 'jquery.tablesorter.js', 'http://autobahn.tablesorter.com/jquery.tablesorter.min.js'
+  file 'tablesorter.js', 'http://autobahn.tablesorter.com/jquery.tablesorter.min.js'
+  file 'chosen.js', 'https://raw.github.com/harvesthq/chosen/master/chosen/chosen.jquery.min.js'
+end
+
+folder 'vendor/assets/stylesheets' do
+  file 'chosen.scss', 'https://github.com/harvesthq/chosen/raw/master/chosen/chosen.css'
+end
+
+folder 'vendor/assets/images' do
+  file 'chosen-sprite.png', 'https://github.com/harvesthq/chosen/raw/master/chosen/chosen-sprite.png'
 end
