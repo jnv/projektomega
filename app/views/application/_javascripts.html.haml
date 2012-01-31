@@ -8,12 +8,15 @@
 -# - else
 -#   = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/#{ local_jquery("1.6") }"
 
+= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
 -# fall back to local jQuery if necessary
--# :javascript
--#   window.jQuery || document.write("<script src='/javascripts/jquery.min.js'>\x3C/script>")
-  
+:javascript
+  window.jQuery || document.write("<script src='#{javascript_path('jquery')}'>\x3C/script>")
+= javascript_include_tag "chosen"
+= javascript_include_tag "tablesorter"
 = javascript_include_tag "application"
-    
+
+
 -#  Append your own using content_for :javascripts
 = yield :javascripts
 
