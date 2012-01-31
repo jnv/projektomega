@@ -18,11 +18,12 @@ describe NamesHelper do
       model = stub_model(Character)
       model.stub(:id) { 1 }
       model.stub(:full_name) { 'My Name' }
+      model.stub(:number) { 1 }
       model
     end
 
     it "generates link with full name in body" do
-      helper.linked_name(model).should == '<a href="/characters/1">My Name</a>'
+      helper.linked_name(model).should == '<a href="/characters/1" data-number="1">My Name</a>'
     end
   end
 
