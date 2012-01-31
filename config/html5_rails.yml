@@ -24,3 +24,6 @@ defaults: &defaults
 
 :production:
   <<: *defaults
+  
+:dotcloud:
+  <<: *defaults
