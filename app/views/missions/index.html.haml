@@ -10,7 +10,7 @@
 
   - @missions.each do |mission|
     %tr[mission]
-      %td= link_to mission, mission
+      %td= linked_name mission
       %td= mission.date
       %td= mission.location
       %td= linked_codes(mission.characters)
