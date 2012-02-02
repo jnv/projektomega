@@ -14,7 +14,8 @@ group :assets do
   gem 'sass-rails', "~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
-  gem 'compass', '~> 0.12.alpha'
+  #gem 'compass', '~> 0.12.alpha'
+  gem 'compass-rails'
   gem 'compass-h5bp'
   #gem "compass-html5", :git => "git://github.com/sporkd/compass-html5.git"
 end

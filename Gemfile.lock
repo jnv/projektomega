@@ -62,12 +62,15 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.2.0)
-    compass (0.12.alpha.4)
+    compass (0.12.rc.0)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
     compass-h5bp (0.0.2)
       compass
+    compass-rails (1.0.0.rc.1)
+      compass (~> 0.12.rc.0)
+      rails
     composite_primary_keys (4.0.0)
       activerecord (~> 3.1.0)
     database_cleaner (0.7.1)
@@ -106,7 +109,7 @@ GEM
       guard (>= 0.2.2)
     guard-rspec (0.6.0)
       guard (>= 0.10.0)
-    guard-spork (0.5.1)
+    guard-spork (0.5.2)
       guard (>= 0.10.0)
       spork (>= 0.8.4)
     haml (3.2.0.alpha.10)
@@ -215,7 +218,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.31)
-    uglifier (1.2.2)
+    uglifier (1.2.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
     vendorer (0.1.9)
@@ -232,8 +235,8 @@ DEPENDENCIES
   cancan!
   carrierwave
   coffee-rails (~> 3.1.0)
-  compass (~> 0.12.alpha)
   compass-h5bp
+  compass-rails
   composite_primary_keys (~> 4.0.0)
   database_cleaner
   devise (~> 1)
