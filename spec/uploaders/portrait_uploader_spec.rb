@@ -15,15 +15,16 @@ describe PortraitUploader do
     PortraitUploader.enable_processing = false
   end
 
-  subject { @uploader }
+  describe "main version" do
+    subject { @uploader }
 
-  it("should have permission 0644") { should have_permissions(0644) } #XXX Ambiguous description
-
-  context 'thumb' do
-    subject { @uploader.thumb }
-    it("should be resized to 40x50 max.") { should be_no_larger_than(40, 50) } #XXX Ambiguous description
+    it { should have_permissions(0644) }
+    it { should be_no_larger_than(90, 110) }
   end
 
-
+  describe "thumb version" do
+    subject { @uploader.thumb }
+    it { should be_no_larger_than(40, 50) }
+  end
 
 end
