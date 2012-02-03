@@ -21,6 +21,7 @@ feature 'Missions' do
   it_should_behave_like "reports list" do
     let(:model) { mission }
     let(:model_name) { :mission }
+    let(:link_subject) { :character }
   end
 
   it_should_behave_like "evaluations list" do
@@ -50,7 +51,6 @@ feature 'Missions' do
       visit mission_path(mission)
       #within(css_dom_id(attendance))
       within('#reports') do
-        page.should have_content("Hlášení nedodáno.")
         page.should have_link("Přidat hlášení")
       end
     end

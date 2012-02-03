@@ -9,7 +9,7 @@ module SharedExamples
 
       reports.each do |report|
         within(css_dom_id(report)) do
-          page.should have_link("Celé hlášení")
+          page.should have_link(report.send(link_subject).full_name)
         end
       end
     end

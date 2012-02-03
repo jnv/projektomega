@@ -1,11 +1,8 @@
-%div[attendance]
-  %h4= attendance.character.full_name
+%li[attendance]
   -if attendance.report
-    %p
-      = truncate(attendance.report)
-      = link_to("Celé hlášení", attendance)
+    = link_to(attendance.character.full_name, attendance)
   -else
-    %p
-      Hlášení nedodáno.
-      -if can? :update, attendance
-        = link_to("Přidat hlášení", edit_mission_attendance_path(attendance))
+    = attendance.character.full_name
+    -if can? :update, attendance
+      &ndash;
+      =  link_to("Přidat hlášení", edit_mission_attendance_path(attendance))

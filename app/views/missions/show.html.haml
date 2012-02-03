@@ -13,8 +13,8 @@
   -else
     %p Mise se nezúčastnili žádní agenti
 
-#reports
-  %h3 Hlášení
+%h3 Hlášení
+%ul#reports
   = render partial: "report", collection: @mission.attendances, as: :attendance
 
 #evaluations

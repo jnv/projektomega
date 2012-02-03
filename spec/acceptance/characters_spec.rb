@@ -20,6 +20,7 @@ feature 'Characters' do
   it_should_behave_like "reports list" do
     let(:model) { character }
     let(:model_name) { :character }
+    let(:link_subject) { :mission }
   end
 
   it_should_behave_like "evaluations list" do
