@@ -55,6 +55,8 @@ feature 'Characters' do
 
       fill_in 'Jméno', with: "My New Name"
       fill_in 'Číslo agenta', with: '9947'
+      file = Rails.root + 'spec/fixtures/images/portrait.jpg'
+      attach_file 'Podobizna', file
 
       click_button 'Uložit změny'
 
@@ -62,9 +64,12 @@ feature 'Characters' do
       page.should have_content("Agent byl upraven")
 
       find(".character_details") do |char|
+        page.should have_xpath("//img[contains(@src, \"uploads/\")]")
         char.should have_content("My New Name")
         char.should_not have_content("9947")
       end
+
+
     end
 
     scenario "shouldn't be able to create new character" do

@@ -1,22 +1,25 @@
 %h2= @character
 
-=# image_tag @character.portrait.to_s if @character.portrait?
 
-%dl.character_details
-  %dt Číslo
-  %dd= @character.number
-  %dt Jméno
-  %dd= @character.name
-  %dt Rok narození
-  %dd= @character.born
-  %dt Země
-  %dd= @character.country
-  %dt Zařazení
-  %dd= @character.assignment
-  %dt Specializace
-  %dd= @character.specialisation
-  %dt Hráč
-  %dd= @character.user
+.character_details
+
+  = image_tag @character.portrait.to_s, class: "portrait" if @character.portrait?
+
+  %dl
+    %dt Číslo
+    %dd= @character.number
+    %dt Jméno
+    %dd= @character.name
+    %dt Rok narození
+    %dd= @character.born
+    %dt Země
+    %dd= @character.country
+    %dt Zařazení
+    %dd= @character.assignment
+    %dt Specializace
+    %dd= @character.specialisation
+    %dt Hráč
+    %dd= @character.user
 
 %h3 Účast v misích
 
@@ -30,9 +33,8 @@
 -#      %td= link_to(mission, mission)
 -#      %td= linked_codes(mission.characters, @character)
 
-
-#reports
-  %h3 Hlášení
+%h3 Hlášení
+%ul#reports
   = render partial: "report", collection: @character.attendances, as: :attendance
 
 #evaluations
