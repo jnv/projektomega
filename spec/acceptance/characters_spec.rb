@@ -165,8 +165,6 @@ feature 'Characters' do
         fill_in "Jméno", with: "Pinkie Pie"
         click_button "Vytvořit"
 
-        save_and_open_page
-
         page.should have_content("Agent byl vytvořen")
       end
 
