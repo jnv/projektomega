@@ -1,0 +1,5 @@
+%li[character]
+  =link_to character, title: character.full_name, class: "thumb" do
+    = image_tag character.portrait.thumb.url, alt: character.full_name
+    .code
+      = character.code

@@ -4,14 +4,12 @@
 
 %p= @mission.description
 
-#characters
-  %h3 Zúčastnění agenti
-  -if @mission.characters
-    %ul#characters
-      -@mission.characters.each do |character|
-        %li= link_to character.full_name, character
-  -else
-    %p Mise se nezúčastnili žádní agenti
+%h3 Zúčastnění agenti
+-if @mission.characters
+  %ul#characters
+    = render partial: "character", collection: @mission.characters, as: :character
+-else
+  %p Mise se nezúčastnili žádní agenti
 
 %h3 Hlášení
 %ul#reports
