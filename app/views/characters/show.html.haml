@@ -23,15 +23,15 @@
 
 %h3 Účast v misích
 
--#%table
--#  %tr
--#    %th Mise
--#    %th Zúčastnění agenti
--#
--#  - @character.missions.each do |mission|
--#    %tr
--#      %td= link_to(mission, mission)
--#      %td= linked_codes(mission.characters, @character)
+%table#missions
+  %tr
+    %th Mise
+    %th Zúčastnění agenti
+
+  - @character.missions.each do |mission|
+    %tr[mission]
+      %td= link_to(mission.full_name, mission)
+      %td= linked_codes(mission.characters, @character)
 
 %h3 Hlášení
 %ul#reports

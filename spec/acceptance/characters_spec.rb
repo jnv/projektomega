@@ -17,6 +17,17 @@ feature 'Characters' do
 
   end
 
+  scenario "show agent's missions" do
+    attendances = FactoryGirl.create_list(:mission_attendance, 2, {character: character})
+    visit character_path(character)
+
+    find("#missions") do |m|
+      attendances.each do |a|
+        m.should have_link(a.mission.full_name)
+      end
+    end
+  end
+
   it_should_behave_like "reports list" do
     let(:model) { character }
     let(:model_name) { :character }
@@ -146,13 +157,15 @@ feature 'Characters' do
         click_button "Vytvořit"
 
         page.should have_selector('p.inline-errors')
-        fill_in "Číslo agenta", with: "13"
+        fill_in "Číslo agenta", with: "133"
         click_button "Vytvořit"
 
         page.should have_selector('p.inline-errors')
 
         fill_in "Jméno", with: "Pinkie Pie"
         click_button "Vytvořit"
+
+        save_and_open_page
 
         page.should have_content("Agent byl vytvořen")
       end
