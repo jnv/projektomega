@@ -14,6 +14,8 @@ class Character < ActiveRecord::Base
 
   delegate :with_evaluations, to: :attendances, prefix: true, allow_nil: true
 
+  mount_uploader :portrait, PortraitUploader
+
   def code
     "A#{number}"
   end

@@ -18,6 +18,10 @@ describe Character do
     char.number.should == 20
   end
 
+  describe "portrait" do
+    it { should respond_to :portrait }
+  end
+
   describe "associations" do
     it { should belong_to :user }
     it { should have_many(:attendances) }
@@ -33,7 +37,6 @@ describe Character do
   end
 
   describe "validations" do
-
     it { should validate_presence_of(:number) }
     it { should validate_presence_of(:name) }
 
