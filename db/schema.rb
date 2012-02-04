@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20120203235857) do
   end
 
   create_table "posts", :force => true do |t|
-    t.integer  "character_id", :null => false
+    t.integer  "character_id"
     t.integer  "user_id",      :null => false
     t.text     "content",      :null => false
     t.datetime "created_at"
