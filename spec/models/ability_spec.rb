@@ -18,17 +18,17 @@ describe Ability do
 
     it { should be_able_to(:read, character) }
     it { should_not be_able_to(:update, character) }
-    it { should_not be_able_to(:create, Character) }
+    it { should_not be_able_to(:create, Character.new) }
     it { should be_able_to :read, mission }
     it { should_not be_able_to(:update, mission) }
-    it { should_not be_able_to(:create, Mission) }
+    it { should_not be_able_to(:create, Mission.new) }
     it { should_not be_able_to(:update, report) }
 
     it { should be_able_to(:read, evaluation) }
-    it { should_not be_able_to(:create, Evaluation) }
+    it { should_not be_able_to(:create, Evaluation.new) }
     it { should_not be_able_to(:update, evaluation) }
 
-    it { should_not be_able_to(:create, Post) }
+    it { should_not be_able_to(:create, Post.new) }
     it { should_not be_able_to(:create, post) }
   end
 
@@ -36,7 +36,7 @@ describe Ability do
   context "user" do
 
     context "without any character" do
-      it { should_not be_able_to(:create, post) }
+      it { should_not be_able_to(:create, Post.new) }
     end
 
 
@@ -88,7 +88,7 @@ describe Ability do
     describe "mission" do
       it { should be_able_to(:read, mission) }
       it { should_not be_able_to :update, mission }
-      it { should_not be_able_to :create, Mission }
+      it { should_not be_able_to :create, Mission.new }
     end
 
 
@@ -104,16 +104,16 @@ describe Ability do
 
     it { should be_able_to(:read, character) }
     it { should be_able_to(:update, character) }
-    it { should be_able_to(:create, Character) }
+    it { should be_able_to(:create, Character.new) }
     it { should be_able_to(:destroy, character) }
     it { should be_able_to(:read, mission) }
     it { should be_able_to(:update, mission) }
-    it { should be_able_to(:create, Mission) }
+    it { should be_able_to(:create, Mission.new) }
     it { should be_able_to(:destroy, mission) }
     it { should be_able_to(:update, report) }
 
     it { should be_able_to(:read, evaluation) }
-    it { should be_able_to(:create, Evaluation) }
+    it { should be_able_to(:create, Evaluation.new) }
     it { should be_able_to(:update, evaluation) }
 
 
