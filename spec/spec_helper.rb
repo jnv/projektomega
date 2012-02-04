@@ -9,6 +9,7 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'capybara/rspec'
+  require 'factory_girl_rails'
 
   RSpec.configure do |config|
     # == Mock Framework
@@ -42,7 +43,6 @@ end
 Spork.each_run do
   # This code will be run each time you run your specs.
   #DatabaseCleaner.clean_with :truncation
-  require 'factory_girl_rails'
   FactoryGirl.reload
 
   # Requires supporting ruby files with custom matchers and macros, etc,
@@ -51,9 +51,12 @@ Spork.each_run do
 
   ActiveSupport::Dependencies.clear
 
-  #Dir["#{Rails.root}/app/models/**/*.rb"].each do |model|
-  #  load model
-  #end
+  Dir["#{Rails.root}/app/controllers//*.rb"].each do |controller|
+    load controller
+  end
+  Dir["#{Rails.root}/app/models//*.rb"].each do |model|
+    load model
+  end
 
 
   CarrierWave::Uploader::Base.descendants.each do |klass|
