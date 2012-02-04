@@ -9,6 +9,7 @@ describe Post do
 
   describe "validations" do
 
+      it { should validate_presence_of(:user) }
       it { should validate_presence_of(:content) }
 
     end
