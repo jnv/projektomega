@@ -11,6 +11,7 @@ describe Ability do
   let(:mission) { Factory.build(:mission) }
   let(:report) { Factory.build(:report) }
   let(:evaluation) { Factory.build(:evaluation) }
+  let(:post) { Factory.build(:post) }
 
   context "guest" do
     let(:user) { nil }
@@ -27,15 +28,23 @@ describe Ability do
     it { should_not be_able_to(:create, Evaluation) }
     it { should_not be_able_to(:update, evaluation) }
 
+    it { should_not be_able_to(:create, Post) }
+    it { should_not be_able_to(:create, post) }
   end
 
 
   context "user" do
 
+    context "without any character" do
+      it { should_not be_able_to(:create, post) }
+    end
+
+
     context "his own character" do
       let(:character) { Factory.build(:character, {user: user}) }
       let(:report) { Factory.build(:report, {character: character}) }
-      let(:evaluation) { Factory.build(:evaluation, {author: character})}
+      let(:evaluation) { Factory.build(:evaluation, {author: character}) }
+      let(:post) { Factory.build(:post, {character: character, user: user}) }
 
       it { should be_able_to(:read, character) }
       it { should be_able_to(:update, character) }
@@ -49,6 +58,11 @@ describe Ability do
         it { should be_able_to(:update, evaluation) }
       end
       #it { should_not be_able_to(:update, character, :number)}
+
+      describe "post" do
+        it { should be_able_to(:create, post) }
+        it { should be_able_to(:edit, post) }
+      end
     end
 
     context "any other character" do
@@ -59,10 +73,15 @@ describe Ability do
       end
 
       describe "evaluation" do
-        let(:evaluation) { Factory.build(:evaluation)}
+        let(:evaluation) { Factory.build(:evaluation) }
         it { should_not be_able_to(:create, evaluation) }
         it { should_not be_able_to(:update, evaluation) }
       end
+
+      describe "post" do
+        it { should_not be_able_to(:edit, post) }
+      end
+
 
     end
 
