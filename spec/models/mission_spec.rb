@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe Mission do
   def valid_attributes
-    {number: '1', name: 'Mata Hari'}
+    Factory.attributes_for(:mission)
   end
 
   it "should create a new instance with valid attributes" do
-    Character.create!(valid_attributes)
+    Mission.create!(valid_attributes)
   end
 
   describe "associations" do
