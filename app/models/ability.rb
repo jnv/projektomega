@@ -38,7 +38,7 @@ class Ability
         can [:create, :update], :evaluations, author_id: character_id
         cannot :create, :evaluations, :author
 
-        can [:create, :update], :posts, character_id: character_id, user_id: user.id
+        can [:create, :update], :posts, character_id: character_id
 
       when :banned
 

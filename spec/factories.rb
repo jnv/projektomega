@@ -75,7 +75,6 @@ FactoryGirl.define do
 
   factory :post do
     character
-    user
     content { Forgery(:lorem_ipsum).sentence }
   end
 
