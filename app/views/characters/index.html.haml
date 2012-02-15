@@ -1,5 +1,9 @@
 %h1 Agenti
 
+-if can? :create, :characters
+  .meta_links
+    = link_to 'Vytvořit agenta', new_character_path
+
 %table#characters
   %tr
     %th
@@ -19,6 +23,6 @@
 
 %br
 
-.meta_links
-  -if can? :create, :characters
+-if can? :create, :characters
+  .meta_links
     = link_to 'Vytvořit agenta', new_character_path

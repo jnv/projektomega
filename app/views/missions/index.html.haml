@@ -1,5 +1,9 @@
 %h1 Mise
 
+-if can? :create, :missions
+  .meta_links
+    = link_to 'Nová mise', new_mission_path
+
 %table#missions
   %tr
     %th Mise
@@ -18,6 +22,6 @@
         -if can? :update, mission
           =link_to 'Upravit', edit_mission_path(mission)
 
-.meta_links
-  -if can? :create, :missions
+-if can? :create, :missions
+  .meta_links
     = link_to 'Nová mise', new_mission_path
