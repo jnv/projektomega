@@ -16,17 +16,28 @@ module SharedExamples
   end
 
   shared_examples_for "evaluations list" do
-    scenario 'show available evaluations' do
+    before :each do
       evaluation # = Factory(:evaluation, {attended_mission: mission})
-      eval "visit #{model_name.to_s}_path(model)"
+    end
 
+    scenario 'show available evaluations' do
+      eval "visit #{model_name.to_s}_path(model)"
       page.should have_selector("h3", content: "Hodnocení agentů")
       within("#evaluations") do
         page.should have_selector(css_dom_id(evaluation))
         page.should have_content(evaluation.author.full_name)
       end
     end
+
+    scenario 'show link to new evaluations' do
+      sign_in_with_admin
+      eval "visit #{model_name.to_s}_path(model)"
+
+      within("#evaluations") do
+        page.should have_link("Přidat hodnocení")
+      end
+    end
   end
 end
 
-RSpec.configuration.include SharedExamples, :type => :acceptance
+RSpec.configuration.include SharedExamples, type: :acceptance

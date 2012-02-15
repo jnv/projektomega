@@ -11,6 +11,10 @@ module HelperMethods
     end
   end
 
+  def sign_in_with_admin
+    sign_in_with Factory(:admin)
+  end
+
   [:notice, :error].each do |name|
     define_method "should_have_#{name}" do |message|
       page.should have_css(".message.#{name}", :text => message)

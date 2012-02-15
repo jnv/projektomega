@@ -58,7 +58,7 @@ feature 'Evaluations' do
 
   context 'admin' do
     before do
-      sign_in_with Factory(:admin)
+      sign_in_with_admin
     end
 
     scenario 'create a report' do
