@@ -1,7 +1,10 @@
 - evaluations = attendance.evaluations
 - has_added = false #XXX Logic in template!
 %div[attendance, :evaluations]
-  %h4= "Hodnocení agenta: #{attendance.character.full_name}"
+  -if title == :mission
+    %h4= "V misi: #{attendance.mission.full_name}"
+  -elsif title == :character
+    %h4= "Hodnocení agenta: #{attendance.character.full_name}"
   -evaluations.each do |evaluation|
     %p[evaluation]
       %strong= evaluation.author.full_name

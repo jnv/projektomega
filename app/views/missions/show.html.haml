@@ -17,7 +17,7 @@
 
 #evaluations
   %h3 Hodnocení agentů
-  = render partial: "evaluations", collection: @mission.attendances_with_evaluations, as: :attendance
+  = render partial: "shared/evaluations", collection: @mission.attendances_with_evaluations, as: :attendance, locals: {title: :character}
 
 .meta_links
   -if can? :update, @mission
