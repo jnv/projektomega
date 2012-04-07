@@ -25,9 +25,9 @@ module ControllerMacros
   # opts[:include] contains an array of actions to add to the test in addition
   # to any found by get_all_actions
   # source: http://blog.wolfman.com/articles/2007/7/28/rspec-testing-all-actions-of-a-controller
-  def controller_actions_should_fail_if_not_logged_in(cont, opts={})
+  def controller_actions_should_fail(cont, opts={})
     except= opts[:except] || []
-    actions_to_test= get_all_actions(cont).reject { |a| except.include?(a) } #controller_class.action_methods 
+    actions_to_test= get_all_actions(cont).reject { |a| except.include?(a) } #controller_class.action_methods
     actions_to_test += opts[:include] if opts[:include]
     actions_to_test.each do |a|
       #puts "... #{a}"
@@ -38,8 +38,22 @@ module ControllerMacros
     end
   end
 
+
+  # http://stackoverflow.com/questions/6152359/dynamically-generating-shared-examples-in-rspec-2
+  shared_examples "authorized controller" do |actions|
+    actions.each_pair do |action, verb|
+      specify "denying access to ##{action}" do
+        send(verb, action)
+        #response.status.should be 302
+        response.status.should be 302
+        flash[:alert].should_not be_empty
+      end
+    end
+
+  end
+
 end
 
 RSpec.configure do |config|
-  config.include ControllerMacros, type: :controller
+  config.include ControllerMacros, :type => :controller
 end

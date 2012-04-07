@@ -8,15 +8,6 @@ class PostsController < AuthorizedController
     end
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
-  def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @post }
-    end
-  end
-
   # GET /posts/new
   # GET /posts/new.json
   def new
