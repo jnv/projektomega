@@ -36,15 +36,17 @@ describe Ability do
   context "user" do
 
     context "without any character" do
-      it { should_not be_able_to(:create, Post.new) }
+      let(:character) { Factory(:orphaned_character) }
+
+      it { should_not be_able_to(:create, Post.new(character: character)) }
     end
 
 
     context "his own character" do
-      let(:character) { Factory.build(:character, {user: user}) }
+      let(:character) { Factory.build(:character, { user: user }) }
       let(:report) { Factory.build(:report, {character: character}) }
       let(:evaluation) { Factory.build(:evaluation, {author: character}) }
-      let(:post) { Factory.build(:post, {character: character, user: user}) }
+      let(:post) { Factory.build(:post, {character: character}) }
 
       it { should be_able_to(:read, character) }
       it { should be_able_to(:update, character) }
