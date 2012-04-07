@@ -43,7 +43,7 @@ describe Ability do
 
 
     context "his own character" do
-      let(:character) { Factory.build(:character, { user: user }) }
+      let(:character) { Factory(:character, { user: user }) }
       let(:report) { Factory.build(:report, {character: character}) }
       let(:evaluation) { Factory.build(:evaluation, {author: character}) }
       let(:post) { Factory.build(:post, {character: character}) }

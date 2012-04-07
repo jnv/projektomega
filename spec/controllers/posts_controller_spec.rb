@@ -145,9 +145,24 @@ describe PostsController do
   context "guest user" do
     it_behaves_like "posts CRUD read index"
     it_behaves_like "authorized controller", {
-        :new    => :get,
+        :new => :get,
         :create => :post
-      }
+    }
+  end
+
+  context "user without character" do
+    let(:post_obj) { Factory(:post, character: Factory(:orphaned_character)) }
+    before do
+      login_user(Factory(:user, {character: nil}))
+    end
+
+    it_behaves_like "posts CRUD read index"
+    it_behaves_like "authorized controller", {
+        :new => :get,
+        :create => :post
+    }
+
+
   end
 
 end
