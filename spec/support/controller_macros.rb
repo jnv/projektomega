@@ -43,14 +43,28 @@ module ControllerMacros
   shared_examples "authorized controller" do |actions|
     actions.each_pair do |action, verb|
       specify "denying access to ##{action}" do
-        send(verb, action)
+        send(verb, action, {id: 1})
         #response.status.should be 302
         response.status.should be 302
         flash[:alert].should_not be_empty
       end
     end
-
   end
+
+  # http://stackoverflow.com/questions/4491101/rspec-and-cancan-controller-testing
+  def mock_ability
+    ability = Object.new
+    #ability = double("ability")
+    ability.extend(CanCan::Ability)
+    controller.stub!(:current_ability).and_return(ability)
+    #ability.should_receive(:can?).at_least(:once) #FIXME authorize! is called twice
+    ability.stub!(:can?)
+  end
+
+  def stub_can
+    Ability.any_instance.stub(:can?)
+  end
+
 
 end
 
