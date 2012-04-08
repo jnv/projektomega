@@ -55,7 +55,7 @@ describe PostsController do
 
       it "redirects to the created post" do
         post :create, {:post => valid_attributes}, valid_session
-        response.should redirect_to(Post.last)
+        response.should redirect_to(posts_url)
       end
     end
 
@@ -105,10 +105,8 @@ describe PostsController do
       end
 
       it "redirects to the post" do
-        pending "redirect to anchor" do
-          put :update, {:id => post_record.to_param, :post => valid_attributes}
-          response.should redirect_to(posts_url)
-        end
+        put :update, {:id => post_record.to_param, :post => valid_attributes}
+        response.should redirect_to(posts_url)
       end
     end
 
