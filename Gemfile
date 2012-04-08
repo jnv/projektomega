@@ -61,6 +61,8 @@ group :test, :development do
   gem "rb-inotify"
   gem "libnotify"
   gem "database_cleaner"
+  gem "pry"
+  gem "pry-stack_explorer"
 end
 
 group :test do
