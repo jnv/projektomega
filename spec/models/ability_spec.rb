@@ -64,6 +64,7 @@ describe Ability do
       describe "post" do
         it { should be_able_to(:create, post) }
         it { should be_able_to(:edit, post) }
+        it { should_not be_able_to(:destroy, post) }
       end
     end
 

@@ -39,21 +39,12 @@ class Ability
         can [:create, :update], :evaluations, author_id: character_id
         cannot :create, :evaluations, :author
 
-        unless character_id.nil? #TODO: This should be basic condition for all users
-          can [:create, :update], :posts, character_id: character_id
-        end
+        can [:create, :update], :posts, character_id: character_id
 
       when :banned
 
       else
         #TODO: Report exception
-    end
-
-    if user.role == :admin
-
-    elsif user.role == :coordinator
-
-
     end
 
   end
