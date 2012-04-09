@@ -1,17 +1,16 @@
-%h1 Listing posts
+%h1 Diskuze
 
-%table
-  %tr
-    %th
-    %th
-    %th
+= link_to 'Nový příspěvek', new_post_path
 
-  - @posts.each do |post|
-    %tr
-      %td= link_to 'Show', post
-      %td= link_to 'Edit', edit_post_path(post)
-      %td= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete
+-@posts.each do |post|
+  %article[post]
+    %p
+      %strong= post.character
+    %p
+      = post.content
+    -if can? :edit, post
+      %p
+        = link_to 'Upravit', edit_post_path(post)
 
-%br
+= link_to 'Nový příspěvek', new_post_path
 
-= link_to 'New Post', new_post_path
