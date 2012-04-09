@@ -3,4 +3,6 @@ class Post < ActiveRecord::Base
   attr_readonly :character
 
   validates_presence_of :character, :content
+
+  default_scope :order => 'created_at DESC'
 end
