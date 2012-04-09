@@ -50,6 +50,8 @@ gem "airbrake"
 
 gem "redcarpet", "~>2.0.0b5"
 
+gem "yaml_db"
+
 group :test, :development do
   gem 'steak'
   #gem "rspec-rails", "~> 2.6"
