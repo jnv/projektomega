@@ -1,16 +1,19 @@
 %h1 Diskuze
 
-= link_to 'Nový příspěvek', new_post_path
+-if can? :create, :posts
+  = link_to 'Nový příspěvek', new_post_path
 
--@posts.each do |post|
-  %article[post]
-    %p
-      %strong= post.character
-    %p
-      = post.content
-    -if can? :edit, post
+%section#posts
+  -@posts.each do |post|
+    %article[post]
       %p
-        = link_to 'Upravit', edit_post_path(post)
+        %strong= link_to post.character.full_name, post.character
+      %p
+        = post.content
+      -if can? :edit, post
+        %p
+          = link_to 'Upravit', edit_post_path(post)
 
-= link_to 'Nový příspěvek', new_post_path
+-if can? :create, :posts
+  = link_to 'Nový příspěvek', new_post_path
 
