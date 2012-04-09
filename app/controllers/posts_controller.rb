@@ -24,6 +24,9 @@ class PostsController < AuthorizedController
   # POST /posts
   # POST /posts.json
   def create
+    @post.character = current_user.character
+    authorize! :create, @post
+    #binding.pry
     respond_to do |format|
       if @post.save
         format.html { redirect_to posts_url, notice: 'Post was successfully created.' } #FIXME add anchor

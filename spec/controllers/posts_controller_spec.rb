@@ -10,12 +10,14 @@ describe PostsController do
     {}
   end
 
-  let(:character) { Factory(:character) }
-  let(:user) { Factory(:user, character: character) }
-  let(:post_record) { Factory(:post) }
-  let(:valid_attributes) { {character_id: character.id, content: "Lorem ipsum"} }
+  let(:user) { Factory(:user) }
+  let(:character) { Factory(:character, user: user) }
+  let(:post_record) { Factory(:post, character: character) }
+  let(:valid_attributes) { {content: "Lorem ipsum"} }
 
   before do
+    login_user(user)
+    user.character = character
     stub_can.and_return(true)
   end
 
@@ -48,13 +50,13 @@ describe PostsController do
       end
 
       it "assigns a newly created post as @post" do
-        post :create, {:post => valid_attributes}, valid_session
+        post :create, {:post => valid_attributes}
         assigns(:post).should be_a(Post)
         assigns(:post).should be_persisted
       end
 
       it "redirects to the created post" do
-        post :create, {:post => valid_attributes}, valid_session
+        post :create, {:post => valid_attributes}
         response.should redirect_to(posts_url)
       end
     end
@@ -63,14 +65,14 @@ describe PostsController do
       it "assigns a newly created but unsaved post as @post" do
         # Trigger the behavior that occurs when invalid params are submitted
         Post.any_instance.stub(:save).and_return(false)
-        post :create, {:post => {}}, valid_session
+        post :create, {:post => {}}
         assigns(:post).should be_a_new(Post)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Post.any_instance.stub(:save).and_return(false)
-        post :create, {:post => {}}, valid_session
+        post :create, {:post => {}}
         response.should render_template("new")
       end
     end
