@@ -73,5 +73,10 @@ FactoryGirl.define do
 
   end
 
+  factory :post do
+    character
+    content { Forgery(:lorem_ipsum).sentence }
+  end
+
 
 end

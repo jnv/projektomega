@@ -32,22 +32,21 @@ class Ability
 
       when :user
         character_id = user.character.try(:id)
-        can :update, :characters, [:number, :name, :born, :country, :assignment, :specialisation, :portrait], :user_id => user.id
-        can :update, :mission_attendances, [:report], :character_id => character_id
+
+        can :update, :characters, [:number, :name, :born, :country, :assignment, :specialisation, :portrait], user_id: user.id
+        can :update, :mission_attendances, [:report], character_id: character_id
         #can :update, :characters, [:name]
         can [:create, :update], :evaluations, author_id: character_id
         cannot :create, :evaluations, :author
+
+        if character_id
+          can [:create, :update], :posts, character_id: character_id
+        end
+
       when :banned
 
       else
         #TODO: Report exception
-    end
-
-    if user.role == :admin
-
-    elsif user.role == :coordinator
-
-
     end
 
   end

@@ -1,0 +1,9 @@
+%article[post]
+  %p
+    = image_tag post.character.portrait.to_s, class: "portrait" if post.character.portrait?
+    %strong= link_to post.character.full_name, post.character
+  %p
+    = post.content
+  -if can? :edit, post
+    %p
+      = link_to 'Upravit', edit_post_path(post)

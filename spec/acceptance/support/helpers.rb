@@ -30,7 +30,7 @@ module HelperMethods
   end
 
   def access_should_be_denied
-    page.should have_content "Nejste oprávněni přistupovat k této stránce"
+    page.should have_content I18n.t('unauthorized.default_message')
   end
 
   def reload

@@ -1,0 +1,11 @@
+%h1 Diskuze
+
+-if can? :create, :posts
+  = link_to 'Nový příspěvek', new_post_path
+
+%section#posts
+  = render partial: "post", collection: @posts
+
+-if can? :create, :posts
+  = link_to 'Nový příspěvek', new_post_path
+

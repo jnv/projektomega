@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe MissionsController do
-  let(:valid_attributes) {  Factory.attributes_for(:mission) }
+  let(:valid_attributes) { Factory.attributes_for(:mission) }
 
   shared_examples "CRUD GET index" do
     it "should render index" do
@@ -118,9 +118,18 @@ describe MissionsController do
     end
   end
 
+  ### Tests
+
   context "guest user" do
     it_should_behave_like "CRUD GET index"
     it_should_behave_like "CRUD GET show"
+
+    it_behaves_like "authorized controller", {
+        :new => :get,
+        :create => :post,
+        :edit => :get,
+        :update => :post,
+    }
   end
 
   context "administrator" do

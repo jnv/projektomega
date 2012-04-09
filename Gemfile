@@ -61,12 +61,13 @@ group :test, :development do
   gem "rb-inotify"
   gem "libnotify"
   gem "database_cleaner"
+  gem "pry"
+  gem "pry-stack_explorer"
 end
 
 group :test do
   gem "launchy"
-  gem 'factory_girl_rails', '~> 1.2', :require => false
-  gem 'factory_girl', '~> 2.1', :require => false
+  gem 'factory_girl_rails', '~> 1.6'
   gem "forgery", "~>0.3.12"
   gem "shoulda-matchers"
   #gem 'simplecov', '>= 0.4.0', :require => false
