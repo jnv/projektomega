@@ -35,7 +35,7 @@
 
 %h3 Hlášení
 %ul#reports
-  = render partial: "report", collection: @character.attendances, as: :attendance
+  = render partial: "report", collection: @character.attendances_with_missions, as: :attendance
 
 #evaluations
   %h3 Hodnocení agentů

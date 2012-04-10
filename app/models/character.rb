@@ -2,7 +2,7 @@ class Character < ActiveRecord::Base
 
   belongs_to :user
   has_many :attendances, class_name: 'MissionAttendance'
-  has_many :missions, through: :attendances
+  has_many :missions, through: :attendances#, order: 'missions.number ASC'
   has_many :evaluations
   has_many :authored_evaluations, class_name: 'Evaluation', foreign_key: 'author_id'
 
@@ -13,6 +13,7 @@ class Character < ActiveRecord::Base
   default_scope :order => 'number ASC'
 
   delegate :with_evaluations, to: :attendances, prefix: true, allow_nil: true
+  delegate :with_missions, to: :attendances, prefix: true, allow_nil: true
 
   mount_uploader :portrait, PortraitUploader
 
