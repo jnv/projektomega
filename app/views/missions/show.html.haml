@@ -17,7 +17,11 @@
 
 #evaluations
   %h3 Hodnocení agentů
-  = render partial: "shared/evaluations", collection: @mission.attendances_with_evaluations, as: :attendance, locals: {title: :character}
+  -  @mission.evaluations.group_by_character.each do |character, evaluations|
+    %h4= "Hodnocení agenta: #{character.full_name}"
+    = render partial: "shared/evaluations", collection: evaluations, as: :evaluation
+    -if can?(:create, :evaluations)
+      %p= link_to('Přidat hodnocení', new_evaluation_path({evaluation: {mission_id: @mission.id, character_id: character.id}}))
 
 .meta_links
   -if can? :update, @mission

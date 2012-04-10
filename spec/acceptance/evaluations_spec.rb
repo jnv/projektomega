@@ -9,7 +9,7 @@ feature 'Evaluations' do
     @author = @evaluation.author
     @character = @evaluation.character
     @character2 = @mission.characters[2]
-    #Factory(:evaluation, {attended_mission: @mission, character: @character2})
+                                                                #Factory(:evaluation, {attended_mission: @mission, character: @character2})
     @evaluation2 = Factory(:evaluation, {attended_mission: @mission, author: @character2, character: @character})
 
   end
@@ -40,19 +40,21 @@ feature 'Evaluations' do
       sign_in_with @author.user
     end
 
-    scenario 'create a report' do
-      visit mission_path(@mission)
+    pending "Add selects to evaluation form" do
+      scenario 'create a report' do
+        visit mission_path(@mission)
 
-      within("#evaluations_#{dom_id(MissionAttendance.last)}") do
-        click_link("Přidat hodnocení")
+        within("#evaluations_#{dom_id(MissionAttendance.last)}") do
+          click_link("Přidat hodnocení")
+        end
+
+        within('form.evaluation') do
+          fill_in "Obsah hodnocení", with: "Bad guy"
+          click_button "Vytvořit"
+        end
+
+        page.should have_content "Bad guy"
       end
-
-      within('form.evaluation') do
-        fill_in "Obsah hodnocení", with: "Bad guy"
-        click_button "Vytvořit"
-      end
-
-       page.should have_content "Bad guy"
     end
   end
 

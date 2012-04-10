@@ -16,6 +16,32 @@ describe Evaluation do
     end
   end
 
+  describe "group_by_{mission|character}" do
+    before do
+      @count = 2
+      @mission = Factory(:mission)
+      @attendances = FactoryGirl.create_list(:attendance, @count, {mission: @mission})
+
+      @eval1 = Factory(:evaluation, {mission: @mission, author: @attendances.first.character, character: @attendances.last.character})
+      @eval2 = Factory(:evaluation, {mission: @mission, author: @attendances.last.character, character: @attendances.first.character})
+    end
+
+    it "returns evaluations grouped by missions" do
+      ev = Evaluation.group_by_mission.first
+      ev[0].should == @mission
+      ev[1].count.should == @count
+    end
+
+    it "returns evaluations grouped by character" do
+      evs = Evaluation.group_by_character
+      evs.count.should == @count
+      evs.first[0].should == @eval1.character
+      evs.first[1].should == [@eval1]
+    end
+
+
+  end
+
   describe "validations" do
 
     it { should validate_presence_of(:mission) }

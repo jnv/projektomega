@@ -12,8 +12,17 @@ class Evaluation < ActiveRecord::Base
 
   validate :character_is_not_author, :mission_attendance_exists
 
-  default_scope :order => 'author_id ASC, mission_id ASC, character_id ASC'
-  scope :with_names, joins(:mission).order('missions.number').joins(:character).joins(:author)
+  #default_scope :order => 'author_id ASC, mission_id ASC, character_id ASC'
+  scope :with_all, includes(:mission, :character, :author).order('missions.number, characters.number')
+
+
+  def self.group_by_mission
+    with_all.group_by(&:mission)
+  end
+
+  def self.group_by_character
+    with_all.group_by(&:character)
+  end
 
   #TODO: generalize and move to standalone class as ValidateEach
   def mission_attendance_exists
@@ -35,5 +44,5 @@ class Evaluation < ActiveRecord::Base
   def character_is_not_author
     errors.add(:author, :character_is_not_author) if character_id == author_id
   end
-  
+
 end

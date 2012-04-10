@@ -1,14 +1,5 @@
-- evaluations = attendance.evaluations
-%div[attendance, :evaluations]
-  -if title == :mission
-    %h4= "V misi: #{attendance.mission.full_name}"
-  -elsif title == :character
-    %h4= "Hodnocení agenta: #{attendance.character.full_name}"
-  -evaluations.each do |evaluation|
-    %p[evaluation]
-      %strong= evaluation.author.full_name
-      = evaluation.content
-      -if can? :update, evaluation
-        = link_to('Upravit', edit_evaluation_path(evaluation))
-  -if can?(:create, :evaluations)
-    %p= link_to('Přidat hodnocení', new_evaluation_path({evaluation: {mission_id: attendance.mission_id, character_id: attendance.character_id}}))
+%p[evaluation]
+  %strong= evaluation.author.full_name
+  = evaluation.content
+  -if can? :update, evaluation
+    = link_to('Upravit', edit_evaluation_path(evaluation))
