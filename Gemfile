@@ -46,7 +46,9 @@ gem "html5-rails"
 
 gem "composite_primary_keys", "~>4.0.0"
 
-gem "airbrake"
+group :airbrake do
+  gem "airbrake"
+end
 
 gem "redcarpet", "~>2.0.0b5"
 
