@@ -1,11 +1,10 @@
 language: ruby
 rvm:
-  - 1.9.2
   - 1.9.3
-bundler_args: --without development
+bundler_args: --without development guard pry airbrake
 env:
-  - DB=sqlite BUNDLE_WITHOUT=mysql:postgres
-  - DB=mysql BUNDLE_WITHOUT=sqlite:postgres
   - DB=postgresql BUNDLE_WITHOUT=mysql:sqlite
+#  - DB=sqlite BUNDLE_WITHOUT=mysql:postgres
+#  - DB=mysql BUNDLE_WITHOUT=sqlite:postgres
 before_script:
   - bundle exec rake ci:setup --trace
