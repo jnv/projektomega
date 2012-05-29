@@ -32,12 +32,9 @@ end
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
+gem "composite_primary_keys", "~>4.0.0"
 gem "devise", '~> 1'
 gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
-
 gem 'formtastic', '~>2.0.0.rc'
 
 gem 'carrierwave'
@@ -50,23 +47,17 @@ gem 'haml', '~> 3.2.0.alpha'
 gem 'haml-rails', '>= 0.3.4'
 gem "html5-rails"
 
-gem "composite_primary_keys", "~>4.0.0"
+gem "redcarpet", "~>2.0.0b5"
 
 group :airbrake do
   gem "airbrake"
 end
-
-gem "redcarpet", "~>2.0.0b5"
-
-gem "yaml_db"
 
 group :test, :development do
   gem "steak"
   #gem "rspec-rails", "~> 2.6"
   gem "spork", ">= 0.9.0.rc"
   gem "database_cleaner"
-  #gem "pry"
-  #gem "pry-stack_explorer"
 end
 
 group :test do
@@ -78,10 +69,21 @@ end
 
 group :development do
   gem "launchy"
-  gem "guard-spork"
   #gem "active_reload"
-  #gem 'pry-rails'
   gem "vendorer"
+  # To use debugger
+  # gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem "yaml_db"
+end
+
+group :pry do
+  gem "pry"
+  gem "pry-stack_explorer"
+  #gem 'pry-rails'
+end
+
+group :guard do
+  gem "guard-spork"
   gem "guard-livereload"
   gem "guard-rails"
   gem "guard-rspec"
