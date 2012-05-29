@@ -13,7 +13,6 @@ Spork.prefork do
   require 'rspec/rails'
   require 'shoulda/matchers/integrations/rspec'
   require 'capybara/rspec'
-  require 'pry'
 
   RSpec.configure do |config|
     # == Mock Framework
