@@ -1,18 +1,14 @@
 source 'http://rubygems.org'
 
 gem 'rails', '~> 3.1.0'
-
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+gem 'rake'
 
 group :sqlite do
   gem 'sqlite3'
 end
-
 group :mysql do
   gem 'mysql2'
 end
-
 group :postgres do
   gem 'pg'
 end
@@ -65,7 +61,7 @@ gem "redcarpet", "~>2.0.0b5"
 gem "yaml_db"
 
 group :test, :development do
-  gem 'steak'
+  gem "steak"
   #gem "rspec-rails", "~> 2.6"
   gem "guard-spork"
   gem "spork", ">= 0.9.0.rc"

@@ -273,6 +273,7 @@ DEPENDENCIES
   pry
   pry-stack_explorer
   rails (~> 3.1.0)
+  rake
   rb-inotify
   redcarpet (~> 2.0.0b5)
   sass-rails (~> 3.1.0)
