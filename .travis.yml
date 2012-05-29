@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+  - 1.9.2
+  - 1.9.3
+env:
+  - DB=sqlite BUNDLE_WITHOUT=mysql:postgres
+  - DB=mysql BUNDLE_WITHOUT=sqlite:postgres
+  - DB=postgresql BUNDLE_WITHOUT=mysql:sqlite
+script:
+  - bundle exec rake --trace db:migrate test
