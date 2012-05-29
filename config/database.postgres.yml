@@ -1,37 +1,6 @@
-# Travis-CI
-# Kudos to http://matthew.mceachen.us/blog/howto-test-your-rails-application-with-travis-ci-on-different-database-engines-1220.html
-sqlite: &sqlite
-  adapter: sqlite3
-  database: db/<%= Rails.env %>.sqlite3
-
-mysql: &mysql
-  adapter: mysql2
-  username: root
-  password:
-  database: cphomega_<%= Rails.env %>
-
-postgresql: &postgresql
+test:
   adapter: postgresql
   username: postgres
   password:
   database: cphomega_<%= Rails.env %>
   min_messages: ERROR
-
-
-development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
-  timeout: 5000
-
-test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
-  timeout: 5000
-
-production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
