@@ -2,5 +2,4 @@ test:
   adapter: postgresql
   username: postgres
   password:
-  database: cphomega_<%= Rails.env %>
-  min_messages: ERROR
+  database: cphomega_test

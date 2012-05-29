@@ -4,7 +4,7 @@ rvm:
 gemfile: Gemfile.ci
 bundler_args: --without development guard pry airbrake
 env:
-  - DB=postgres BUNDLE_WITHOUT=mysql:sqlite
+  - DB=postgres
 #  - DB=sqlite BUNDLE_WITHOUT=mysql:postgres
 #  - DB=mysql BUNDLE_WITHOUT=sqlite:postgres
 before_script:
