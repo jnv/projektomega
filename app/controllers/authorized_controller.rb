@@ -10,7 +10,7 @@ class AuthorizedController < ApplicationController
       redirect_url = root_url
     end
     ex.default_message = t('unauthorized.default_message')
-    notify_airbrake(ex)
+    #notify_airbrake(ex)
     redirect_to redirect_url, :alert => ex.message
   end
 
