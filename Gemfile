@@ -63,20 +63,13 @@ gem "yaml_db"
 group :test, :development do
   gem "steak"
   #gem "rspec-rails", "~> 2.6"
-  gem "guard-spork"
   gem "spork", ">= 0.9.0.rc"
-  gem "guard-livereload"
-  gem "guard-rails"
-  gem "guard-rspec"
-  gem "rb-inotify"
-  gem "libnotify"
   gem "database_cleaner"
-  gem "pry"
-  gem "pry-stack_explorer"
+  #gem "pry"
+  #gem "pry-stack_explorer"
 end
 
 group :test do
-  gem "launchy"
   gem 'factory_girl_rails', '~> 1.6'
   gem "forgery", "~>0.3.12"
   gem "shoulda-matchers"
@@ -84,8 +77,14 @@ group :test do
 end
 
 group :development do
+  gem "launchy"
+  gem "guard-spork"
   #gem "active_reload"
-  gem "livereload"
   #gem 'pry-rails'
   gem "vendorer"
+  gem "guard-livereload"
+  gem "guard-rails"
+  gem "guard-rspec"
+  gem "rb-inotify"
+  gem "libnotify"
 end
