@@ -8,6 +8,7 @@ class MissionAttendance < ActiveRecord::Base
 
   scope :with_missions, includes(:mission).order('missions.number')
   scope :with_characters, includes(:character).order('characters.number')
+  scope :with_evaluations, includes(:evaluations)
 
   #scope :evaluations_nil, evaluations_all.where(evaluations: {content: nil})
 

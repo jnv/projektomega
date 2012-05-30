@@ -35,8 +35,8 @@ describe Evaluation do
     it "returns evaluations grouped by character" do
       evs = Evaluation.group_by_character
       evs.count.should == @count
-      evs.first[0].should == @eval1.character
-      evs.first[1].should == [@eval1]
+      evs.first[0].should == @eval2.character
+      evs.first[1].should == [@eval2]
     end
 
 

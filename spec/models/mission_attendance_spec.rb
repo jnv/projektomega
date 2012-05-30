@@ -23,7 +23,7 @@ describe MissionAttendance do
 
     specify { MissionAttendance.joins(:evaluations).count.should == 2 }
 
-    describe "#evaluations_all" do
+    describe "#with_evaluations" do
       subject { MissionAttendance.with_evaluations }
       its(:count) { should == @mission.attendances.count}
     end
