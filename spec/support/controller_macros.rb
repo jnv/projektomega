@@ -30,7 +30,6 @@ module ControllerMacros
     actions_to_test= get_all_actions(cont).reject { |a| except.include?(a) } #controller_class.action_methods
     actions_to_test += opts[:include] if opts[:include]
     actions_to_test.each do |a|
-      #puts "... #{a}"
       get a
       response.should_not be_success
       #response.should redirect_to('http://test.host/login')

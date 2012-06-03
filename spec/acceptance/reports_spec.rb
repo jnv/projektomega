@@ -33,8 +33,6 @@ feature 'Reports' do
         click_link("Upravit")
       end
 
-      p page.current_url
-
       #save_and_open_page
       fill_in "Obsah hlášení", with: "It all started one rainy night."
 
