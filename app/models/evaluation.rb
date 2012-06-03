@@ -1,5 +1,5 @@
 class Evaluation < ActiveRecord::Base
-  set_primary_keys :mission_id, :character_id, :author_id
+  self.primary_keys = :mission_id, :character_id, :author_id
 
   belongs_to :mission
   belongs_to :character
