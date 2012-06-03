@@ -62,7 +62,7 @@ end
 
 group :test do
   gem "factory_girl_rails"
-  gem "forgery", "~>0.3.12"
+  gem "forgery"
   gem "shoulda-matchers"
   #gem 'simplecov', '>= 0.4.0', :require => false
 end
