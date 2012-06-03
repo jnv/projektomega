@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.1.0'
+gem 'rails', '~> 3.2.5'
 gem 'rake'
 
 group :sqlite do
@@ -17,8 +17,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
+  gem 'sass-rails', "~> 3.2.0"
+  gem 'coffee-rails', "~> 3.2.0"
   gem 'uglifier'
   #gem 'compass', '~> 0.12.alpha'
   gem 'compass-rails'
@@ -32,7 +32,7 @@ end
 # Deploy with Capistrano
 # gem 'capistrano'
 
-gem "composite_primary_keys", "~>4.0.0"
+gem "composite_primary_keys", "~>5.0.6"
 gem "devise", '~> 1'
 gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
 gem 'formtastic', '~>2.0.0.rc'
