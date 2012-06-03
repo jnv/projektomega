@@ -1,7 +1,7 @@
 module ControllerMacros
   def login_admin
     @request.env["devise.mapping"] = Devise.mappings[:user]
-    @admin ||= Factory.create(:admin)
+    @admin ||= FactoryGirl.create(:admin)
     sign_in @admin
     @admin
   end
@@ -9,7 +9,7 @@ module ControllerMacros
 
   def login_user(user = nil)
     @request.env["devise.mapping"] = Devise.mappings[:user]
-    @user = user || Factory.create(:user)
+    @user = user || FactoryGirl.create(:user)
     #user.confirm! # or set a confirmed_at inside the factory. Only necessary if you are using the confirmable module
     sign_in @user
     @user

@@ -3,9 +3,9 @@ module ModelMacros
   shared_examples "number sorted model" do
 
     it "should be ordered by number" do
-      Factory(factory, number: 2)
-      Factory(factory, number: 3)
-      Factory(factory, number: 1)
+      FactoryGirl.create(factory, number: 2)
+      FactoryGirl.create(factory, number: 3)
+      FactoryGirl.create(factory, number: 1)
 
       records = described_class.all
 

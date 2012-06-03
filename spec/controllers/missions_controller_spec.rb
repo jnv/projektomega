@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe MissionsController do
-  let(:valid_attributes) { Factory.attributes_for(:mission) }
+  let(:valid_attributes) { FactoryGirl.attributes_for(:mission) }
+  let!(:mission) { FactoryGirl.create(:mission) }
 
   shared_examples "CRUD GET index" do
     it "should render index" do
@@ -10,17 +11,15 @@ describe MissionsController do
     end
 
     it "assigns all missions as @missions" do
-      record = Factory :mission
       get :index
-      assigns(:missions).should eq([record])
+      assigns(:missions).should eq([mission])
     end
   end
 
   shared_examples "CRUD GET show" do
     it "assigns the requested mission as @mission" do
-      record = Factory :mission
-      get :show, :id => record.id.to_s
-      assigns(:mission).should eq(record)
+      get :show, :id => mission.id.to_s
+      assigns(:mission).should eq(mission)
     end
   end
 
@@ -52,7 +51,6 @@ describe MissionsController do
   end
   shared_examples "CRUD GET edit" do
     it "assigns the requested mission as @mission" do
-      mission = Factory :mission
       get :edit, :id => mission.id.to_s
       assigns(:mission).should eq(mission)
     end
@@ -61,7 +59,6 @@ describe MissionsController do
   shared_examples "CRUD PUT update" do
     describe "with valid params" do
       it "updates the requested mission" do
-        mission = Factory :mission
         # Assuming there are no other missions in the database, this
         # specifies that the Mission created on the previous line
         # receives the :update_attributes message with whatever params are

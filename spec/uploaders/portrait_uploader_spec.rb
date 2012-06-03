@@ -6,7 +6,7 @@ describe PortraitUploader do
 
   before do
     PortraitUploader.enable_processing = true
-    @character = Factory.create(:character)
+    @character = FactoryGirl.create(:character)
     @uploader = PortraitUploader.new(@character, :portrait_test)
     @uploader.store!(File.open(Rails.root + 'spec/fixtures/images/portrait.jpg'))
   end

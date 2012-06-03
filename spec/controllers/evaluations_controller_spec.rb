@@ -3,7 +3,7 @@ require 'spec_helper'
 describe EvaluationsController do
 
   before do
-    @mission = Factory(:attended_mission_w_users, attendees: 2)
+    @mission = FactoryGirl.create(:attended_mission_w_users, attendees: 2)
     @author = @mission.characters[1]
     @character = @mission.characters[0]
   end

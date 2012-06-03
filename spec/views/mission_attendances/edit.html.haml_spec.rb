@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe "mission_attendances/edit.html.haml" do
   before(:each) do
-    @mission_attendance = assign(:mission_attendance, Factory(:report))
+    @mission_attendance = assign(:mission_attendance, FactoryGirl.create(:report))
   end
 
   before :each do

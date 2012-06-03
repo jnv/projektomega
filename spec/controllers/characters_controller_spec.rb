@@ -19,7 +19,7 @@ describe CharactersController do
 
     it "assigns all characters as @characters" do
       #Character.stub(:all) { [mock_character] }
-      character = Factory.create(:character)
+      character = FactoryGirl.create(:character)
       get :index
       assigns(:characters).should eq([character])
     end
@@ -28,7 +28,7 @@ describe CharactersController do
   describe "GET show" do
     it "assigns the requested character as @character" do
       #Character.stub(:find).with("42") { mock_character }
-      character = Factory.create(:character)
+      character = FactoryGirl.create(:character)
       get :show, id: character.id
       assigns(:character).should eq(character)
     end
@@ -84,8 +84,8 @@ describe CharactersController do
   describe "GET edit" do
     describe "for unauthorized guest" do
       before do
-        @character = Factory.create(:character)
-        @user = Factory.create(:user)
+        @character = FactoryGirl.create(:character)
+        @user = FactoryGirl.create(:user)
         @character.user = @user
       end
 
@@ -99,7 +99,7 @@ describe CharactersController do
     describe "for authorized user" do
       before do
         @user = login_user
-        @character = Factory.create(:character, user: @user)
+        @character = FactoryGirl.create(:character, user: @user)
 
         #@character.user = @user
       end
@@ -111,7 +111,7 @@ describe CharactersController do
       end
 
       it "disallows edit for Character not owned by user" do
-        newchar = Factory.create(:character)
+        newchar = FactoryGirl.create(:character)
         get :edit, id: newchar.id
 
         response.should_not render_template(:edit)
@@ -193,7 +193,7 @@ describe CharactersController do
       end
 
       it "should be successful if does own this character" do
-        character = Factory.create(:character, user: @user)
+        character = FactoryGirl.create(:character, user: @user)
         put :update, :id => character.id, :character => {'name' => 'blargh'}
         character.reload
         character.name.should == 'blargh'

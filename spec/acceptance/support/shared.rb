@@ -17,7 +17,7 @@ module SharedExamples
 
   shared_examples_for "evaluations list" do
     before :each do
-      evaluation # = Factory(:evaluation, {attended_mission: mission})
+      evaluation # = FactoryGirl.create(:evaluation, {attended_mission: mission})
     end
 
     scenario 'show available evaluations' do

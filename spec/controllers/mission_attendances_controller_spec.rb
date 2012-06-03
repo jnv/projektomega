@@ -8,13 +8,13 @@ describe MissionAttendancesController do
 
   def prepare_user
     @user = login_user
-    @character = Factory(:character, user: @user)
-    @mission_attendance = Factory(:report, character: @character)
+    @character = FactoryGirl.create(:character, user: @user)
+    @mission_attendance = FactoryGirl.create(:report, character: @character)
   end
 
   describe "GET index" do
     it "assigns all mission_attendances as @mission_attendances" do
-      mission_attendance = Factory :report
+      mission_attendance = FactoryGirl.create(:report)
       get :index
       assigns(:mission_attendances).should eq([mission_attendance])
     end
@@ -22,7 +22,7 @@ describe MissionAttendancesController do
 
   describe "GET show" do
     it "assigns the requested mission_attendance as @mission_attendance" do
-      mission_attendance = Factory :report
+      mission_attendance = FactoryGirl.create(:report)
       get :show, :id => mission_attendance.id.to_s
       assigns(:mission_attendance).should eq(mission_attendance)
     end
@@ -30,7 +30,7 @@ describe MissionAttendancesController do
 
   describe "GET edit" do
     before :each do
-      @mission_attendance = Factory :report
+      @mission_attendance = FactoryGirl.create(:report)
     end
 
     it "should fail for guest" do

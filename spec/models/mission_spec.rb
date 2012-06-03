@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Mission do
   def valid_attributes
-    Factory.attributes_for(:mission)
+    FactoryGirl.attributes_for(:mission)
   end
 
   it "should create a new instance with valid attributes" do
@@ -35,7 +35,7 @@ describe Mission do
     end
 
     it "should require unique number" do
-      Factory.create(:mission)
+      FactoryGirl.create(:mission)
       should validate_uniqueness_of(:number)
     end
 

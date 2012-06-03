@@ -17,7 +17,7 @@ describe UsersController do
 
   describe "GET 'show' for logged in user" do
     before do
-      @user = Factory.create(:user)
+      @user = FactoryGirl.create(:user)
       sign_in @user
     end
     

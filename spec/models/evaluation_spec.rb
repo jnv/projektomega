@@ -19,11 +19,11 @@ describe Evaluation do
   describe "group_by_{mission|character}" do
     before do
       @count = 2
-      @mission = Factory(:mission)
+      @mission = FactoryGirl.create(:mission)
       @attendances = FactoryGirl.create_list(:attendance, @count, {mission: @mission})
 
-      @eval1 = Factory(:evaluation, {mission: @mission, author: @attendances.first.character, character: @attendances.last.character})
-      @eval2 = Factory(:evaluation, {mission: @mission, author: @attendances.last.character, character: @attendances.first.character})
+      @eval1 = FactoryGirl.create(:evaluation, {mission: @mission, author: @attendances.first.character, character: @attendances.last.character})
+      @eval2 = FactoryGirl.create(:evaluation, {mission: @mission, author: @attendances.last.character, character: @attendances.first.character})
     end
 
     it "returns evaluations grouped by missions" do
@@ -50,7 +50,7 @@ describe Evaluation do
     it { should validate_presence_of(:content) }
 
     it "shouldn't allow author to be same as character" do
-      attendance = Factory(:attendance)
+      attendance = FactoryGirl.create(:attendance)
       mission = attendance.mission
       character = attendance.character
 
@@ -60,9 +60,9 @@ describe Evaluation do
     end
 
     it "shouldn't accept author or character who haven't attended the mission" do
-      mission = Factory(:mission)
-      character = Factory(:character)
-      author = Factory(:character)
+      mission = FactoryGirl.create(:mission)
+      character = FactoryGirl.create(:character)
+      author = FactoryGirl.create(:character)
 
       lambda do
         Evaluation.create!({author: character, character: author, mission: mission, content: 'blah'})

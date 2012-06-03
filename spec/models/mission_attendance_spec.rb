@@ -16,9 +16,9 @@ describe MissionAttendance do
 
   describe "scopes" do
     before do
-      @mission = Factory(:attended_mission, attendees: 4)
-      @evaluation = Factory(:evaluation, attended_mission: @mission)
-      @evaluation2 = Factory(:evaluation, {attended_mission: @mission, author: @mission.characters[3]})
+      @mission = FactoryGirl.create(:attended_mission, attendees: 4)
+      @evaluation = FactoryGirl.create(:evaluation, attended_mission: @mission)
+      @evaluation2 = FactoryGirl.create(:evaluation, {attended_mission: @mission, author: @mission.characters[3]})
     end
 
     specify { MissionAttendance.joins(:evaluations).count.should == 2 }
@@ -35,8 +35,8 @@ describe MissionAttendance do
   end
 
   #it "should return non-empty reports" do
-  #  report = Factory :report
-  #  Factory :mission_attendance
+  #  report = FactoryGirl.create(:report)
+  #  Factory(:mission_attendance)
   #
   #  MissionAttendance.reports
   #end

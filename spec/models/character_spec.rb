@@ -11,7 +11,7 @@ describe Character do
   end
 
   it "shouldn't allow number to be changed" do
-    char = Factory(:character, number: 20)
+    char = FactoryGirl.create(:character, number: 20)
     char.number = 30
     char.save!
     char.reload
@@ -53,7 +53,7 @@ describe Character do
     end
 
     it "should require unique number" do
-      Factory(:character)
+      FactoryGirl.create(:character)
       should validate_uniqueness_of(:number)
     end
 

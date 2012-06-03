@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe "missions/show.html.haml" do
   before(:each) do
-    @mission = assign(:mission, Factory.build(:attended_mission))
+    @mission = assign(:mission, FactoryGirl.build(:attended_mission))
     stub_ability
   end
 

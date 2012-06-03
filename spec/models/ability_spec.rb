@@ -6,12 +6,12 @@ describe Ability do
 
   subject { ability }
 
-  let(:user) { Factory(:user) }
-  let(:character) { Factory.build(:character) }
-  let(:mission) { Factory.build(:mission) }
-  let(:report) { Factory.build(:report) }
-  let(:evaluation) { Factory.build(:evaluation) }
-  let(:post) { Factory.build(:post) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:character) { FactoryGirl.build(:character) }
+  let(:mission) { FactoryGirl.build(:mission) }
+  let(:report) { FactoryGirl.build(:report) }
+  let(:evaluation) { FactoryGirl.build(:evaluation) }
+  let(:post) { FactoryGirl.build(:post) }
 
   context "guest" do
     let(:user) { nil }
@@ -36,17 +36,17 @@ describe Ability do
   context "user" do
 
     context "without any character" do
-      let(:character) { Factory(:orphaned_character) }
+      let(:character) { FactoryGirl.create(:orphaned_character) }
 
       it { should_not be_able_to(:create, Post.new(character: character)) }
     end
 
 
     context "his own character" do
-      let(:character) { Factory(:character, { user: user }) }
-      let(:report) { Factory.build(:report, {character: character}) }
-      let(:evaluation) { Factory.build(:evaluation, {author: character}) }
-      let(:post) { Factory.build(:post, {character: character}) }
+      let(:character) { FactoryGirl.create(:character, { user: user }) }
+      let(:report) { FactoryGirl.build(:report, {character: character}) }
+      let(:evaluation) { FactoryGirl.build(:evaluation, {author: character}) }
+      let(:post) { FactoryGirl.build(:post, {character: character}) }
 
       it { should be_able_to(:read, character) }
       it { should be_able_to(:update, character) }
@@ -76,7 +76,7 @@ describe Ability do
       end
 
       describe "evaluation" do
-        let(:evaluation) { Factory.build(:evaluation) }
+        let(:evaluation) { FactoryGirl.build(:evaluation) }
         it { should_not be_able_to(:create, evaluation) }
         it { should_not be_able_to(:update, evaluation) }
       end
@@ -95,15 +95,15 @@ describe Ability do
     end
 
 
-    #specify { should be_able_to :update, Factory.create(:character, {user: user}), "User #{user.id} cant update character owned by user #{character.user_id}" }
+    #specify { should be_able_to :update, FactoryGirl.create(:character, {user: user}), "User #{user.id} cant update character owned by user #{character.user_id}" }
 
-    #it { should_not be_able_to :edit, Factory.build(:character) }
+    #it { should_not be_able_to :edit, FactoryGirl.build(:character) }
 
   end
 
   describe "for role :admin" do
 
-    let(:user) { Factory.build(:admin) }
+    let(:user) { FactoryGirl.build(:admin) }
 
     it { should be_able_to(:read, character) }
     it { should be_able_to(:update, character) }

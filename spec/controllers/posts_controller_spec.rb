@@ -10,9 +10,9 @@ describe PostsController do
     {}
   end
 
-  let(:user) { Factory(:user) }
-  let(:character) { Factory(:character, user: user) }
-  let(:post_record) { Factory(:post, character: character) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:character) { FactoryGirl.create(:character, user: user) }
+  let(:post_record) { FactoryGirl.create(:post, character: character) }
   let(:valid_attributes) { {content: "Lorem ipsum"} }
 
   before do

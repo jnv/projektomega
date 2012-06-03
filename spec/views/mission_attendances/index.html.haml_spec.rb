@@ -3,8 +3,8 @@ require 'spec_helper'
 
 describe "mission_attendances/index.html.haml" do
   before(:each) do
-    @full = Factory.build(:report)
-    @empty = Factory.build(:attendance, report: nil)
+    @full = FactoryGirl.build(:report)
+    @empty = FactoryGirl.build(:attendance, report: nil)
     assign(:mission_attendances, [
       @full,
       @empty

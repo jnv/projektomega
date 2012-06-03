@@ -12,7 +12,7 @@ module HelperMethods
   end
 
   def sign_in_with_admin
-    sign_in_with Factory(:admin)
+    sign_in_with FactoryGirl.create(:admin)
   end
 
   [:notice, :error].each do |name|

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   it "should create a new instance given a valid attribute" do
-    user = Factory.build(:user)
+    user = FactoryGirl.build(:user)
     user.save!
   end
 
@@ -27,7 +27,7 @@ describe User do
 
   describe "uniqueness validations" do
     before do
-      Factory.create(:user)
+      FactoryGirl.create(:user)
     end
 
     it { should validate_uniqueness_of(:email).case_insensitive }
@@ -49,21 +49,21 @@ describe User do
     it { should allow_value(:coordinator).for(:role) }
 
     it "should provide role as symbol" do
-      user = Factory.create(:user)
+      user = FactoryGirl.create(:user)
       user.reload
       user.role.should == :user
     end
 
     it "should allow role to be set as string" do
 
-      user = Factory.build(:user, {role: 'admin'})
+      user = FactoryGirl.build(:user, {role: 'admin'})
       user.save!
       user.role.should == :admin
 
     end
 
     it "should allow role to be (mass assigned) as string" do
-      atts = Factory.attributes_for(:user)
+      atts = FactoryGirl.attributes_for(:user)
       atts[:role] = 'admin'
       user = User.new(atts)
       user.role.should == :admin
@@ -81,7 +81,7 @@ describe User do
     end
 
     it "should require password confirmation" do
-      user = Factory.build(:user)
+      user = FactoryGirl.build(:user)
       user.password = "abc123"
       user.password_confirmation = "123abc"
       user.should_not be_valid
@@ -92,7 +92,7 @@ describe User do
   describe "password encryption" do
 
     before do
-      @user = Factory.create(:user)
+      @user = FactoryGirl.create(:user)
     end
 
     it "should have an encrypted password attribute" do

@@ -3,7 +3,7 @@ require 'acceptance/acceptance_helper'
 
 feature 'Characters' do
 
-  let(:character) { Factory :character }
+  let(:character) { FactoryGirl.create(:character) }
 
   scenario 'show agents for unregistered user' do
     char = character
@@ -38,9 +38,9 @@ feature 'Characters' do
     let(:model) { character }
     let(:model_name) { :character }
     let(:evaluation) do
-      extra_character = Factory(:orphaned_character)
-      mission = Factory(:mission, characters: [character, extra_character])
-      Factory(:evaluation, {mission: mission, character: character, author: extra_character})
+      extra_character = FactoryGirl.create(:orphaned_character)
+      mission = FactoryGirl.create(:mission, characters: [character, extra_character])
+      FactoryGirl.create(:evaluation, {mission: mission, character: character, author: extra_character})
     end
   end
 
@@ -48,8 +48,8 @@ feature 'Characters' do
   describe 'authorized user' do
 
     before :each do
-      @user = Factory :user
-      @char = Factory(:character, user: @user)
+      @user = FactoryGirl.create(:user)
+      @char = FactoryGirl.create(:character, user: @user)
       sign_in_with @user
       visit characters_path
     end
@@ -90,7 +90,7 @@ feature 'Characters' do
     end
 
     scenario "shouldn't be able to edit someone else's character" do
-      char2 = Factory(:character)
+      char2 = FactoryGirl.create(:character)
       visit characters_path
       find(css_dom_id(char2)) do |char|
         char.should_not have_link "Upravit"
@@ -111,8 +111,8 @@ feature 'Characters' do
   describe 'administrator' do
 
     before :each do
-      @user = Factory :admin
-      @char = Factory :orphaned_character
+      @user = FactoryGirl.create(:admin)
+      @char = FactoryGirl.create(:orphaned_character)
       sign_in_with @user
       visit characters_path
     end

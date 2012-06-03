@@ -4,13 +4,13 @@ require 'acceptance/acceptance_helper'
 feature 'Evaluations' do
 
   before do
-    @mission = Factory(:attended_mission_w_users, attendees: 3) #@evaluation.mission
-    @evaluation = Factory(:evaluation, {attended_mission: @mission})
+    @mission = FactoryGirl.create(:attended_mission_w_users, attendees: 3) #@evaluation.mission
+    @evaluation = FactoryGirl.create(:evaluation, {attended_mission: @mission})
     @author = @evaluation.author
     @character = @evaluation.character
     @character2 = @mission.characters[2]
-                                                                #Factory(:evaluation, {attended_mission: @mission, character: @character2})
-    @evaluation2 = Factory(:evaluation, {attended_mission: @mission, author: @character2, character: @character})
+                                                                #FactoryGirl.create(:evaluation, {attended_mission: @mission, character: @character2})
+    @evaluation2 = FactoryGirl.create(:evaluation, {attended_mission: @mission, author: @character2, character: @character})
 
   end
 

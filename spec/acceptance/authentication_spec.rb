@@ -3,16 +3,14 @@ require 'acceptance/acceptance_helper'
 
 feature 'Authentication' do
 
-  let :user do
-    Factory :user
-  end
+  let(:user) { FactoryGirl.create(:user) }
 
   before :each do
     #@transactions_state = self.use_transactional_fixtures
     #self.use_transactional_fixtures = false
     #@user = FactoryGirl.create(:user)
   end
-  
+
   after :each do
     #self.use_transactional_fixtures = @transactions_state
   end
@@ -41,7 +39,7 @@ feature 'Authentication' do
   end
 
   scenario 'Invalid login' do
-    sign_in_with Factory.build(:user)
+    sign_in_with FactoryGirl.build(:user)
     should_be_on sign_in_path
     page.should have_content 'Neplatný e-mail nebo heslo'
   end

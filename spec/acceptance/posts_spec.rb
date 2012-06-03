@@ -4,7 +4,7 @@ require 'acceptance/acceptance_helper'
 feature 'Posts' do
 
   before do
-    @post = Factory(:post)
+    @post = FactoryGirl.create(:post)
     @character = @post.character
     @user = @character.user
   end
@@ -48,7 +48,7 @@ feature 'Posts' do
 
   describe "user without character" do
     before do
-      sign_in_with Factory(:user)
+      sign_in_with FactoryGirl.create(:user)
       visit posts_path
     end
 

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Post do
 
   def valid_attributes
-    {character: Factory(:orphaned_character), content: 'Lorem ipsum'}
+    {character: FactoryGirl.create(:orphaned_character), content: 'Lorem ipsum'}
   end
 
   it "should create a new instance with valid attributes" do

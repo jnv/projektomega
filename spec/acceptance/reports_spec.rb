@@ -4,7 +4,7 @@ require 'acceptance/acceptance_helper'
 feature 'Reports' do
 
   before do
-    @report = Factory(:report)
+    @report = FactoryGirl.create(:report)
     @user = @report.character.user
   end
 

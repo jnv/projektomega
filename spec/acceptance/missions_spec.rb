@@ -3,7 +3,7 @@ require 'acceptance/acceptance_helper'
 
 feature 'Missions' do
 
-  let(:mission) { Factory :attended_mission }
+  let(:mission) { FactoryGirl.create(:attended_mission) }
 
   scenario 'show all missions with agents' do
     mission
@@ -27,7 +27,7 @@ feature 'Missions' do
   it_should_behave_like "evaluations list" do
     let(:model) { mission }
     let(:model_name) { :mission }
-    let(:evaluation) { Factory(:evaluation, {attended_mission: mission}) }
+    let(:evaluation) { FactoryGirl.create(:evaluation, {attended_mission: mission}) }
   end
 
   context 'unauthorized user' do
@@ -45,7 +45,7 @@ feature 'Missions' do
   context 'authorized user' do
 
     scenario 'link to new report' do
-      attendance = Factory(:attendance, {mission: mission, report: nil})
+      attendance = FactoryGirl.create(:attendance, {mission: mission, report: nil})
       sign_in_with attendance.character.user
 
       visit mission_path(mission)
@@ -59,8 +59,8 @@ feature 'Missions' do
   context 'administrator' do
 
     before :each do
-      @user = Factory :admin
-      @mission = Factory :mission
+      @user = FactoryGirl.create(:admin)
+      @mission = FactoryGirl.create(:mission)
       sign_in_with @user
       visit missions_path
     end
