@@ -20,7 +20,7 @@ feature 'Authentication' do
 
   scenario 'Registration' do
     visit sign_up_path
-    within("#user_new") do
+    within("#new_user") do
       fill_in 'Jméno', with: 'Leeroy Jenkins'
       fill_in 'E-mail', with: 'user@example.com'
       fill_in 'Heslo', with: 'please'

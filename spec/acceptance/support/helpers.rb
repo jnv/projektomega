@@ -4,7 +4,7 @@ module HelperMethods
 
   def sign_in_with(user)
     visit sign_in_path
-    within "#user_new" do
+    within "#new_user" do
       fill_in 'E-mail', with: user.email
       fill_in 'Heslo', with: user.password
       click_button 'Přihlásit se'
