@@ -7,9 +7,10 @@ bundler_args: --without development guard pry airbrake
 env:
   - DB=postgres
   - DB=sqlite
-#  - DB=mysql BUNDLE_WITHOUT=sqlite:postgres
+  - DB=mysql
 before_script:
   - bundle exec rake ci:setup --trace
 matrix:
   allow_failures:
     - rvm: 1.9.3
+    - env: DB=mysql
