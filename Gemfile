@@ -47,7 +47,7 @@ gem 'haml', '~> 3.2.0.alpha'
 gem 'haml-rails', '>= 0.3.4'
 gem "html5-rails"
 
-gem "redcarpet", "~>2.0.0b5"
+gem "redcarpet", "~>2.1.1"
 
 group :airbrake do
   gem "airbrake"
