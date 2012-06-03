@@ -35,7 +35,7 @@ end
 gem "composite_primary_keys", "~>5.0.6"
 gem "devise", '~> 2.1.0'
 gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
-gem 'formtastic', '~>2.0.0.rc'
+gem 'formtastic', '~>2.2.0'
 
 gem 'carrierwave'
 gem 'mini_magick'

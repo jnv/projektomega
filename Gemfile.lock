@@ -95,8 +95,8 @@ GEM
       railties (>= 3.0.0)
     ffi (1.0.11)
     forgery (0.5.0)
-    formtastic (2.0.2)
-      rails (~> 3.0)
+    formtastic (2.2.0)
+      actionpack (>= 3.0)
     fssm (0.2.9)
     guard (1.1.1)
       listen (>= 0.4.2)
@@ -259,7 +259,7 @@ DEPENDENCIES
   devise (~> 2.1.0)
   factory_girl_rails
   forgery
-  formtastic (~> 2.0.0.rc)
+  formtastic (~> 2.2.0)
   guard-livereload
   guard-rails
   guard-rspec
