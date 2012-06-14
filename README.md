@@ -1,3 +1,3 @@
-# CPH Omega [![Build Status](https://secure.travis-ci.org/jnv/cph-omega.png?branch=master)](http://travis-ci.org/jnv/cph-omega) [![Dependency Status](https://gemnasium.com/jnv/cph-omega.png)](https://gemnasium.com/jnv/cph-omega)
+# CPH Omega [![Build Status](https://secure.travis-ci.org/jnv/cph-omega.png?branch=master)](http://travis-ci.org/jnv/cph-omega) [![Dependency Status](https://gemnasium.com/jnv/cph-omega.png)](https://gemnasium.com/jnv/cph-omega) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/jnv/cph-omega)
 
 Rails hobby project for the game play management of the Omega table-talk RPG.
