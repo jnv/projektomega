@@ -49,6 +49,8 @@ gem "html5-rails"
 
 gem "redcarpet", "~>2.1.1"
 
+gem 'inherited_resources'
+
 group :airbrake do
   gem "airbrake"
 end
@@ -61,7 +63,7 @@ group :test, :development do
 end
 
 group :test do
-  gem "factory_girl_rails"
+  gem "factory_girl_rails", :require => false
   gem "forgery"
   gem "shoulda-matchers"
   #gem 'simplecov', '>= 0.4.0', :require => false
