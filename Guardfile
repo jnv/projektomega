@@ -1,7 +1,3 @@
-# A sample Guardfile
-# More info at https://github.com/guard/guard#readme
-
-
 group :test do
   guard 'spork', :rspec_env => {'RAILS_ENV' => 'test'} do
     watch('config/application.rb')
