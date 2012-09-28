@@ -3,7 +3,19 @@
 	[
 		{
 			"path": "."
-		}
+		},
+    {
+      "path": "./app"
+    },
+    {
+      "path": "./spec"
+    },
+    {
+      "path": "./config"
+    },
+    {
+      "path": "./db"
+    }
 	],
   "settings":
     {
