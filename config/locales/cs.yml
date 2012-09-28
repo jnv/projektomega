@@ -65,7 +65,7 @@ cs:
         notice: Agent byl upraven.
     missions:
       create:
-        create: Mise byla vytvořena.
+        notice: Mise byla vytvořena.
       update:
         notice: Mise byla upravena.
   report:

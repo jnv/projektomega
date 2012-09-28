@@ -57,6 +57,7 @@ describe MissionsController do
   end
 
   shared_examples "CRUD PUT update" do
+    let!(:mission) { Mission.create! valid_attributes }
     describe "with valid params" do
       it "updates the requested mission" do
         # Assuming there are no other missions in the database, this
@@ -68,13 +69,11 @@ describe MissionsController do
       end
 
       it "assigns the requested mission as @mission" do
-        mission = Mission.create! valid_attributes
         put :update, :id => mission.id, :mission => valid_attributes
         assigns(:mission).should eq(mission)
       end
 
       it "redirects to the mission" do
-        mission = Mission.create! valid_attributes
         put :update, :id => mission.id, :mission => valid_attributes
         response.should redirect_to(mission)
       end
@@ -82,7 +81,6 @@ describe MissionsController do
 
     describe "with invalid params" do
       it "assigns the mission as @mission" do
-        mission = Mission.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Mission.any_instance.stub(:save).and_return(false)
         put :update, :id => mission.id.to_s, :mission => {}
@@ -90,10 +88,9 @@ describe MissionsController do
       end
 
       it "re-renders the 'edit' template" do
-        mission = Mission.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Mission.any_instance.stub(:save).and_return(false)
-        put :update, :id => mission.id.to_s, :mission => {}
+        #Mission.any_instance.stub(:save)
+        put :update, :id => mission.id.to_s, :mission => {'name' => ''}
         response.should render_template("edit")
       end
     end
