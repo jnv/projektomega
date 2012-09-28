@@ -11,7 +11,7 @@ group :test do
     watch(%r{features/support/}) { :cucumber }
   end
 
-  guard 'rspec', :all_on_start => false, :cli => "--color --format nested --fail-fast" do
+  guard 'rspec', :all_on_start => false, :cli => "--color --format nested --fail-fast --drb" do
     watch('spec/spec_helper.rb') { "spec" }
     watch('config/routes.rb') { "spec/routing" }
     watch('app/controllers/application_controller.rb') { "spec/controllers" }

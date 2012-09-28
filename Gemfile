@@ -58,12 +58,12 @@ end
 group :test, :development do
   gem "steak"
   #gem "rspec-rails", "~> 2.6"
-  gem "spork", ">= 0.9.0.rc"
-  gem "database_cleaner"
+  gem "spork-rails"
+  #gem "database_cleaner"
 end
 
 group :test do
-  gem "factory_girl_rails", :require => false
+  gem "factory_girl_rails"#, :require => false
   gem "forgery"
   gem "shoulda-matchers"
   #gem 'simplecov', '>= 0.4.0', :require => false
