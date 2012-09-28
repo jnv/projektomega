@@ -1,0 +1,14 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+  "settings":
+    {
+        "open_related_patterns": [
+          ["*/app/**/*.rb", "*/spec/**/*_spec.rb"]
+        ]
+    }
+}
