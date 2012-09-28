@@ -49,7 +49,7 @@ cs:
             author:
               attendance_exists: "Autor se dané mise nezúčastnil"
 
-      
+
   formtastic:
     actions:
       sign_up: Zaregistrovat se
@@ -57,10 +57,17 @@ cs:
 
     create: Vytvořit
     update: Uložit změny
-
-  character:
-    created: Agent byl vytvořen.
-    updated: Agent byl upraven.
+  flash:
+    characters:
+      create:
+        notice: Agent byl vytvořen.
+      update:
+        notice: Agent byl upraven.
+    missions:
+      create:
+        create: Mise byla vytvořena.
+      update:
+        notice: Mise byla upravena.
   report:
     updated: Hlášení bylo upraveno.
   mission:

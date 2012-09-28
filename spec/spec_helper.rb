@@ -47,7 +47,8 @@ Spork.each_run do
   # This code will be run each time you run your specs.
 
   #Factory Girl
-  FactoryGirl.reload
+  require 'factory_girl_rails'
+  #FactoryGirl.reload
 
   #I18n
   I18n.backend.reload!
