@@ -81,6 +81,7 @@ describe MissionAttendancesController do
 
         it "re-renders the 'edit' template" do
           MissionAttendance.any_instance.stub(:save).and_return(false)
+          MissionAttendance.any_instance.stub(:errors).and_return(['error'])
           put :update, :id => @mission_attendance.id.to_s, :mission_attendance => {'report'=>'blah'}
           response.should render_template("edit")
         end

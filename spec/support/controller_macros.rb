@@ -64,6 +64,12 @@ module ControllerMacros
     Ability.any_instance.stub(:can?)
   end
 
+  #FIXME
+  def invalid_resource(klass)
+    klass.any_instance.stub(:save).and_return(false)
+    klass.any_instance.stub(:errors).and_return(['error'])
+  end
+
 
 end
 
