@@ -80,6 +80,7 @@ GEM
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
     connection_pool (0.9.2)
+    database_cleaner (0.8.0)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -266,6 +267,7 @@ DEPENDENCIES
   compass-h5bp
   compass-rails
   composite_primary_keys (~> 5.0.6)!
+  database_cleaner
   devise (~> 2.1.0)
   factory_girl_rails
   forgery
