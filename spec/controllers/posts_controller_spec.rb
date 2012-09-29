@@ -71,8 +71,8 @@ describe PostsController do
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Post.any_instance.stub(:save).and_return(false)
-        post :create, {:post => {}}
+        #Post.any_instance.stub(:save).and_return(false)
+        post :create, {:post => {content: ''}}
         response.should render_template("new")
       end
     end
@@ -123,8 +123,8 @@ describe PostsController do
       it "re-renders the 'edit' template" do
         post_record
         # Trigger the behavior that occurs when invalid params are submitted
-        Post.any_instance.stub(:save).and_return(false)
-        put :update, {:id => post_record.to_param, :post => {}}, valid_session
+        #Post.any_instance.stub(:save).and_return(false)
+        put :update, {:id => post_record.to_param, :post => {'content' => ''}}, valid_session
         response.should render_template("edit")
       end
     end
