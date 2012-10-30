@@ -26,6 +26,8 @@ group :assets do
   #gem "compass-html5", :git => "git://github.com/sporkd/compass-html5.git"
 end
 
+gem 'thin'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -76,19 +78,12 @@ group :development do
   # To use debugger
   # gem 'ruby-debug19', :require => 'ruby-debug'
   #gem "yaml_db"
-end
-
-group :pry do
-  gem "pry"
-  gem "pry-stack_explorer"
-  #gem 'pry-rails'
-end
-
-group :guard do
   gem "guard-spork"
   gem "guard-livereload"
   gem "guard-rails"
   gem "guard-rspec"
   gem "rb-inotify"
   gem "libnotify"
+  gem "pry"
+  gem "pry-stack_explorer"
 end
