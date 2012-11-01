@@ -27,6 +27,7 @@ group :assets do
 end
 
 gem 'thin'
+gem 'foreman'
 
 # Use unicorn as the web server
 # gem 'unicorn'
