@@ -87,4 +87,5 @@ group :development do
   gem "libnotify"
   gem "pry"
   gem "pry-stack_explorer"
+  gem 'capistrano'
 end
