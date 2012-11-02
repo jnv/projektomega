@@ -96,7 +96,7 @@ ComfortableMexicanSofa.configure do |config|
   # production env with dev/testing envs.
   # e.g. config.site_aliases = {'host.com' => 'host.inv', 'host_a.com' => ['host.lvh.me', 'host.dev']}
   # Default is nil (not used)
-  config.hostname_aliases = {'projektomega.cz' => ['www.projektomega.cz', 'test.host']}
+  config.hostname_aliases = {'projektomega.cz' => ['localhost', 'www.projektomega.cz', 'test.host']}
 
 end
 
