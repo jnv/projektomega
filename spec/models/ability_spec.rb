@@ -119,6 +119,8 @@ describe Ability do
     it { should be_able_to(:create, Evaluation.new) }
     it { should be_able_to(:update, evaluation) }
 
+    it { should be_able_to(:update, Cms::Site) }
+
 
   end
 
