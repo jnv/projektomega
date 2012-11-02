@@ -1,12 +1,12 @@
 # encoding: utf-8
-
+require 'omega/devise_auth'
 ComfortableMexicanSofa.configure do |config|
   # Title of the admin area
   #   config.cms_title = 'ComfortableMexicanSofa CMS Engine'
 
   # Module responsible for authentication. You can replace it with your own.
   # It simply needs to have #authenticate method. See http_auth.rb for reference.
-  #   config.admin_auth = 'ComfortableMexicanSofa::HttpAuth'
+  config.admin_auth = 'Omega::DeviseAuth'
 
   # Module responsible for public authentication. Similar to the above. You also
   # will have access to @cms_site, @cms_layout, @cms_page so you can use them in
@@ -96,7 +96,7 @@ ComfortableMexicanSofa.configure do |config|
   # production env with dev/testing envs.
   # e.g. config.site_aliases = {'host.com' => 'host.inv', 'host_a.com' => ['host.lvh.me', 'host.dev']}
   # Default is nil (not used)
-  #   config.hostname_aliases = nil
+  config.hostname_aliases = {'projektomega.cz' => ['www.projektomega.cz', 'test.host']}
 
 end
 
