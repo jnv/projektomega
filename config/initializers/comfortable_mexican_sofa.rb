@@ -20,7 +20,7 @@ ComfortableMexicanSofa.configure do |config|
 
   # When arriving at /cms-admin you may chose to redirect to arbirtary path,
   # for example '/cms-admin/users'
-  #   config.admin_route_redirect = ''
+  config.admin_route_redirect = '/admin/sites/1/pages'
 
   # Normally we include default routes from https://github.com/comfy/comfortable-mexican-sofa/blob/master/config/routes.rb
   # If you want to include the routes manually set this to false
