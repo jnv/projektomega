@@ -36,26 +36,32 @@ gem 'yaml_db', require: false
 # Deploy with Capistrano
 # gem 'capistrano'
 
-gem "composite_primary_keys", "~>5.0.6", :git => "git://github.com/drnic/composite_primary_keys.git"
+# Rack
+gem 'rack-canonical-host'
+
+#Auth
 gem "devise", '~> 2.1.0'
 gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
+
+# Controllers & Views
+gem 'inherited_resources'
 gem 'formtastic', '~>2.2.0'
-
-gem 'carrierwave'
-gem 'mini_magick'
-
-gem 'jquery-rails'
-
-#gem 'haml', :git => "git://github.com/jnv/haml.git", :branch => "issue_438"
 gem 'haml', '~> 3.2.0.alpha'
 gem 'haml-rails', '>= 0.3.4'
 gem "html5-rails"
 
 gem "redcarpet", "~>2.2.2"
 
-gem 'inherited_resources'
+# Models
+gem "composite_primary_keys", "~>5.0.6", :git => "git://github.com/drnic/composite_primary_keys.git"
+gem 'carrierwave'
+gem 'mini_magick'
+
+# JS
+gem 'jquery-rails'
 
 gem 'comfortable_mexican_sofa'
+
 
 group :airbrake do
   gem "airbrake"
