@@ -28,6 +28,7 @@ end
 
 gem 'thin'
 gem 'foreman'
+gem 'yaml_db'
 
 # Use unicorn as the web server
 # gem 'unicorn'
