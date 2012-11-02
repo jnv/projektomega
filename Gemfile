@@ -26,9 +26,9 @@ group :assets do
   #gem "compass-html5", :git => "git://github.com/sporkd/compass-html5.git"
 end
 
-gem 'thin'
-gem 'foreman'
-gem 'yaml_db'
+gem 'thin', require: false
+gem 'foreman', require: false
+gem 'yaml_db', require: false
 
 # Use unicorn as the web server
 # gem 'unicorn'
