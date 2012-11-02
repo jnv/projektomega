@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(:version => 20121102193954) do
     t.string  "identifier",                     :null => false
     t.string  "hostname",                       :null => false
     t.string  "path"
-    t.string  "locale",      :default => "en",  :null => false
+    t.string  "locale",      :default => "cs",  :null => false
     t.boolean "is_mirrored", :default => false, :null => false
   end
 
