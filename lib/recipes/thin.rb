@@ -8,6 +8,7 @@ _cset(:thin_command) { 'bundle exec thin' }
 _cset(:thin_config_file) { "#{current_path}/config/thin.yml" }
 _cset(:thin_config) { "-C #{thin_config_file}" }
 
+_cset(:thin_address) { '127.0.0.1' }
 _cset(:thin_port) { 3000 }
 _cset(:thin_pid) { 'tmp/pids/thin.pid' }
 _cset(:thin_log) { 'log/thin.log' }
@@ -15,6 +16,8 @@ _cset(:thin_max_conns) { 1024 }
 _cset(:thin_max_persistent_conns) { 512 }
 
 _cset(:thin_servers) { 4 }
+
+_cset(:template_dir) { 'config/templates' }
 
 namespace :deploy do
   task :start do
@@ -33,7 +36,7 @@ namespace :deploy do
 end
 
 def skel_for(file)
-  File.join('config', 'templates', file)
+  File.join(template_dir, file)
 end
 
 def render_skel(file, target)
