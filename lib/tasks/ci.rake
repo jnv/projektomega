@@ -6,5 +6,5 @@ namespace :ci do
   end
 
   desc "Setup CI database configuration and setup"
-  task :setup => [:config, :'db:test:prepare']
+  task :setup => [:config, :'db:create', :'db:migrate', :'db:test:cms_fixtures']
 end
