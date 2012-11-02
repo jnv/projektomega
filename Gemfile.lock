@@ -28,6 +28,7 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.3)
+    active_link_to (1.0.0)
     activemodel (3.2.8)
       activesupport (= 3.2.8)
       builder (~> 3.0.0)
@@ -69,6 +70,7 @@ GEM
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
     chunky_png (1.2.6)
+    cocaine (0.4.2)
     coderay (1.0.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -77,6 +79,10 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    comfortable_mexican_sofa (1.6.25)
+      active_link_to (~> 1.0.0)
+      paperclip (>= 2.3.0)
+      rails (>= 3.0.0)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -184,6 +190,12 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.5.5)
     orm_adapter (0.4.0)
+    paperclip (3.3.1)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.4.0)
+      mime-types
     pg (0.14.1)
     polyglot (0.3.3)
     pry (0.9.10)
@@ -292,6 +304,7 @@ DEPENDENCIES
   capistrano
   carrierwave
   coffee-rails (~> 3.2.0)
+  comfortable_mexican_sofa
   compass-h5bp
   compass-rails
   composite_primary_keys (~> 5.0.6)!

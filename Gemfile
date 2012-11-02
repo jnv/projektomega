@@ -55,6 +55,8 @@ gem "redcarpet", "~>2.1.1"
 
 gem 'inherited_resources'
 
+gem 'comfortable_mexican_sofa'
+
 group :airbrake do
   gem "airbrake"
 end
