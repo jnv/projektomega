@@ -7,8 +7,10 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :transaction#, {:except => %w[cms_sites cms_pages cms_layouts]}
+    #DatabaseCleaner.clean_with(:truncation, {:except => %w[widgets]})
+
+    Capybara.default_host = 'http://test.host'
   end
 
   config.before(:each) do

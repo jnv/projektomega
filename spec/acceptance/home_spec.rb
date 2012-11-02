@@ -14,5 +14,5 @@ feature 'Home page', %q{
     page.should have_link('Agenti')
     page.should have_link('Mise')
   end
-  
+
 end
