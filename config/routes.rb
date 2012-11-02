@@ -1,7 +1,7 @@
 Omega::Application.routes.draw do
 
 
-  root to: 'home#index'
+  root to: "cms_content#render_html"
   devise_for :users
   resources :users, only: [:show, :index]
   resources :characters
