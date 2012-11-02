@@ -71,4 +71,4 @@ end
 after 'deploy:setup', 'thin:shared_pids'
 
 before 'deploy:restart', 'thin:config'
-after 'deploy:symlink', 'thin:rolling_restart'
+after 'deploy:create_symlink', 'thin:rolling_restart'
