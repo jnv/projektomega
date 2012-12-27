@@ -53,7 +53,7 @@ gem "html5-rails"
 gem "redcarpet", "~>2.2.2"
 
 # Models
-gem "composite_primary_keys", "~>5.0.6", :git => "git://github.com/drnic/composite_primary_keys.git"
+gem "composite_primary_keys", "~>5.0.10"
 gem 'carrierwave'
 gem 'mini_magick'
 
@@ -71,6 +71,7 @@ group :test, :development do
   gem "steak"
   #gem "rspec-rails", "~> 2.6"
   gem "spork-rails"
+  gem "capybara", "~>1.0"
 end
 
 group :test do
