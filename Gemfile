@@ -62,10 +62,7 @@ gem 'jquery-rails'
 
 gem 'comfortable_mexican_sofa'
 
-
-group :airbrake do
-  gem "airbrake"
-end
+gem "airbrake"
 
 group :test, :development do
   gem "steak"
