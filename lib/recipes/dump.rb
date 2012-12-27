@@ -11,9 +11,10 @@ namespace :dump do
     run "rm #{remotefile}"
   end
 
+  desc "Download shared/uploads directory into local uploads; will overwrite existing files"
   task :uploads do
     remotepath = "#{shared_path}/uploads"
-    localpath = "public/uploads"
+    localpath = "public"
     download remotepath, localpath, via: :scp, recursive: true
   end
 end
