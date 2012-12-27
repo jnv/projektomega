@@ -10,4 +10,10 @@ namespace :dump do
     download remotefile, localfile, via: :scp
     run "rm #{remotefile}"
   end
+
+  task :uploads do
+    remotepath = "#{shared_path}/uploads"
+    localpath = "public/uploads"
+    download remotepath, localpath, via: :scp, recursive: true
+  end
 end
