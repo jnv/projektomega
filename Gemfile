@@ -28,7 +28,7 @@ end
 
 gem 'thin', require: false
 gem 'foreman', require: false
-gem 'yaml_db', require: false
+gem 'yaml_db'#, require: false
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -98,4 +98,5 @@ group :development do
   gem "pry"
   gem "pry-stack_explorer"
   gem 'capistrano'
+  gem 'sextant'
 end
