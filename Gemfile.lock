@@ -42,7 +42,6 @@ GEM
       girl_friday
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    binding_of_caller (0.6.8)
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.0.4)
@@ -160,8 +159,6 @@ GEM
     json (1.7.6)
     launchy (2.1.2)
       addressable (~> 2.3)
-    libnotify (0.8.0)
-      ffi (>= 1.0.11)
     libwebsocket (0.1.7.1)
       addressable
       websocket
@@ -204,8 +201,6 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.3.1)
-    pry-stack_explorer (0.4.7)
-      binding_of_caller (~> 0.6.8)
     rack (1.4.3)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -336,6 +331,7 @@ DEPENDENCIES
   foreman
   forgery
   formtastic (~> 2.2.0)
+  guard
   guard-livereload
   guard-rails
   guard-rspec
@@ -346,16 +342,13 @@ DEPENDENCIES
   inherited_resources
   jquery-rails
   launchy
-  libnotify
   mini_magick
   mysql2
   pg
-  pry
-  pry-stack_explorer
   rack-canonical-host
   rails (~> 3.2.11)
   rake
-  rb-inotify
+  rb-inotify (~> 0.8.8)
   redcarpet (~> 2.2.2)
   sass-rails (~> 3.2.0)
   sextant

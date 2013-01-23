@@ -85,14 +85,14 @@ group :development do
   # To use debugger
   # gem 'ruby-debug19', :require => 'ruby-debug'
   #gem "yaml_db"
+  gem 'capistrano'
+  gem 'sextant'
+
+  gem 'rb-inotify', '~> 0.8.8', require: false
+  gem 'guard'
+
   gem "guard-spork"
   gem "guard-livereload"
   gem "guard-rails"
   gem "guard-rspec"
-  gem "rb-inotify"
-  gem "libnotify"
-  gem "pry"
-  gem "pry-stack_explorer"
-  gem 'capistrano'
-  gem 'sextant'
 end
