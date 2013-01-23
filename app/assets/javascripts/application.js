@@ -5,6 +5,7 @@
 // the compiled file.
 //
 //= require jquery_ujs
+//= require foundation
 //= require h5bp
 //= require_tree .
 
