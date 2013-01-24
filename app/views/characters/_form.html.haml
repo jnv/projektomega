@@ -1,6 +1,6 @@
-= semantic_form_for @character do |f|
-  = f.inputs do
-    = f.input :number,:input_html => { readonly: disableFlag }
+= simple_form_for resource do |f|
+  .form-inputs
+    = f.input :number, disabled: disable_flag
     = f.input :name
     = f.input :born #TODO change to number
     = f.input :country, :as => :string
@@ -8,4 +8,5 @@
     = f.input :specialisation
     = f.input :portrait, :as => :file
     = f.input :user if can? :update, @character, :user
-  = f.actions
+  .form-actions
+    = f.button :submit
