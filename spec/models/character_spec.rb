@@ -67,7 +67,7 @@ describe Character do
     its(:code) { should == "A7" }
     its(:abbr) { should == "A7" }
     its(:full_name) { should == "A7 James Bond" }
-    specify { subject.to_s.should == "James Bond" }
+    specify { subject.to_s.should == "A7 James Bond" }
   end
 
 end
