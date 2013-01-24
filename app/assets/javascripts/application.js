@@ -6,7 +6,9 @@
 //
 //= require jquery_ujs
 //= require foundation
-//= require h5bp
 //= require_tree .
 
-$(".chzn-select").chosen()
+$(function(){
+  $(".chzn-select").chosen();
+  console.log($(document).foundationTabs());
+});

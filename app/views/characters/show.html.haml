@@ -1,54 +1,50 @@
-%h2= @character
+.character_show
+  .character.row
+    .portrait
+      = image_tag @character.portrait.to_s if @character.portrait?
 
+    %dl.attributes
+      - [:number, :name, :born, :country, :assignment, :specialisation, :user].each do |attr|
+        %dt= Character.human_attribute_name(attr)
+        %dd= resource.send(attr)
 
-.character_details
+  %section.attendances.row
+    %h3 Účast v misích
 
-  = image_tag @character.portrait.to_s, class: "portrait" if @character.portrait?
+    %table
+      %tr
+        %th Mise
+        %th Zúčastnění agenti
 
-  %dl
-    %dt Číslo
-    %dd= @character.number
-    %dt Jméno
-    %dd= @character.name
-    %dt Rok narození
-    %dd= @character.born
-    %dt Země
-    %dd= @character.country
-    %dt Zařazení
-    %dd= @character.assignment
-    %dt Specializace
-    %dd= @character.specialisation
-    %dt Hráč
-    %dd= @character.user
+      - @character.missions.each do |mission|
+        %tr[mission]
+          %td= link_to(mission.full_name, mission)
+          %td= linked_codes(mission.characters, @character)
 
-%h3 Účast v misích
+  %section.reports.row
+    %h3 Hlášení
+    %ul
+      = render partial: "report", collection: @character.attendances_with_missions, as: :attendance
 
-%table#missions
-  %tr
-    %th Mise
-    %th Zúčastnění agenti
+  %section.evaluations.row
+    %h3 Hodnocení agenta
+    - missions = @character.evaluations.group_by_mission
+    %ul.tabs.vertical
+      - klass = "active"
+      - missions.each do |mission, evaluations|
+        %li{class: klass}= link_to mission.full_name, "##{dom_id(mission, :eval)}"
+        - klass = nil
+    %ul.tabs-content
+      - klass = "active"
+      - missions.each do |mission, evaluations|
+        %li{id: "#{dom_id(mission, :eval)}Tab", class: klass}
+          = render partial: "shared/evaluations", collection: evaluations, as: :evaluation
+          -if can?(:create, :evaluations)
+            %p= link_to('Přidat hodnocení', new_evaluation_path({evaluation: {mission_id: mission.id, character_id: @character.id}}))
+          - klass = nil
 
-  - @character.missions.each do |mission|
-    %tr[mission]
-      %td= link_to(mission.full_name, mission)
-      %td= linked_codes(mission.characters, @character)
-
-%h3 Hlášení
-%ul#reports
-  = render partial: "report", collection: @character.attendances_with_missions, as: :attendance
-
-#evaluations
-  %h3 Hodnocení agenta
-  - @character.evaluations.group_by_mission.each do |mission, evaluations|
-    %h4= "V misi: #{mission.full_name}"
-    = render partial: "shared/evaluations", collection: evaluations, as: :evaluation
-    -if can?(:create, :evaluations)
-      %p= link_to('Přidat hodnocení', new_evaluation_path({evaluation: {mission_id: mission.id, character_id: @character.id}}))
-
-
-
-.meta_links
-  -if can? :update, @character
-    = link_to 'Upravit agenta', edit_character_path(@character)
-    \|
-  = link_to 'Přehled agentů', characters_path
+  .meta_links
+    -if can? :update, @character
+      = link_to 'Upravit agenta', edit_character_path(@character)
+      \|
+    = link_to 'Přehled agentů', characters_path
