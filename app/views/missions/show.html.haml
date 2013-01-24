@@ -1,31 +1,35 @@
 .mission_show
   .description.row
     .panel
-      %strong #{@mission.date}, #{@mission.location}
-      = simple_format(@mission.description)
+      %strong #{resource.date}, #{resource.location}
+      = simple_format(resource.description)
 
-  %section.characters
+  %section.characters.row
     %h3 Zúčastnění agenti
-    -if @mission.characters
+    -if resource.characters
       %ul
-        = render partial: "character", collection: @mission.characters, as: :character
+        = render partial: "character", collection: resource.characters, as: :character
     -else
       %p Mise se nezúčastnili žádní agenti
 
   %h3 Hlášení
-  %ul#reports
+  %section.reports.row
     = render partial: "report", collection: @mission.attendances_with_characters, as: :attendance
 
-  #evaluations
+  %section.evaluations.row
     %h3 Hodnocení agentů
-    -  @mission.evaluations.group_by_character.each do |character, evaluations|
-      %h4= "Hodnocení agenta: #{character.full_name}"
-      = render partial: "shared/evaluations", collection: evaluations, as: :evaluation
-      -if can?(:create, :evaluations)
-        %p= link_to('Přidat hodnocení', new_evaluation_path({evaluation: {mission_id: @mission.id, character_id: character.id}}))
+    - characters = resource.evaluations.group_by_character
+    %ul.tabs.vertical
+      - klass = "active"
+      - characters.each do |character, evaluations|
+        %li{class: klass}= link_to character.full_name, "##{dom_id(character, :eval)}"
+        - klass = nil
+    %ul.tabs-content
+      - klass = "active"
+      - characters.each do |character, evaluations|
+        %li{id: "#{dom_id(character, :eval)}Tab", class: klass}
+          = render partial: "shared/evaluation", collection: evaluations, as: :evaluation
+          - klass = nil
 
-  .meta_links
-    -if can? :update, @mission
-      = link_to 'Upravit misi', edit_mission_path(@mission)
-      \|
-    = link_to 'Přehled misí', missions_path
+          -if can?(:create, :evaluations)
+            %p= link_to('Přidat hodnocení', new_evaluation_path({evaluation: {mission_id: resource.id, character_id: character.id}}))
