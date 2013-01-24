@@ -45,22 +45,17 @@ end
 
 
 group :rails do
-  guard 'rails', :force_run => false do
-    watch(/^Gemfile.lock$/)
-    #watch(/^config\/.*\.(rb|yml)$/) { |m| m[0] if !m[0]['/locales/'] }
-    watch(%r{^(config|lib)/.*})
+  guard 'livereload' do
+    watch(%r{app/views/.+\.(erb|haml|slim)$})
+    watch(%r{app/helpers/.+\.rb})
+    watch(%r{public/.+\.(css|js|html)})
+    watch(%r{config/locales/.+\.yml})
+    # Rails Assets Pipeline
+    watch(%r{(app|vendor)/assets/\w+/(.+\.(css|js|html)).*})  { |m| "/assets/#{m[2]}" }
   end
 
-  guard 'livereload', :grace_period => 1 do
-    watch(%r{app\/.+\.(erb|haml|jst|hamljs|coffee)$})
-    watch(%r{app/assets/stylesheets/(.*)$}) { 'assets/application.css' }
-    watch(/app\/helpers\/.+\.rb/)
-    watch(/config\/locales\/.+\.yml/)
-    #  watch(%r{app/.+\.(erb|haml)})
-    #  watch(%r{app/helpers/.+\.rb})
-    #  watch(%r{(public/|app/assets).+\.(css|js|html)})
-    #  watch(%r{(app/assets/.+\.css)\.s[ac]ss}) { |m| m[1] }
-    #  watch(%r{(app/assets/.+\.js)\.coffee}) { |m| m[1] }
-    #  watch(%r{config/locales/.+\.yml})
+  guard 'rails' do
+    watch('Gemfile.lock')
+    #watch(%r{^(config|lib)/.*})
   end
 end
