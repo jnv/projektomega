@@ -1,5 +1,5 @@
 .character_show
-  .character.row
+  .description.row
     .portrait
       = image_tag @character.portrait.to_s if @character.portrait?
 
@@ -39,7 +39,5 @@
       - klass = "active"
       - missions.each do |mission, evaluations|
         %li{id: "#{dom_id(mission, :eval)}Tab", class: klass}
-          = render partial: "shared/evaluations", collection: evaluations, as: :evaluation
-          -if can?(:create, :evaluations)
-            %p= link_to('Přidat hodnocení', new_evaluation_path({evaluation: {mission_id: mission.id, character_id: @character.id}}))
+          = render partial: "shared/evaluation", collection: evaluations, as: :evaluation
           - klass = nil
