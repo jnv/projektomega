@@ -1,12 +1,14 @@
 %p
   Hodnocení agenta
-  %strong= @evaluation.character
+  %strong= resource.character
   v misi
-  %strong= @evaluation.mission
-= semantic_form_for @evaluation do |f|
-  = f.inputs do
-    = f.input :author,  input_html: { disabled: disable_flag } if can? :create, @evaluation, :author
+  %strong= resource.mission
+
+= simple_form_for resource do |f|
+  .form-inputs
+    = f.association :author,  disabled: disable_flag if can? :create, resource, :author
     = f.input :mission_id, as: :hidden
     = f.input :character_id, as: :hidden
     = f.input :content
-  = f.actions
+  .form-actions
+    =f.button :submit

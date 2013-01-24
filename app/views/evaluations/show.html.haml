@@ -1,17 +1,11 @@
-%dl
-  %dt Mise
-  %dd= linked_name @evaluation.mission
-  %dt Autor hodnocení
-  %dd= linked_name @evaluation.author
-  %dt Hodnocený agent
-  %dd= linked_name @evaluation.character
+.evaluation_show
+  %dl
+    %dt Mise
+    %dd= linked_name resource.mission
+    %dt Autor hodnocení
+    %dd= linked_name resource.author
+    %dt Hodnocený agent
+    %dd= linked_name resource.character
 
-%div[@evaluation]
-  =@evaluation.content
-
-
-.meta_links
-  -if can? :update, @evaluation
-    = link_to 'Upravit hodnocení', edit_evaluation_path(@evaluation)
-    \|
-  = link_to 'Přehled hodnocení', evaluations_path
+  %article[resource]
+    =simple_format(resource.content)
