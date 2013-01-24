@@ -6,7 +6,7 @@
       %th Hlášení
       %th
   %tbody
-    - @mission_attendances.each do |mission_attendance|
+    - collection.each do |mission_attendance|
       %tr[mission_attendance]
         %td= linked_name mission_attendance.mission
         %td= linked_name mission_attendance.character

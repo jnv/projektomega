@@ -7,7 +7,7 @@
       %th Zúčastnění agenti
       %th
   %tbody
-    - @missions.each do |mission|
+    - collection.each do |mission|
       %tr[mission]
         %td= linked_name mission
         %td= mission.date

@@ -6,7 +6,7 @@
       %th Hráč
       %th
   %tbody
-    - @characters.each do |character|
+    - collection.each do |character|
       %tr[character]
         %td= link_to image_tag(character.portrait.thumb.url, :size => "40x50"), character
         %td= link_to character.full_name, character
