@@ -45,6 +45,7 @@ gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
 # Controllers & Views
 gem 'inherited_resources'
 gem 'formtastic', '~>2.2.0'
+gem 'simple_form'
 gem 'haml', '~> 3.2.0.alpha'
 gem 'haml-rails', '>= 0.3.4'
 gem "html5-rails"
