@@ -1,17 +1,18 @@
 %table#missions
-  %tr
-    %th Mise
-    %th Datum
-    %th Lokace
-    %th Zúčastnění agenti
-    %th
-
-  - @missions.each do |mission|
-    %tr[mission]
-      %td= linked_name mission
-      %td= mission.date
-      %td= mission.location
-      %td= linked_codes(mission.characters)
-      %td
-        -if can? :update, mission
-          =link_to 'Upravit', edit_mission_path(mission)
+  %thead
+    %tr
+      %th Mise
+      %th Datum
+      %th Lokace
+      %th Zúčastnění agenti
+      %th
+  %tbody
+    - @missions.each do |mission|
+      %tr[mission]
+        %td= linked_name mission
+        %td= mission.date
+        %td= mission.location
+        %td= linked_codes(mission.characters)
+        %td
+          -if can? :update, mission
+            =link_to 'Upravit', edit_mission_path(mission)

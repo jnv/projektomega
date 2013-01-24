@@ -1,15 +1,16 @@
 %table#characters
-  %tr
-    %th
-    %th Agent
-    %th Hráč
-    %th
-
-  - @characters.each do |character|
-    %tr[character]
-      %td= link_to image_tag(character.portrait.thumb.url, :size => "40x50"), character
-      %td= link_to character.full_name, character
-      %td= character.user
-      %td
-        -if can? :update, character
-          =link_to 'Upravit', edit_character_path(character)
+  %thead
+    %tr
+      %th
+      %th Agent
+      %th Hráč
+      %th
+  %tbody
+    - @characters.each do |character|
+      %tr[character]
+        %td= link_to image_tag(character.portrait.thumb.url, :size => "40x50"), character
+        %td= link_to character.full_name, character
+        %td= character.user
+        %td
+          -if can? :update, character
+            =link_to 'Upravit', edit_character_path(character)
