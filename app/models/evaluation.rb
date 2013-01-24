@@ -1,9 +1,9 @@
 class Evaluation < ActiveRecord::Base
   self.primary_keys = :mission_id, :character_id, :author_id
 
-  belongs_to :mission
-  belongs_to :character
-  belongs_to :author, class_name: 'Character', foreign_key: 'author_id'
+  belongs_to :mission, inverse_of: :evaluations
+  belongs_to :character, inverse_of: :evaluations
+  belongs_to :author, class_name: 'Character', foreign_key: 'author_id', inverse_of: :authored_evaluations
   belongs_to :attendance, class_name: 'MissionAttendance', foreign_key: [:mission_id, :character_id]
 
   attr_readonly :mission, :character, :author
