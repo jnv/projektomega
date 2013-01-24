@@ -5,4 +5,4 @@ $ ->
   $('#evaluations').tablesorter
     sortList: [[0,0],[1,0],[2,0]],
     textExtraction: extractNumber,
-    headers: {3: {sorter: false}}
+    headers: {3: {sorter: false}, 4: {sorter: false}}
