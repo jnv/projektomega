@@ -1,0 +1,5 @@
+-if can?(:create, resource_name)
+  - begin # If the path doesn't exist
+    = link_to new_resource_path, class: 'new button primary' do
+      = action_button_translation(:new)
+  - rescue
