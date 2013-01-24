@@ -1,8 +1,10 @@
-%dl
-  %dt Autor
-  %dd= link_to(@mission_attendance.character.full_name, @mission_attendance.character)
-  %dt Mise
-  %dd= link_to(@mission_attendance.mission.full_name, @mission_attendance.mission)
+.mission_attendance_show
+  .description
+    %dl
+      %dt Autor
+      %dd= link_to(resource.character, resource.character)
+      %dt Mise
+      %dd= link_to(resource.mission.full_name, resource.mission)
 
-%article[@mission_attendance]
-  =markdown(@mission_attendance.report)
+  %article[resource]
+    =markdown(@mission_attendance.report)
