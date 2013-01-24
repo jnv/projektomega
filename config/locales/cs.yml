@@ -2,7 +2,35 @@ cs:
   title:
     default: Projekt Omega
     characters:
+      index: Přehled agentů
       show: "Agent %{character}"
+      new: Nový agent
+      edit: Upravit agenta
+    missions:
+      index: Přehled misí
+      show: "Mise %{mission}"
+      new: Nová mise
+      edit: Upravit misi
+    mission_attendances:
+      index: Přehled hlášení
+      show: Hlášení z mise
+      edit: Upravit hlášení
+    evaluations:
+      index: Přehled hodnocení agentů
+      show: Hodnocení agenta
+      edit: Upravit hodnocení agenta
+      new: Nové hodnocení agenta
+    posts:
+      ïndex: Diskuze
+      edit: Upravit příspěvek
+      new: Nový příspěvek
+    registrations:
+      new: Registrace
+      edit: Upravit účet
+    passwords:
+      new: Zapomenuté heslo
+    sessions:
+      new: Přihlášení
   activerecord:
     models:
       user: Uživatel
