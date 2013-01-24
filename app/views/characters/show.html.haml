@@ -42,9 +42,3 @@
           -if can?(:create, :evaluations)
             %p= link_to('Přidat hodnocení', new_evaluation_path({evaluation: {mission_id: mission.id, character_id: @character.id}}))
           - klass = nil
-
-  .meta_links
-    -if can? :update, @character
-      = link_to 'Upravit agenta', edit_character_path(@character)
-      \|
-    = link_to 'Přehled agentů', characters_path

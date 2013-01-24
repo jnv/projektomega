@@ -5,7 +5,7 @@ module TitleHelper
   end
 
   def page_title_translation_key
-    :"title.#{controller_name}.#{action_name}"
+    :"titles.#{controller_name}.#{action_name}"
   end
 
   def page_title_context

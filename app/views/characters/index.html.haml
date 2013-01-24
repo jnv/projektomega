@@ -1,7 +1,3 @@
--if can? :create, :characters
-  .meta_links
-    = link_to 'Vytvořit agenta', new_character_path
-
 %table#characters
   %tr
     %th
@@ -17,10 +13,3 @@
       %td
         -if can? :update, character
           =link_to 'Upravit', edit_character_path(character)
-
-
-%br
-
--if can? :create, :characters
-  .meta_links
-    = link_to 'Vytvořit agenta', new_character_path

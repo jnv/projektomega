@@ -1,5 +1,5 @@
 cs:
-  title:
+  titles:
     default: Projekt Omega
     characters:
       index: Přehled agentů
@@ -34,7 +34,7 @@ cs:
   activerecord:
     models:
       user: Uživatel
-      character: Postava
+      character: Agent
       mission: Mise
       mission_attendance: Hlášení z mise
       post: Příspěvek
@@ -82,13 +82,15 @@ cs:
               attendance_exists: "Autor se dané mise nezúčastnil"
 
 
-  formtastic:
+  helpers:
     actions:
       sign_up: Zaregistrovat se
       sign_in: Přihlásit se
-
-    create: Vytvořit
-    update: Uložit změny
+    submit:
+      create: Vytvořit
+      update: Uložit změny
+      new: Vytvořit
+      edit: Upravit
   flash:
     characters:
       create:

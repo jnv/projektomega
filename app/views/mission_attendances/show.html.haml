@@ -6,9 +6,3 @@
 
 %article[@mission_attendance]
   =markdown(@mission_attendance.report)
-
-.meta_links
-  -if can? :update, @mission_attendance
-    = link_to 'Upravit hlášení', edit_mission_attendance_path(@mission_attendance)
-    \|
-  = link_to 'Přehled hlášení', mission_attendances_path
