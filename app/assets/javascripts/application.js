@@ -11,5 +11,5 @@
 
 $(function(){
   $(".chzn-select").chosen();
-  console.log($(document).foundationTabs());
+  $(document).foundationTabs();
 });
