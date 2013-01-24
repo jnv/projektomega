@@ -1,5 +1,6 @@
 module ActionButtonHelper
   def action_button(action = nil)
+    return unless inherited_resources?
     action ||= action_name
     if action == 'index' or resource.nil?
       render partial: 'shared/buttons/new'
