@@ -1,28 +1,31 @@
-%p #{@mission.date}, #{@mission.location}
+.mission_show
+  .description.row
+    .panel
+      %strong #{@mission.date}, #{@mission.location}
+      = simple_format(@mission.description)
 
-%p= @mission.description
+  %section.characters
+    %h3 Zúčastnění agenti
+    -if @mission.characters
+      %ul
+        = render partial: "character", collection: @mission.characters, as: :character
+    -else
+      %p Mise se nezúčastnili žádní agenti
 
-%h3 Zúčastnění agenti
--if @mission.characters
-  %ul#characters
-    = render partial: "character", collection: @mission.characters, as: :character
--else
-  %p Mise se nezúčastnili žádní agenti
+  %h3 Hlášení
+  %ul#reports
+    = render partial: "report", collection: @mission.attendances_with_characters, as: :attendance
 
-%h3 Hlášení
-%ul#reports
-  = render partial: "report", collection: @mission.attendances_with_characters, as: :attendance
+  #evaluations
+    %h3 Hodnocení agentů
+    -  @mission.evaluations.group_by_character.each do |character, evaluations|
+      %h4= "Hodnocení agenta: #{character.full_name}"
+      = render partial: "shared/evaluations", collection: evaluations, as: :evaluation
+      -if can?(:create, :evaluations)
+        %p= link_to('Přidat hodnocení', new_evaluation_path({evaluation: {mission_id: @mission.id, character_id: character.id}}))
 
-#evaluations
-  %h3 Hodnocení agentů
-  -  @mission.evaluations.group_by_character.each do |character, evaluations|
-    %h4= "Hodnocení agenta: #{character.full_name}"
-    = render partial: "shared/evaluations", collection: evaluations, as: :evaluation
-    -if can?(:create, :evaluations)
-      %p= link_to('Přidat hodnocení', new_evaluation_path({evaluation: {mission_id: @mission.id, character_id: character.id}}))
-
-.meta_links
-  -if can? :update, @mission
-    = link_to 'Upravit misi', edit_mission_path(@mission)
-    \|
-  = link_to 'Přehled misí', missions_path
+  .meta_links
+    -if can? :update, @mission
+      = link_to 'Upravit misi', edit_mission_path(@mission)
+      \|
+    = link_to 'Přehled misí', missions_path

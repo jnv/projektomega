@@ -1,5 +1,0 @@
-%p[evaluation]
-  %strong= evaluation.author.full_name
-  = evaluation.content
-  -if can? :update, evaluation
-    = link_to('Upravit', edit_evaluation_path(evaluation))

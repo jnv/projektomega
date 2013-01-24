@@ -1,0 +1,8 @@
+%div.shared_evaluation[evaluation]
+  .portrait
+    = image_tag evaluation.author.portrait.thumb.url, alt: evaluation.author.full_name
+  .content
+    %strong.author= evaluation.author.full_name
+    -if can? :update, evaluation
+      = link_to('Upravit', edit_evaluation_path(evaluation))
+    = simple_format(evaluation.content)
