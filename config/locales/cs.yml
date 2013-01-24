@@ -1,4 +1,8 @@
 cs:
+  title:
+    default: Projekt Omega
+    characters:
+      show: "Agent %{character}"
   activerecord:
     models:
       user: Uživatel
