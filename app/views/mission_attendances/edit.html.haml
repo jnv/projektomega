@@ -1,7 +1,8 @@
-%dl
-  %dt Autor
-  %dd= link_to(@mission_attendance.character.full_name, @mission_attendance.character)
-  %dt Mise
-  %dd= link_to(@mission_attendance.mission.full_name, @mission_attendance.mission)
+.mission_attendance_edit
+  %dl
+    %dt Autor
+    %dd= link_to(@mission_attendance.character.full_name, @mission_attendance.character)
+    %dt Mise
+    %dd= link_to(@mission_attendance.mission.full_name, @mission_attendance.mission)
 
-= render 'form'
+  = render 'form'
