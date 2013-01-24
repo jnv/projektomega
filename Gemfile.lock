@@ -63,6 +63,10 @@ GEM
       activesupport (>= 3.2.0)
     childprocess (0.3.7)
       ffi (~> 1.0, >= 1.0.6)
+    chosen-rails (0.9.11.2)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
     chunky_png (1.2.7)
     cocaine (0.4.2)
     coderay (1.0.8)
@@ -323,6 +327,7 @@ DEPENDENCIES
   capistrano
   capybara (~> 1.0)
   carrierwave
+  chosen-rails
   coffee-rails (~> 3.2.0)
   comfortable_mexican_sofa
   compass-rails

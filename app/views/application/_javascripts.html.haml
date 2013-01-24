@@ -2,7 +2,6 @@
 -# fall back to local jQuery if necessary
 :javascript
   window.jQuery || document.write("<script src='#{javascript_path('jquery')}'>\x3C/script>")
-= javascript_include_tag "chosen"
 = javascript_include_tag "tablesorter"
 = javascript_include_tag "application"
 

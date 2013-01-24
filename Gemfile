@@ -23,6 +23,8 @@ group :assets do
 
   gem 'compass-rails'
   gem 'zurb-foundation'
+
+  gem 'chosen-rails'
 end
 
 gem 'thin', require: false
