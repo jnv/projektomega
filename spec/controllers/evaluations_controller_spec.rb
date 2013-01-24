@@ -150,8 +150,8 @@ describe EvaluationsController do
 
       describe "with invalid params" do
         before do
-          Evaluation.any_instance.stub(:save).and_return(false)
-          post :create, :evaluation => {content: 'blah'}
+          #Evaluation.any_instance.stub(:save).and_return(false)
+          post :create, :evaluation => {content: ''}
         end
 
         specify { assigns(:evaluation).should be_a_new(Evaluation) }
@@ -205,8 +205,8 @@ describe EvaluationsController do
 
       describe "with invalid params" do
         before do
-          Evaluation.any_instance.stub(:save).and_return(false)
-          put :update, id: @evaluation.id.to_s, evaluation: {}
+          # Evaluation.any_instance.stub(:save).and_return(false)
+          put :update, id: @evaluation.id.to_s, evaluation: {content: ""}
         end
 
         it { should assign_to(:evaluation).with(@evaluation) }
