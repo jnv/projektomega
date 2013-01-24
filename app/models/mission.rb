@@ -22,7 +22,7 @@ class Mission < ActiveRecord::Base
   end
 
   def to_s
-    name
+    full_name
   end
 
 end

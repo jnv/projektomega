@@ -49,7 +49,7 @@ describe Mission do
     its(:code) { should == "M7" }
     its(:abbr) { should == "M7" }
     its(:full_name) { should == "M7 Overlord" }
-    specify { subject.to_s.should == "Overlord" }
+    specify { subject.to_s.should == "M7 Overlord" }
   end
 
 end
