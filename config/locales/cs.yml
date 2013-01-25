@@ -91,6 +91,9 @@ cs:
       update: Uložit změny
       new: Vytvořit
       edit: Upravit
+      devise:
+        sign_in: Přihlásit se
+        sign_up: Zaregistrovat se
   flash:
     characters:
       create:
