@@ -8,5 +8,5 @@ end
 
 RSpec.configure do |config|
   config.include(ViewAcceptanceMacros, :type => :view)
-  config.include(ViewAcceptanceMacros, :type => :acceptance)
+  config.include(ViewAcceptanceMacros, :type => :request)
 end

@@ -1,22 +1,12 @@
 # encoding: utf-8
-require 'acceptance/acceptance_helper'
+require 'requests/requests_helper'
 
 feature 'Authentication' do
 
   let(:user) { FactoryGirl.create(:user) }
 
-  before :each do
-    #@transactions_state = self.use_transactional_fixtures
-    #self.use_transactional_fixtures = false
-    #@user = FactoryGirl.create(:user)
-  end
-
-  after :each do
-    #self.use_transactional_fixtures = @transactions_state
-  end
-
-
   scenario 'Registration' do
+    puts RSpec.configuration.include_or_extend_modules.inspect
     visit sign_up_path
     within("#new_user") do
       fill_in 'Jméno', with: 'Leeroy Jenkins'

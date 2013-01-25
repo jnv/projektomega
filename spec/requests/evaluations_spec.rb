@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'acceptance/acceptance_helper'
+require 'requests/requests_helper'
 
 feature 'Evaluations' do
 
