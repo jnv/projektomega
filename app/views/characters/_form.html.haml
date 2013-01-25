@@ -7,6 +7,6 @@
     = f.input :assignment
     = f.input :specialisation
     = f.input :portrait, :as => :file
-    = f.input :user if can? :update, @character, :user
+    = f.association :user, as: :chosen_select if can? :update, @character, :user
   .form-actions
     = f.button :submit

@@ -1,5 +1,5 @@
-= semantic_form_for @post do |f|
-  = f.inputs do
+= simple_form_for resource do |f|
+  .form-inputs
     = f.input :content
-  
-  = f.actions
+  .form-actions
+    = f.button :submit

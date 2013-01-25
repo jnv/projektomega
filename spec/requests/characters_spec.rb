@@ -21,7 +21,7 @@ feature 'Characters' do
     attendances = FactoryGirl.create_list(:mission_attendance, 2, {character: character})
     visit character_path(character)
 
-    find("#missions") do |m|
+    find(".attendances") do |m|
       attendances.each do |a|
         m.should have_link(a.mission.full_name)
       end
@@ -75,7 +75,7 @@ feature 'Characters' do
       should_be_on character_path(@char)
       page.should have_content("Agent byl upraven")
 
-      find(".character_details") do |char|
+      find(".description") do |char|
         page.should have_xpath("//img[contains(@src, \"uploads/\")]")
         char.should have_content("My New Name")
         char.should_not have_content("9947")
@@ -130,7 +130,7 @@ feature 'Characters' do
       should_be_on character_path(@char)
       page.should have_content("Agent byl upraven")
 
-      find(".character_details") do |char|
+      find(".attributes") do |char|
         char.should have_content("My New Name")
       end
 
@@ -141,28 +141,10 @@ feature 'Characters' do
     describe "should be able to create new character" do
 
       scenario "with just number and name" do
-        click_link "Vytvořit agenta"
+        click_link 'Nový agent'
         fill_in 'Číslo agenta', with: '958'
         fill_in 'Jméno', with: 'Agent Gadget'
 
-        click_button "Vytvořit"
-
-        page.should have_content("Agent byl vytvořen")
-      end
-
-      scenario "but not without name or number" do
-
-        click_link "Vytvořit agenta"
-        fill_in "Číslo agenta", with: "abc"
-        click_button "Vytvořit"
-
-        page.should have_selector('p.inline-errors')
-        fill_in "Číslo agenta", with: "133"
-        click_button "Vytvořit"
-
-        page.should have_selector('p.inline-errors')
-
-        fill_in "Jméno", with: "Pinkie Pie"
         click_button "Vytvořit"
 
         page.should have_content("Agent byl vytvořen")

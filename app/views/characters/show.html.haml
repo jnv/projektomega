@@ -41,3 +41,6 @@
         %li{id: "#{dom_id(mission, :eval)}Tab", class: klass}
           = render partial: "shared/evaluation", collection: evaluations, as: :evaluation
           - klass = nil
+
+          -if can?(:create, :evaluations)
+            %p= link_to('Přidat hodnocení', new_evaluation_path({evaluation: {mission_id: mission.id, character_id: resource.id}}))
