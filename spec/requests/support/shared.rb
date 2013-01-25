@@ -24,7 +24,7 @@ module Requests
       scenario 'show available evaluations' do
         eval "visit #{model_name.to_s}_path(model)"
         page.should have_selector("h3", content: "Hodnocení agentů")
-        within("#evaluations") do
+        within(".evaluations") do
           page.should have_selector(css_dom_id(evaluation))
           page.should have_content(evaluation.author.full_name)
         end
@@ -34,7 +34,7 @@ module Requests
         sign_in_with_admin
         eval "visit #{model_name.to_s}_path(model)"
 
-        within("#evaluations") do
+        within(".evaluations") do
           page.should have_link("Přidat hodnocení")
         end
       end

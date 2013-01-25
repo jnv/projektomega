@@ -24,7 +24,7 @@ feature 'Authentication' do
     sign_in_with user
     should_be_on homepage
     page.should have_content 'Přihlášení úspěšné.'
-    click_link 'Odhlášení'
+    click_link 'Odhlásit'
     page.should have_content 'Odhlášení úspěšné.'
   end
 

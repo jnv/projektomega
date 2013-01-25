@@ -50,7 +50,7 @@ feature 'Missions' do
 
       visit mission_path(mission)
       #within(css_dom_id(attendance))
-      within('#reports') do
+      within('.reports') do
         page.should have_link("Přidat hlášení")
       end
     end
@@ -94,22 +94,6 @@ feature 'Missions' do
         fill_in 'Číslo mise', with: '958'
         fill_in 'Název', with: 'Omaha Beach'
 
-        click_button "Vytvořit"
-
-        page.should have_content("Mise byla vytvořena")
-      end
-
-      scenario "but not without name or number" do
-        fill_in "Číslo mise", with: "abc"
-        click_button "Vytvořit"
-
-        page.should have_selector('p.inline-errors')
-        fill_in "Číslo mise", with: "42"
-        click_button "Vytvořit"
-
-        page.should have_selector('p.inline-errors')
-
-        fill_in "Název", with: "Cutie Mark Crusaders"
         click_button "Vytvořit"
 
         page.should have_content("Mise byla vytvořena")
