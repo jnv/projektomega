@@ -67,8 +67,8 @@ gem 'comfortable_mexican_sofa'
 gem "airbrake"
 
 group :test, :development do
-  gem "steak"
-  #gem "rspec-rails", "~> 2.6"
+  # gem "steak"
+  gem "rspec-rails"
   gem "spork-rails"
   gem "capybara", "~>1.0"
 end
