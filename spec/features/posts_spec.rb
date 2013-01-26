@@ -53,8 +53,8 @@ feature 'Posts' do
     end
 
     scenario "shouldn't be allowed to create a post" do
-      within("#posts") do
-        page.should have_no_link("Nový příspěvek")
+      page.should have_no_link("Nový příspěvek")
+      within(".post") do
         page.should have_no_link("Upravit")
       end
 
