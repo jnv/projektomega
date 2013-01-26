@@ -41,16 +41,15 @@ gem 'yaml_db'#, require: false
 gem 'rack-canonical-host'
 
 #Auth
-gem "devise", '~> 2.1.0'
-gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
+gem 'devise', '~> 2.1.0'
+gem 'cancan', github: 'ryanb/cancan', branch: '2.0'
 
 # Controllers & Views
 gem 'inherited_resources'
-gem 'formtastic', '~>2.2.0'
 gem 'simple_form'
 gem 'haml', '~> 3.2.0.alpha'
 gem 'haml-rails', '>= 0.3.4'
-gem "html5-rails"
+gem 'html5-rails'
 
 gem "redcarpet", "~>2.2.2"
 
@@ -64,7 +63,9 @@ gem 'jquery-rails'
 
 gem 'comfortable_mexican_sofa'
 
-gem "airbrake"
+gem 'airbrake'
+gem 'google-analytics-rails'
+gem 'intercom-rails', '~> 0.2.11'
 
 group :test, :development do
   # gem "steak"
