@@ -50,4 +50,4 @@ module Requests
   end
 end
 
-RSpec.configuration.include Requests::Helpers, type: :request
+RSpec.configuration.include Requests::Helpers, type: :feature

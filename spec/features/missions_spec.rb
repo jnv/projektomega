@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'requests/requests_helper'
+require 'features/features_helper'
 
 feature 'Missions' do
 
@@ -78,7 +78,7 @@ feature 'Missions' do
       should_be_on mission_path(@mission)
       page.should have_content("Mise byla upravena")
 
-      page.should have_selector("h2", content: "My New Mission Name")
+      page.should have_selector("h2", text: "My New Mission Name")
 
       page.should have_link("Upravit misi")
 

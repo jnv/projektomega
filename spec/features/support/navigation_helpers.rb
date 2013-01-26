@@ -15,4 +15,4 @@ module Requests
     end
   end
 end
-RSpec.configuration.include Requests::NavigationHelpers, type: :request
+RSpec.configuration.include Requests::NavigationHelpers, type: :feature

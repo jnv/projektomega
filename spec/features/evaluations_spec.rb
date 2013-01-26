@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'requests/requests_helper'
+require 'features/features_helper'
 
 feature 'Evaluations' do
 

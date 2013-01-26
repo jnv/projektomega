@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'requests/requests_helper'
+require 'features/features_helper'
 
 feature 'Characters' do
 
@@ -66,7 +66,6 @@ feature 'Characters' do
       end
 
       fill_in 'Jméno', with: "My New Name"
-      fill_in 'Číslo agenta', with: '9947'
       file = Rails.root + 'spec/fixtures/images/portrait.jpg'
       attach_file 'Podobizna', file
 
@@ -78,7 +77,6 @@ feature 'Characters' do
       find(".description") do |char|
         page.should have_xpath("//img[contains(@src, \"uploads/\")]")
         char.should have_content("My New Name")
-        char.should_not have_content("9947")
       end
 
 

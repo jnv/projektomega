@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'requests/requests_helper'
+require 'features/features_helper'
 
 feature 'Authentication' do
 
@@ -11,7 +11,7 @@ feature 'Authentication' do
     within("#new_user") do
       fill_in 'Jméno', with: 'Leeroy Jenkins'
       fill_in 'E-mail', with: 'user@example.com'
-      fill_in 'Heslo', with: 'please'
+      fill_in 'user_password', with: 'please'
       fill_in 'user_password_confirmation', with: 'please'
       click_button 'Zaregistrovat se'
     end

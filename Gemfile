@@ -70,7 +70,7 @@ group :test, :development do
   # gem "steak"
   gem "rspec-rails"
   gem "spork-rails"
-  gem "capybara", "~>1.0"
+  gem "capybara", "~>2.0"
 end
 
 group :test do

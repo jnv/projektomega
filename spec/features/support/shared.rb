@@ -6,7 +6,7 @@ module Requests
         reports = FactoryGirl.create_list(:report, 2, {model_name => model})
         eval "visit #{model_name.to_s}_path(model)"
 
-        page.should have_selector("h3", content: "Hlášení")
+        page.should have_selector("h3", text: "Hlášení")
 
         reports.each do |report|
           within(css_dom_id(report)) do
@@ -23,7 +23,7 @@ module Requests
 
       scenario 'show available evaluations' do
         eval "visit #{model_name.to_s}_path(model)"
-        page.should have_selector("h3", content: "Hodnocení agentů")
+        page.should have_selector("h3", text: "Hodnocení agent")
         within(".evaluations") do
           page.should have_selector(css_dom_id(evaluation))
           page.should have_content(evaluation.author.full_name)
@@ -42,4 +42,4 @@ module Requests
   end
 end
 
-RSpec.configuration.include Requests::SharedExamples, type: :request
+RSpec.configuration.include Requests::SharedExamples, type: :feature

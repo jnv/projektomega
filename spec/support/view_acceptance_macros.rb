@@ -7,6 +7,6 @@ module ViewAcceptanceMacros
 end
 
 RSpec.configure do |config|
-  config.include(ViewAcceptanceMacros, :type => :view)
-  config.include(ViewAcceptanceMacros, :type => :request)
+  config.include ViewAcceptanceMacros, :type => :view
+  config.include ViewAcceptanceMacros, :type => :feature
 end
