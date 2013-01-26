@@ -1,9 +1,11 @@
-%article[post]
-  %p
-    = image_tag post.character.portrait.to_s, class: "portrait" if post.character.portrait?
-    %strong= link_to post.character.full_name, post.character
-  %p
-    = post.content
-  -if can? :edit, post
-    %p
-      = link_to 'Upravit', edit_post_path(post)
+%article.row[post]
+  .portrait.two.columns
+    = image_tag post.character.portrait.thumb.url, class: "portrait" if post.character.portrait?
+  .content.ten.columns
+    %header
+      %strong.author= link_to post.character.full_name, post.character
+      %time= l(post.created_at, format: :short)
+      -if can? :edit, post
+        = link_to '(Upravit)', edit_post_path(post)
+    = simple_format(post.content)
+
