@@ -8,7 +8,7 @@ feature 'Home page', %q{
 
   scenario 'Home page' do
     visit homepage
-    page.should have_content('Úvod')
+    page.should have_content('Projekt Omega')
     page.should have_link('Přihlásit')
     page.should have_link('Registrace')
     page.should have_link('Agenti')
