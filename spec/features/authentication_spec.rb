@@ -6,7 +6,6 @@ feature 'Authentication' do
   let(:user) { FactoryGirl.create(:user) }
 
   scenario 'Registration' do
-    puts RSpec.configuration.include_or_extend_modules.inspect
     visit sign_up_path
     within("#new_user") do
       fill_in 'Jméno', with: 'Leeroy Jenkins'
