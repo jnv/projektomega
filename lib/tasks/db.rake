@@ -11,14 +11,14 @@ namespace :db do
     task :cms_fixtures do
       ENV['RAILS_ENV'] = 'test'
       ENV['FROM'] = 'projektomega'
-      ENV['TO']   = 'test.host'
+      #ENV['TO']   = 'test.host'
       Rake::Task['comfortable_mexican_sofa:fixtures:import'].invoke
     end
   end
 
   task :cms_fixtures do
     ENV['FROM'] = 'projektomega'
-    ENV['TO']   = 'projektomega.cz'
+    #ENV['TO']   = 'projektomega.cz'
     Rake::Task['comfortable_mexican_sofa:fixtures:import'].invoke
   end
 end

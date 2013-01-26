@@ -1,7 +1,7 @@
 ---
 label: Projekt Omega
 layout: default-layout
-parent:
-target_page:
+parent: 
+target_page: 
 is_published: true
 position: 0
