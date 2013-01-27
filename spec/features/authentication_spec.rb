@@ -10,8 +10,8 @@ feature 'Authentication' do
     within("#new_user") do
       fill_in 'Jméno', with: 'Leeroy Jenkins'
       fill_in 'E-mail', with: 'user@example.com'
-      fill_in 'user_password', with: 'please'
-      fill_in 'user_password_confirmation', with: 'please'
+      fill_in 'user_password', with: 'password'
+      fill_in 'user_password_confirmation', with: 'password'
       click_button 'Zaregistrovat se'
     end
 
