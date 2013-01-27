@@ -18,6 +18,7 @@ cs:
       not_saved:
         one: "%{resource} nebyl uložen kvůli chybě:"
         other: "%{resource} nebyl uložen kvůli %{count} chybám:"
+      confirmation_period_expired: "musí být potvrzen během %{period}, požádejte prosím o nový"
 
   devise:
     failure:
@@ -25,6 +26,7 @@ cs:
       unauthenticated: 'Musíte se zaregistrovat nebo přihlásit, pak můžete pokračovat.'
       unconfirmed: 'Musíte potvrdit svůj účet, pak můžete pokračovat.'
       locked: 'Váš účet je uzamčen.'
+      not_found_in_database: 'Neplatný e-mail nebo heslo.'
       invalid: 'Neplatný e-mail nebo heslo.'
       invalid_token: 'Neplatný ověřovací symbol.'
       timeout: 'Vaše relace vypršela, přihlašte se prosím znovu, pak můžete pokračovat.'
@@ -37,6 +39,7 @@ cs:
       updated: 'Vaše heslo bylo úspěšně změněno. Nyní jste přihlášen(a).'
       updated_not_active: 'Vaše heslo bylo změněno.'
       send_paranoid_instructions: "Pokud je e-mailová adresa v naší databázi, obdržíte na ni e-mail pro obnovení hesla."
+      no_token: "Tato stránka je přístupná pouze přes e-mail k obnovení hesla. Pokud jste se na stránku dostali z e-mailu pro obnovení hesla, zkontrolujte prosím, zda jste použili celou adresu."
     confirmations:
       send_instructions: 'Za několik minut obdržíte email s instrukcemi k potvrzení vašeho účtu.'
       send_paranoid_instructions: 'Pokud je e-mailová adresa v naší databázi, obdržíte na ní instrukce pro potvrzení vašeho účtu.'

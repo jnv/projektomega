@@ -41,7 +41,7 @@ gem 'yaml_db'#, require: false
 gem 'rack-canonical-host'
 
 #Auth
-gem 'devise', '~> 2.1.0'
+gem 'devise', '~> 2.2.0'
 gem 'cancan', github: 'ryanb/cancan', branch: '2.0'
 
 # Controllers & Views
