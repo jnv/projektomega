@@ -6,9 +6,9 @@
 
 = simple_form_for resource do |f|
   .form-inputs
-    = f.association :author,  disabled: disable_flag if can? :create, resource, :author
-    = f.input :mission_id, as: :hidden
-    = f.input :character_id, as: :hidden
+    = f.association :author, label_method: :full_name,  disabled: disable_flag if can? :create, resource, :author
+    = f.association :mission, label_method: :full_name, as: :chosen_select#, as: :hidden
+    = f.association :character, label_method: :full_name, as: :chosen_select#, as: :hidden
     = f.input :content
   .form-actions
     =f.button :submit
