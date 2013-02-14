@@ -4,13 +4,8 @@
       %li.name
         %h1= link_to "Projekt Omega", root_path
 
-    %section
-      %ul
-        %li= link_to "Agenti", characters_path
-        %li= link_to "Mise", missions_path
-        %li= link_to "Hlášení", mission_attendances_path
-        %li= link_to "Hodnocení", evaluations_path
-        %li= link_to "Diskuze", posts_path
-      %ul.account
-        = render 'devise/menu/registration_items'
-        = render 'devise/menu/login_items'
+    %ul
+      = render 'navigation'
+    %ul.account
+      = render 'devise/menu/registration_items'
+      = render 'devise/menu/login_items'
