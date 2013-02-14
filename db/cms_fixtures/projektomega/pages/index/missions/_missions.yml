@@ -1,7 +1,7 @@
 ---
-label: Projekt Omega
+label: Mise
 layout: default-layout
-parent: 
+parent: index
 target_page: 
 is_published: true
 position: 1
