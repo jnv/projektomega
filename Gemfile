@@ -61,7 +61,7 @@ gem 'mini_magick'
 # JS
 gem 'jquery-rails'
 
-gem 'comfortable_mexican_sofa'
+gem 'comfortable_mexican_sofa', '~>1.6.26'
 
 gem 'airbrake'
 gem 'google-analytics-rails'
