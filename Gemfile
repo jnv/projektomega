@@ -22,7 +22,7 @@ group :assets do
   gem 'uglifier'
 
   gem 'compass-rails'
-  gem 'zurb-foundation'
+  gem 'zurb-foundation', '~> 3.2'
 
   gem 'chosen-rails'
 end
