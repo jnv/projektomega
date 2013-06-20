@@ -1,16 +1,4 @@
 group :test do
-  guard 'spork', :rspec_env => {'RAILS_ENV' => 'test'} do
-    watch('config/application.rb')
-    watch('config/environment.rb')
-    watch(%r{^config/environments/.*\.rb$})
-    watch(%r{^config/initializers/.*\.rb$})
-    watch('Gemfile')
-    watch('Gemfile.lock')
-    watch('spec/spec_helper.rb') { :rspec }
-    watch('test/test_helper.rb') { :test_unit }
-    watch(%r{features/support/}) { :cucumber }
-  end
-
   guard 'rspec', :all_on_start => false, :cli => "--color --format nested --fail-fast --drb" do
     watch('spec/spec_helper.rb') { "spec" }
     watch('config/routes.rb') { "spec/routing" }
@@ -23,26 +11,6 @@ group :test do
     watch(%r{^spec/support/acceptance/(.+)\.rb$}) { "spec/acceptance" }
   end
 end
-
-#guard 'rspec', :version => 2,  do
-#  watch(%r{^spec/.+_spec\.rb$})
-#  watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
-#  watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
-#
-#
-#  watch(%r{^spec/support/acceptance/(.+)\.rb$}) { "spec/acceptance" }
-#
-#  # Steak acceptance specs
-#  #watch(%r{^app/views/(.+)/.*\.(erb|haml)$}) do |m|
-#  #  fname = "spec/acceptance/#{m[1]}_spec.rb"
-#  #  if File.exists?(fname)
-#  #    fname
-#  #  else
-#  #    "spec/acceptance/"
-#  #  end
-#  #end
-#end
-
 
 group :rails do
   guard 'livereload' do

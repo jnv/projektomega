@@ -47,7 +47,7 @@ gem 'cancan', github: 'ryanb/cancan', branch: '2.0'
 # Controllers & Views
 gem 'inherited_resources'
 gem 'simple_form'
-gem 'haml', '~> 3.2.0.alpha'
+gem 'haml', '~> 4.0.3'
 gem 'haml-rails', '>= 0.3.4'
 gem 'html5-rails'
 
@@ -91,7 +91,7 @@ group :development do
   gem 'capistrano'
   gem 'sextant'
 
-  gem 'rb-inotify', '~> 0.8.8', require: false
+  gem 'rb-inotify', '~> 0.9.0'
   gem 'guard'
 
   gem "guard-livereload"
