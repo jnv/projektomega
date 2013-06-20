@@ -11,4 +11,4 @@ before_script:
   - bundle exec rake ci:setup --trace
 matrix:
   allow_failures:
-  - rvm: 2.0.0
+    - rvm: 2.0.0
