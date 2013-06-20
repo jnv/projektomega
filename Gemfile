@@ -70,7 +70,6 @@ gem 'intercom-rails', '~> 0.2.11'
 group :test, :development do
   # gem "steak"
   gem "rspec-rails"
-  gem "spork-rails"
   gem "capybara", "~>2.0"
 end
 
@@ -95,7 +94,6 @@ group :development do
   gem 'rb-inotify', '~> 0.8.8', require: false
   gem 'guard'
 
-  gem "guard-spork"
   gem "guard-livereload"
   gem "guard-rails"
   gem "guard-rspec"
