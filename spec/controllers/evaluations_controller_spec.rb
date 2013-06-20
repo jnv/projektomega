@@ -1,61 +1,45 @@
 require 'spec_helper'
 
 describe EvaluationsController do
+  let(:mission) { FactoryGirl.create(:attended_mission_w_users, attendees: 2) }
+  let(:author) { mission.characters[1] }
+  let(:character) { mission.characters[0] }
 
-  before do
-    @mission = FactoryGirl.create(:attended_mission_w_users, attendees: 2)
-    @author = @mission.characters[1]
-    @character = @mission.characters[0]
-  end
+  let(:evaluation) { Evaluation.create! valid_attributes }
 
-  # This should return the minimal set of attributes required to create a valid
-  # Evaluation. As you add validations to Evaluation, be sure to
-  # update the return value of this method accordingly.
   let(:valid_attributes) do
-    {mission_id: @mission.id, character_id: @character.id, author_id: @author.id, content: 'blah'}
+    { mission_id: mission.id, character_id: character.id, author_id: author.id, content: 'blah' }
   end
 
-  describe "#index" do
-
-    before do
-      @evaluation = Evaluation.create! valid_attributes
-    end
+  describe "GET #index" do
     context "for guest" do
       before { get :index }
 
       it { should render_template(:index) }
-      it { should assign_to(:evaluations).with([@evaluation]) }
+      specify { assigns(:evaluations).should eq([evaluation]) }
     end
   end
 
-  describe "#show" do
-    before do
-      @evaluation = Evaluation.create! valid_attributes
-    end
-
+  describe "GET #show" do
     context "for guest" do
-      before { get :show, id: @evaluation.id.to_s }
+      before { get :show, id: evaluation.id.to_s }
 
       it { should render_template(:show) }
-      it { should assign_to(:evaluation).with(@evaluation) }
+      specify { assigns(:evaluation).should eq(evaluation) }
     end
   end
 
-  describe "#new" do
-
-    before do
-      @evaluation = Evaluation.create! valid_attributes
-    end
-
+  describe "GET #new" do
     context "for guest" do
       before { get :new, {evaluation: valid_attributes.except(:content)} }
+
       it { should_not render_template(:new) }
-      it { should_not assign_to(:evaluation) }
+      specify { assigns(:evaluation).should be_blank }
     end
 
     context "for user (as author)" do
       before do
-        login_user @author.user
+        login_user author.user
         get :new, {evaluation: valid_attributes.except(:content)}
       end
 
@@ -71,7 +55,6 @@ describe EvaluationsController do
 
       pending do
         it { should_not render_template(:new) }
-        it { should_not assign_to(:evaluation) }
       end
     end
 
@@ -87,38 +70,35 @@ describe EvaluationsController do
 
   end
 
-  describe "#edit" do
-    before do
-      @evaluation = Evaluation.create! valid_attributes
-    end
-
+  describe "GET #edit" do
     context "for guest" do
-      before { get :edit, id: @evaluation.id.to_s }
+      before { get :edit, id: evaluation.id.to_s }
+
       it { should_not render_template(:edit) }
-      it { should_not assign_to(:evaluation) }
+      specify { assigns(:evaluation).should be_blank }
     end
 
     context "for user (as author)" do
       before do
-        login_user @author.user
-        get :edit, id: @evaluation.id.to_s
+        login_user author.user
+        get :edit, id: evaluation.id.to_s
       end
 
       it { should render_template(:edit) }
-      it { should assign_to(:evaluation).with(@evaluation) }
+      specify { assigns(:evaluation).should eql(evaluation) }
     end
 
     context "for user (other)" do
       before do
-        login_user @character.user
-        get :edit, id: @evaluation.id.to_s
+        login_user character.user
+        get :edit, id: evaluation.id.to_s
       end
 
       it { should_not render_template(:edit) }
     end
   end
 
-  describe "#create" do
+  describe "POST #create" do
     context "for guest" do
       it "fails" do
         expect {
@@ -129,7 +109,7 @@ describe EvaluationsController do
 
     context "for user (as author)" do
       before do
-        login_user @author.user
+        login_user author.user
       end
 
       describe "with valid params" do
@@ -142,7 +122,6 @@ describe EvaluationsController do
         describe "after creating evaluation" do
           before { post :create, evaluation: valid_attributes.except(:author_id) }
 
-          it { should assign_to(:evaluation).with_kind_of(Evaluation) }
           specify { assigns(:evaluation).should be_persisted }
           it { should redirect_to(Evaluation.last) }
         end
@@ -155,7 +134,7 @@ describe EvaluationsController do
         end
 
         specify { assigns(:evaluation).should be_a_new(Evaluation) }
-        it { should render_template("new") }
+        it { should render_template(:new) }
       end
 
     end
@@ -172,44 +151,40 @@ describe EvaluationsController do
     end
   end
 
-  describe "update" do
-    before do
-      @evaluation = Evaluation.create! valid_attributes
-    end
-
+  describe "PUT #update" do
     context "for guest" do
       it "doesn't do an update" do
         Evaluation.any_instance.should_not_receive(:update_attributes).with({'content' => 'params'})
-        put :update, :id => @evaluation.id.to_s, :evaluation => {'content' => 'params'}
+        put :update, :id => evaluation.id.to_s, :evaluation => {'content' => 'params'}
       end
     end
 
     context "for user (as author)" do
       before do
-        login_user @author.user
+        login_user author.user
       end
 
       it "updates the evaluation" do
         Evaluation.any_instance.should_receive(:update_attributes).with({'content' => 'new'})
-        put :update, :id => @evaluation.id.to_s, :evaluation => {'content' => 'new'}
+        put :update, :id => evaluation.id.to_s, :evaluation => {'content' => 'new'}
       end
 
       describe "after update" do
         before do
-          put :update, id: @evaluation.id.to_s, evaluation: valid_attributes
+          put :update, id: evaluation.id.to_s, evaluation: valid_attributes
         end
 
-        it { should assign_to(:evaluation).with(@evaluation) }
-        it { should redirect_to(@evaluation) }
+        specify { assigns(:evaluation).should eql(evaluation) }
+        it { should redirect_to(evaluation) }
       end
 
       describe "with invalid params" do
         before do
           # Evaluation.any_instance.stub(:save).and_return(false)
-          put :update, id: @evaluation.id.to_s, evaluation: {content: ""}
+          put :update, id: evaluation.id.to_s, evaluation: {content: ""}
         end
 
-        it { should assign_to(:evaluation).with(@evaluation) }
+        specify { assigns(:evaluation).should eql(evaluation) }
         it { should render_template("edit") }
       end
     end
