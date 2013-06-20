@@ -4,13 +4,17 @@
       %th
       %th Agent
       %th Hráč
-      %th
+      -if can? :update, :characters
+        %th
+      -if can? :destroy, :characters
+        %th
   %tbody
     - collection.each do |character|
       %tr[character]
         %td= link_to image_tag(character.portrait.thumb.url, :size => "40x50"), character
         %td= link_to character.full_name, character
         %td= character.user
-        %td
-          -if can? :update, character
-            =link_to 'Upravit', edit_character_path(character)
+        -if can? :update, character
+          %td= link_to 'Upravit', edit_character_path(character)
+        -if can? :destroy, character
+          %td= delete_button(character)
