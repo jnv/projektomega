@@ -31,3 +31,21 @@ class Character < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: characters
+#
+#  id             :integer          not null, primary key
+#  number         :integer          not null
+#  name           :string(255)      not null
+#  born           :string(255)
+#  country        :string(255)
+#  assignment     :string(255)
+#  specialisation :string(255)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  user_id        :integer
+#  portrait       :string(255)
+#
+
