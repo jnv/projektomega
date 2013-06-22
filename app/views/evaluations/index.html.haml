@@ -5,8 +5,7 @@
       %th Autor hodnocení
       %th Hodnocený agent
       %th Hodnocení
-      %th
-
+      =render 'shared/action_grid_headers'
   %tbody
     - collection.each do |evaluation|
       %tr[evaluation]
@@ -14,8 +13,7 @@
         %td= linked_name evaluation.author
         %td= linked_name evaluation.character
         %td= link_to 'Zobrazit', evaluation
-        -if can? :edit, evaluation
-          %td= link_to 'Upravit', edit_evaluation_path(evaluation)
+        =render partial: 'shared/action_grid_row', locals: {resource: evaluation}
 
 .meta_links
   -#if can? :create, :evaluations

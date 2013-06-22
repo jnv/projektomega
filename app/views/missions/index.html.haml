@@ -5,7 +5,7 @@
       %th Datum
       %th Lokace
       %th Zúčastnění agenti
-      %th
+      =render 'shared/action_grid_headers'
   %tbody
     - collection.each do |mission|
       %tr[mission]
@@ -13,6 +13,4 @@
         %td= mission.date
         %td= mission.location
         %td= linked_codes(mission.characters)
-        %td
-          -if can? :update, mission
-            =link_to 'Upravit', edit_mission_path(mission)
+        =render partial: 'shared/action_grid_row', locals: {resource: mission}

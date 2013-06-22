@@ -4,17 +4,11 @@
       %th
       %th Agent
       %th Hráč
-      -if can? :update, :characters
-        %th
-      -if can? :destroy, :characters
-        %th
+      =render 'shared/action_grid_headers'
   %tbody
     - collection.each do |character|
       %tr[character]
         %td= link_to image_tag(character.portrait.thumb.url, :size => "40x50"), character
         %td= link_to character.full_name, character
         %td= character.user
-        -if can? :update, character
-          %td= link_to 'Upravit', edit_character_path(character)
-        -if can? :destroy, character
-          %td= delete_button(character)
+        =render partial: 'shared/action_grid_row', locals: {resource: character}

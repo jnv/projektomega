@@ -1,0 +1,4 @@
+-if can? :update, resource
+  %td= link_to 'Upravit', edit_resource_path(resource)
+-if can? :destroy, resource
+  %td= delete_button(resource)

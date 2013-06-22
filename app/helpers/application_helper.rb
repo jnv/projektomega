@@ -8,4 +8,7 @@ module ApplicationHelper
     button_to "Smazat", resource, method: :delete, confirm: "Opravdu smazat #{resource}?"
   end
 
+  def resource_sym
+    resource_class.name.underscore.to_sym
+  end
 end
