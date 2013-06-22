@@ -34,6 +34,20 @@ describe MissionAttendance do
     it { should respond_to(:character_user) }
   end
 
+  describe "instance methods" do
+    subject(:report) { MissionAttendance.new }
+    describe "#filled?" do
+      context "with report" do
+        before { report.report = 'meh' }
+        its(:filled?) { should be_true }
+      end
+
+      context "without report" do
+        before {report.report = ''}
+        its(:filled?) {should be_false}
+      end
+    end
+  end
   #it "should return non-empty reports" do
   #  report = FactoryGirl.create(:report)
   #  Factory(:mission_attendance)

@@ -1,6 +1,6 @@
 class MissionAttendance < ActiveRecord::Base
   self.primary_keys = :mission_id, :character_id
-  
+
   belongs_to :mission
   belongs_to :character
   has_many :evaluations, foreign_key: [:mission_id, :character_id]
@@ -13,8 +13,8 @@ class MissionAttendance < ActiveRecord::Base
 
   delegate :user, :to => :character, :prefix => true, :allow_nil => true
 
-  def self.evaluations
-
+  def filled?
+    !self.report.blank?
   end
 
 end
