@@ -89,4 +89,17 @@ describe MissionAttendancesController do
     end
   end
 
+  describe "PUT empty" do
+    context "admin" do
+      before do
+        login_admin
+      end
+
+      it "empties report" do
+        report.should be_filled
+        put :empty, id: report.id.to_s
+        report.reload.should_not be_filled
+      end
+    end
+  end
 end

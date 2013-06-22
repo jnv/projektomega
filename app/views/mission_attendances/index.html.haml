@@ -4,7 +4,8 @@
       %th Mise
       %th Autor
       %th Hlášení
-      %th
+      -if can? :update, :mission_attendances
+        %th
   %tbody
     - collection.each do |mission_attendance|
       %tr[mission_attendance]

@@ -6,7 +6,11 @@ Omega::Application.routes.draw do
   resources :users, only: [:show, :index]
   resources :characters
   resources :missions
-  resources :reports, controller: "mission_attendances", as: "mission_attendances", only: [:index, :show, :edit, :update]
+  resources :reports, controller: "mission_attendances", as: "mission_attendances", only: [:index, :show, :edit, :update] do
+    member do
+      put :empty
+    end
+  end
   resources :evaluations, only: [:index, :show, :new, :create, :edit, :update]
   resources :posts, only: [:index, :new, :create, :edit, :update]
 
