@@ -6,16 +6,21 @@
       %th Hlášení
       -if can? :update, :mission_attendances
         %th
+      -if can? :empty, :mission_attendances
+        %th
   %tbody
-    - collection.each do |mission_attendance|
-      %tr[mission_attendance]
-        %td= linked_name mission_attendance.mission
-        %td= linked_name mission_attendance.character
+    - collection.each do |attendance|
+      %tr[attendance]
+        %td= linked_name attendance.mission
+        %td= linked_name attendance.character
         %td
-          -if mission_attendance.report.blank?
-            Nedodáno
+          -if attendance.filled?
+            = link_to 'Zobrazit', attendance
           -else
-            = link_to 'Zobrazit', mission_attendance
-        %td
-          -if can? :update, mission_attendance
-            = link_to 'Upravit', edit_mission_attendance_path(mission_attendance)
+            Nedodáno
+        -if can? :update, attendance
+          %td
+            = link_to 'Upravit', edit_resource_path(attendance)
+        -if can? :empty, attendance
+          %td
+            = button_to "Smazat", empty_resource_path(attendance), method: :delete, confirm: "Opravdu smazat hlášení?"
