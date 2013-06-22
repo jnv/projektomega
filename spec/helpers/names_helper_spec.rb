@@ -25,6 +25,10 @@ describe NamesHelper do
     it "generates link with full name in body" do
       helper.linked_name(model).should == '<a href="/characters/1" data-number="1">My Name</a>'
     end
+
+    it "handles non-existent model with bravery and honour" do
+      helper.linked_name.should be_blank
+    end
   end
 
 end
