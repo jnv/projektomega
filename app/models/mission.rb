@@ -1,8 +1,8 @@
 class Mission < ActiveRecord::Base
 
-  has_many :attendances, class_name: 'MissionAttendance'
   has_many :characters, through: :attendances, order: 'number ASC'
-  has_many :evaluations
+  has_many :attendances, class_name: 'MissionAttendance', dependent: :destroy
+  has_many :evaluations, dependent: :destroy
 
   validates_presence_of :number, :name
   validates :number, uniqueness: true, numericality: {only_integer: true, greater_than: 0}

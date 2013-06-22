@@ -24,10 +24,10 @@ describe Character do
 
   describe "associations" do
     it { should belong_to :user }
-    it { should have_many(:attendances) }
+    it { should have_many(:attendances).dependent(:destroy) }
     it { should have_many(:missions).through(:attendances) }
-    it { should have_many(:evaluations) }
-    it { should have_many(:authored_evaluations) }
+    it { should have_many(:evaluations).dependent(:destroy) }
+    it { should have_many(:authored_evaluations).dependent(:destroy) }
   end
 
   describe "default scope" do
