@@ -27,7 +27,7 @@ describe NamesHelper do
     end
 
     it "handles non-existent model with bravery and honour" do
-      helper.linked_name.should be_blank
+      helper.linked_name(nil).should be_blank
     end
   end
 
