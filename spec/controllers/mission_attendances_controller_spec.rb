@@ -2,14 +2,12 @@ require 'spec_helper'
 
 describe MissionAttendancesController do
 
+  let(:user) { FactoryGirl.create(:user) }
+  let(:character) { FactoryGirl.create(:character, user: user) }
+  let(:report) { FactoryGirl.create(:report, character: character) }
+
   def valid_attributes
     {report: "My Report Text"}
-  end
-
-  def prepare_user
-    @user = login_user
-    @character = FactoryGirl.create(:character, user: @user)
-    @mission_attendance = FactoryGirl.create(:report, character: @character)
   end
 
   describe "GET index" do
@@ -29,20 +27,19 @@ describe MissionAttendancesController do
   end
 
   describe "GET edit" do
-    before :each do
-      @mission_attendance = FactoryGirl.create(:report)
-    end
 
     it "should fail for guest" do
-      get :edit, :id => @mission_attendance.id.to_s
+      get :edit, :id => report.id.to_s
       response.should_not render_template(:edit)
     end
 
-    context ":user" do
+    context "user" do
+      before do
+        login_user user
+      end
       it "assigns the requested mission_attendance as @mission_attendance" do
-        prepare_user
-        get :edit, :id => @mission_attendance.id.to_s
-        assigns(:mission_attendance).should eq(@mission_attendance)
+        get :edit, :id => report.id.to_s
+        assigns(:mission_attendance).should eq(report)
       end
     end
 
@@ -50,45 +47,46 @@ describe MissionAttendancesController do
 
   describe "PUT update" do
 
-    context ":user" do
-      before :each do
-        prepare_user
+    context "user" do
+      before do
+        login_user user
       end
 
       describe "with valid params" do
         it "updates the requested mission_attendance" do
           MissionAttendance.any_instance.should_receive(:update_attributes).with({'report' => 'blah'})
-          put :update, :id => @mission_attendance.id.to_s, :mission_attendance => {'report' => 'blah'}
+          put :update, :id => report.id.to_s, :mission_attendance => {'report' => 'blah'}
         end
 
         it "assigns the requested mission_attendance as @mission_attendance" do
-          put :update, :id => @mission_attendance.id.to_s, :mission_attendance => valid_attributes
-          assigns(:mission_attendance).should eq(@mission_attendance)
+          put :update, :id => report.id.to_s, :mission_attendance => valid_attributes
+          assigns(:mission_attendance).should eq(report)
         end
 
         it "redirects to the mission_attendance" do
-          put :update, :id => @mission_attendance.to_param, :mission_attendance => valid_attributes
-          response.should redirect_to(@mission_attendance)
+          put :update, :id => report.to_param, :mission_attendance => valid_attributes
+          response.should redirect_to(report)
         end
       end
 
       describe "with invalid params" do
+        before do
+          report
+        end
         it "assigns the mission_attendance as @mission_attendance" do
           MissionAttendance.any_instance.stub(:save).and_return(false)
-          put :update, :id => @mission_attendance.id.to_s, :mission_attendance => {'report'=>'blah'}
-          assigns(:mission_attendance).should eq(@mission_attendance)
+          put :update, :id => report.id.to_s, :mission_attendance => {'report'=>'blah'}
+          assigns(:mission_attendance).should eq(report)
         end
 
         it "re-renders the 'edit' template" do
           MissionAttendance.any_instance.stub(:save).and_return(false)
           MissionAttendance.any_instance.stub(:errors).and_return(['error'])
-          put :update, :id => @mission_attendance.id.to_s, :mission_attendance => {'report'=>'blah'}
-          response.should render_template("edit")
+          put :update, :id => report.id.to_s, :mission_attendance => {'report'=>'blah'}
+          response.should render_template(:edit)
         end
       end
-
     end
   end
-
 
 end
