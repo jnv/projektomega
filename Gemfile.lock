@@ -42,6 +42,8 @@ GEM
       activesupport
       builder
       json
+    annotate (2.5.0)
+      rake
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
@@ -305,6 +307,7 @@ PLATFORMS
 
 DEPENDENCIES
   airbrake
+  annotate
   cancan!
   capistrano
   capybara (~> 2.0)
