@@ -1,0 +1,24 @@
+---- datatemplateentry agent ----
+template       : :template:data_agent
+cislo          : <%= @character.number %>
+jmeno          : <%= @character.name %>
+narozeni       : <%= @character.born %>
+stat           : <%= @character.country %>
+povereni       : <%= @character.assignment %>
+specializace   : <%= @character.specialisation %>
+hrac           : <% if @character.user %><%= @character.user.name %><% end %>
+portret_img    : <% if @character.portrait.file %>agenti:<%= @character.portrait.file.filename %><% end %>
+----
+
+<% authors = @character.evaluations.group_by_author %>
+===== Hodnocení agenta =====
+
+<% authors.each do |author, evaluations| %>
+
+==== <%= author.full_name %> ====
+<% evaluations.each do |ev| %>
+**[[mise:<%= ev.mission.number %>|<%= ev.mission.full_name %>]]**
+<%= ev.content %>
+<% end %>
+--- //[[agenti:<%= author.number %>|<%= author.code %>]]//
+<% end %>

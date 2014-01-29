@@ -1,0 +1,9 @@
+---- datatemplateentry mise ----
+template      : :template:data_mise
+cislo         : <%= @mission.number %>
+jmeno         : <%= @mission.name %>
+datum         : <%= @mission.date %>
+lokace        : <%= @mission.location %>
+agenti_nspages: <%= @mission.characters.map(&:number).join(', ') %>
+popis_wiki    : <%= @mission.description %>
+----

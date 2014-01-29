@@ -24,6 +24,10 @@ class Evaluation < ActiveRecord::Base
     with_all.group_by(&:character)
   end
 
+  def self.group_by_author
+    with_all.group_by(&:author)
+  end
+
   #TODO: generalize and move to standalone class as ValidateEach
   def mission_attendance_exists
 
